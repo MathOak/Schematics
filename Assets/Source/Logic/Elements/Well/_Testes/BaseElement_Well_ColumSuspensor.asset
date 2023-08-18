@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BaseElement_Well_ColumSuspensor
   m_EditorClassIdentifier: 
   elementName: Suspensor de Coluna
+  _writePartOnDoc: 0
   _key: columSuspensor
   elementIcon: {fileID: 21300000, guid: 51bcc6feea3f7ee4294fc2081c16890f, type: 3}
   _columItem: 0

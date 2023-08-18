@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5340c93eadc02e54f9c2061c347916a6, type: 3}
   m_Name: element_simple_head
   m_EditorClassIdentifier: 
-  elementName: "Cabe\xE7a de Po\xE7o"
+  elementName: "\xC1rvore de Natal"
   _key: wellhead
   elementIcon: {fileID: 0}
   _columItem: 0

@@ -16,8 +16,11 @@ using UnityEngine.AddressableAssets;
 
 public class SchematicGenerator : SerializedMonoBehaviour
 {
+    [SerializeField] private Camera _schematicCamera;
     [SerializeField] private Camera _printCamera;
+    [SerializeField] private Canvas _uiCanvas;
     [SerializeField] private Schematic wellSchematic;
+    [SerializeField] private UIGenerator uiGenerator;
     [SerializeField][TextArea] private string jsonSchematicText;
     [Space]
     [Header("Head")]
@@ -72,7 +75,11 @@ public class SchematicGenerator : SerializedMonoBehaviour
 
 
 #if UNITY_EDITOR || UNITY_WEBGL == false
-        ReadAndGenerate();
+        GenerateSchematicFromString();
+#endif
+
+#if CODING_WEB_MODULE || (!UNITY_EDITOR && UNITY_WEBGL)
+    InternalGeneratorBootListener();
 #endif
     }
 
@@ -90,10 +97,6 @@ public class SchematicGenerator : SerializedMonoBehaviour
         {
             throw new Exception("Schematic.json not found!");
         }
-
-#if CODING_WEB_MODULE || (!UNITY_EDITOR && UNITY_WEBGL)
-    InternalGeneratorBootListener();
-#endif
     }
 
     private async UniTask GenerateFromJson(string jsonString)
@@ -111,7 +114,9 @@ public class SchematicGenerator : SerializedMonoBehaviour
 #endif
 
             RenderSchematic();
+#if CODING_WEB_MODULE || (!UNITY_EDITOR && UNITY_WEBGL)
             QuitApplication();
+#endif
         }
         catch (Exception e) 
         {
@@ -127,14 +132,13 @@ public class SchematicGenerator : SerializedMonoBehaviour
 
     private void QuitApplication() 
     {
-#if UNITY_EDITOR
-        if (Application.isEditor)
-            EditorApplication.ExitPlaymode();
-        else
-#endif
-            Application.Quit();
 #if CODING_WEB_MODULE || (!UNITY_EDITOR && UNITY_WEBGL)
+        InternalUnityLogger("Closing Web Module...");
         InternalGeneratorQuitListener();
+#elif UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#else
+        Application.Quit();
 #endif
     }
 
@@ -181,6 +185,7 @@ public class SchematicGenerator : SerializedMonoBehaviour
 
         await DrawColum(schematic);
         await DrawVoidSpaces(schematic);
+        await DrawUIText(schematic);
 
         lastGeneration = schematic;
     }
@@ -251,6 +256,25 @@ public class SchematicGenerator : SerializedMonoBehaviour
         }
     }
 
+    private async UniTask DrawUIText(Schematic schematic) 
+    {
+        await uiGenerator.DrawSchematicText(VisualElement.visualElements);
+        var rTransform = _uiCanvas.GetComponent<RectTransform>();
+        rTransform.sizeDelta = new Vector2(DRAW_LIMITS_HORIZONTAL.RealToVirtualScale() * 600, schematic._drillDeph.RealToVirtualScale());
+    }
+
+    private List<SchematicItem> GetSchematicItems(Schematic schematic) 
+    {
+        var result = schematic.GetAllParts();
+        SchematicItem head = cristmasHead.CreateVirtualItem();
+        SchematicItem suspensor = columSuspensor.CreateVirtualItem();
+        SchematicItem production = columSuspensor.CreateVirtualItem();
+        result.Insert(0, production);
+        result.Insert(0, suspensor);
+        result.Insert(0, head);
+        return result;
+    }
+
     [Button]
     public void RenderSchematic()
     {
@@ -260,18 +284,28 @@ public class SchematicGenerator : SerializedMonoBehaviour
         float lastDeph = SchematicGenerator.lastGeneration.terrainFormation.Sections[SchematicGenerator.lastGeneration.terrainFormation.Sections.Count - 1]._deph;
         float drawSize = (lastDeph.RealToVirtualScale() / 2) + (SchematicGenerator.HEAD_SIZE / 2);
 
-        _printCamera.orthographicSize = drawSize;
-        _printCamera.transform.position = new Vector3(0, -drawSize + (SchematicGenerator.HEAD_SIZE), -10);
+        _schematicCamera.orthographicSize = drawSize;
+        _schematicCamera.transform.position = new Vector3(0, -drawSize + (SchematicGenerator.HEAD_SIZE), -10);
 
         Rect cameraViewRect = new Rect(_printCamera.rect);
         float widthValue = Mathf.InverseLerp(0, _printCamera.orthographicSize, SchematicGenerator.DRAW_LIMITS_HORIZONTAL / 2);
         cameraViewRect.size = new Vector2(widthValue, cameraViewRect.height);
 
         //_printCamera.rect = cameraViewRect;
-        _printCamera.aspect = widthValue;
+       _schematicCamera.aspect = widthValue;
 
-        int printWidth = 512;
-        int printHeight = (Mathf.CeilToInt(drawSize / SchematicGenerator.DRAW_LIMITS_HORIZONTAL * 2)) * printWidth;
+        int baseScale = 128;
+        int printWidth = (baseScale * 5) - (baseScale / 2);
+        int printHeight = (Mathf.CeilToInt(drawSize / SchematicGenerator.DRAW_LIMITS_HORIZONTAL * 2)) * baseScale;
+
+
+        //PrintCamera
+        float printCameraWidth = widthValue * 5;
+        _printCamera.orthographicSize = _schematicCamera.orthographicSize;
+        _printCamera.aspect = printCameraWidth;
+        _printCamera.transform.position = new Vector3(0, _schematicCamera.transform.position.y, -10);
+
+        _printCamera.transform.position = new Vector3(_printCamera.transform.position.x, _schematicCamera.transform.position.y, _printCamera.transform.position.z);
 
 #if CODING_WEB_MODULE || (!UNITY_EDITOR && UNITY_WEBGL)
         var tex = SimpleScreenshotCapture.CaptureCameraToTexture(printWidth, printHeight, _printCamera);
@@ -279,17 +313,19 @@ public class SchematicGenerator : SerializedMonoBehaviour
 
         InternalUnityLogger($"Schematic Rendered! Returning Base64...");
 
-#if UNITY_EDITOR
-        Debug.Log(jpgBytes);
-#else
+        if (Application.isEditor)
+        {
+            Debug.Log(jpgBytes);
+        }
+
         InternalBase64Generated(Convert.ToBase64String(jpgBytes));
-#endif
 #else
         string filePath = Path.Combine(Application.streamingAssetsPath, "generator_result.png");
         SimpleScreenshotCapture.CaptureCameraToFile(filePath, printWidth, printHeight, _printCamera);
 #endif
     }
 
+#if UNITY_EDITOR
     [Button]
     public void GetAllBaseElementInProject()
     {
@@ -306,6 +342,7 @@ public class SchematicGenerator : SerializedMonoBehaviour
         CheckIfAnyElementHaveTheSameKey();
         allElements = elements;
     }
+#endif
 
     public bool CheckIfAnyElementHaveTheSameKey()
     {

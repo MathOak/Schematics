@@ -32,18 +32,36 @@ public class Schematic
             colum.Add(item);
         else if (item.element.Key == "sapata")
         {
-            var revertiment = new Revestiment();
-            coating.Add(revertiment);
+            var revestiment = new Revestiment();
+            coating.Add(revestiment);
 
-            revertiment._sapata = item;
-            revertiment._cimentacao = new List<SchematicItem>();
-            revertiment._cimentacao.Add(new SchematicItem());
-            revertiment._cimentacao[0].element = SchematicGenerator.elements["cimento"];
-            revertiment._cimentacao[0]._origin = item._origin;
-            revertiment._cimentacao[0]._deph = item._deph;
+            revestiment._sapata = item;
+            revestiment._cimentacao = new List<SchematicItem>();
+            revestiment._cimentacao.Add(new SchematicItem());
+            revestiment._cimentacao[0].element = SchematicGenerator.elements["cimento"];
+            revestiment._cimentacao[0]._origin = item._origin;
+            revestiment._cimentacao[0]._deph = item._deph;
         }
         else
             others.Add(item);
+    }
+
+    public List<SchematicItem> GetAllParts() 
+    {
+        List<SchematicItem> result = new List<SchematicItem>(others);
+
+        foreach (var columnItem in colum)
+        {
+            result.Add(columnItem);
+        }
+
+        foreach (var otherItem in others)
+        {
+            result.Add(otherItem);
+        }
+
+        result.OrderBy(item => item._deph);
+        return result;
     }
 
     public string ToJsonFormat ()

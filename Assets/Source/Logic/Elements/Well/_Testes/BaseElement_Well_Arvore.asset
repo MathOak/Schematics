@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5340c93eadc02e54f9c2061c347916a6, type: 3}
   m_Name: BaseElement_Well_Arvore
   m_EditorClassIdentifier: 
-  elementName: "Cabe\xE7a de Po\xE7o"
+  elementName: "\xC1rvore de Natal"
+  _writePartOnDoc: 0
   _key: defaultHead
   elementIcon: {fileID: 21300000, guid: 51bcc6feea3f7ee4294fc2081c16890f, type: 3}
   _columItem: 0

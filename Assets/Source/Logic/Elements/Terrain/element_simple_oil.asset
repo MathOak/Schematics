@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: element_simple_oil
   m_EditorClassIdentifier: 
   elementName: "Petr\xF3leo"
+  _writePartOnDoc: 0
   _key: terrainOil
   elementIcon: {fileID: 0}
   _columItem: 0

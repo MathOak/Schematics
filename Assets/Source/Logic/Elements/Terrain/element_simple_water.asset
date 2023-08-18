@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: element_simple_water
   m_EditorClassIdentifier: 
   elementName: "\xC1gua"
+  _writePartOnDoc: 0
   _key: terrainWater
   elementIcon: {fileID: 0}
   _columItem: 0

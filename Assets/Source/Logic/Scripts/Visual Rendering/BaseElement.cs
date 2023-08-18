@@ -10,6 +10,7 @@ public class BaseElement : ScriptableObject
 {
     [Header("Info")]
     [SerializeField] private string elementName = "Generic Part";
+    public bool _writePartOnDoc = true;
     [SerializeField] private string _key;
     [SerializeField] private Sprite elementIcon;
     public bool _columItem;
@@ -32,6 +33,7 @@ public class BaseElement : ScriptableObject
     [Space]
     [SerializeField] private int sortInLayer;
 
+    public string ElementName => elementName;
     public string Key => _key;
     public Sprite Icon => elementIcon;
     public Color DefaultColor => defaultColor;
@@ -41,6 +43,15 @@ public class BaseElement : ScriptableObject
         VisualElement visualElement = await VisualElement.CreateNew(sElement, drawArea);
         await GenerateDrawing(visualElement, additionalSort);
         return visualElement;
+    }
+
+    public SchematicItem CreateVirtualItem(float origin = 0, float depth = 0) 
+    {
+        var result = new SchematicItem();
+        result.element = this;
+        result._origin = origin;
+        result._deph = depth;
+        return result;
     }
 
     protected async UniTask GenerateDrawing(VisualElement visualElement, int additionalSort = 0)

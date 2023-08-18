@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BaseElement_Empty_white
   m_EditorClassIdentifier: 
   elementName: Vazio
+  _writePartOnDoc: 0
   _key: emptyWhite
   elementIcon: {fileID: 0}
   _columItem: 0

@@ -38,11 +38,17 @@ public class SchematicItem : SchematicDrawable
 
     public override string ToString()
     {
-        if (_origin == 0)
-            return $"{element} Até {_deph.ToString("F2")}m";
+        if (_origin + _deph == 0 || (_origin < 0 && _deph < 0)) 
+        {
+            return element.ToString();
+        }
+        if (_origin <= 0)
+        {
+            return $"{element} até {_deph.ToString("F2")}m";
+        }
         else
         {
-            return $"{element}: {_origin.ToString("F2")}m - {_deph.ToString("F2")}m";
+            return $"{element}: {_origin.ToString("F2")} - {_deph.ToString("F2")}m";
         }
     }
 

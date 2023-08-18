@@ -8,6 +8,8 @@ public class VisualElement : MonoBehaviour
 {
     [Header("Data")]
     [SerializeField][ReadOnly] private Rect _drawArea;
+    private SchematicItem _sItem;
+    public SchematicItem SchematicItem => _sItem;
 
     public static List<VisualElement> visualElements = new List<VisualElement>();
 
@@ -69,6 +71,7 @@ public class VisualElement : MonoBehaviour
         visualElement.gameObject.name = element.ToString();
         visualElement.transform.localPosition = new Vector3(drawArea.x, drawArea.y, 0);
         visualElement._drawArea = drawArea;
+        visualElement._sItem = element;
 
         return visualElement;
     }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BaseElement_Empty_draw
   m_EditorClassIdentifier: 
   elementName: Vazio/Contorno
+  _writePartOnDoc: 0
   _key: emptyCorners
   elementIcon: {fileID: 0}
   _columItem: 0

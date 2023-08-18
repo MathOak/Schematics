@@ -1,6 +1,6 @@
 mergeInto(LibraryManager.library, {
     InternalBase64Generated: function(base64) {
-        return UTF8ToString(base64);
+        OnBase64Generated(UTF8ToString(base64));
     },
 
     InternalGeneratorBootListener: function() {
