@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5340c93eadc02e54f9c2061c347916a6, type: 3}
-  m_Name: element_nt_33_surface_tree
+  m_Name: element_nt_22_casing_cement
   m_EditorClassIdentifier: 
-  elementName: ANC
-  elementEngName: "Surface tree\r"
+  elementName: Cimento de revestimento
+  elementEngName: "Casing cement\r"
   _writePartOnDoc: 1
-  _key: surface_tree
+  _key: casing_cement
   elementIcon: {fileID: 0}
   _columItem: 0
   pivot: {x: 0.5, y: 0}
   useBgColor: 1
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  defaultColor: {r: 0.73333335, g: 0.73333335, b: 0.73333335, a: 1}
   aditionalBgScale: {x: 1, y: 1}
   useInsideArt: 0
   art: {fileID: 0}
@@ -29,4 +29,4 @@ MonoBehaviour:
   drawMode: 0
   aditionalArtScale: {x: 1, y: 1}
   minimalVirtualHeight: 0
-  sortInLayer: 0
+  sortInLayer: 10

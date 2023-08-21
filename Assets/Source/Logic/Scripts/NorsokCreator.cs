@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class NorsokCreator : MonoBehaviour
 {
+#if UNITY_EDITOR
     public TextAsset csvFile;
 
     [Button]
@@ -34,5 +35,6 @@ public class NorsokCreator : MonoBehaviour
         BaseElement newBaseElement = new BaseElement(key, name, engName);
         UnityEditor.AssetDatabase.CreateAsset(newBaseElement, $"Assets/Source/Logic/Elements/Well/Norsok Table/element_nt_{norsokId}_{key}.asset");
     }
+#endif
 }
 

@@ -10,23 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5340c93eadc02e54f9c2061c347916a6, type: 3}
-  m_Name: element_nt_32_subsea_test_tree_assembly
+  m_Name: element_simple_revestimento1
   m_EditorClassIdentifier: 
-  elementName: ANM de testes
-  elementEngName: "Subsea test tree assembly\r"
-  _writePartOnDoc: 1
-  _key: subsea_test_tree_assembly
-  elementIcon: {fileID: 0}
+  elementName: "Revestimento Gen\xE9rico"
+  elementEngName: 
+  _writePartOnDoc: 0
+  _key: revestiment
   _columItem: 0
-  pivot: {x: 0.5, y: 0}
+  pivot: {x: 0.5, y: 0.5}
   useBgColor: 1
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  aditionalBgScale: {x: 1, y: 1}
+  defaultColor: {r: 1, g: 0.91838396, b: 0, a: 1}
+  aditionalBgScale: {x: 0, y: 0}
   useInsideArt: 0
   art: {fileID: 0}
-  artColor: {r: 0, g: 0, b: 0, a: 1}
-  maskInteraction: 1
+  artColor: {r: 0, g: 0, b: 0, a: 0}
+  maskInteraction: 0
   drawMode: 0
-  aditionalArtScale: {x: 1, y: 1}
+  aditionalArtScale: {x: 0, y: 0}
   minimalVirtualHeight: 0
   sortInLayer: 0

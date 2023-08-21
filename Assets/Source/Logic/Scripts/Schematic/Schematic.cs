@@ -10,10 +10,13 @@ public class Schematic
 {
     [Header("Inside")]
     [SerializeField] public float _drillDeph;
+    [SerializeField] public bool _isDiagram = false;
     [Space]
     [SerializeField] public List<SchematicItem> colum;
     [SerializeField] public List<Revestiment> coating;
     [SerializeField] public List<SchematicItem> others;
+    [Space]
+    [SerializeField] public List<DrillComment> comments;
 
     [Header("Outside")]
     [SerializeField] public TerrainFormation terrainFormation;
@@ -75,29 +78,50 @@ public class Schematic
     }
 
     [System.Serializable]
+    public class DrillComment 
+    {
+        public string comment;
+        public float @base;
+    }
+
+    [System.Serializable]
     public struct JsonObject
     {
         public float drillDeph;
+        public bool isDiagram;
         public SchematicItem.JsonObject[] parts;
+        public SchematicItem.JsonObject[] terrains;
+        public DrillComment[] comments;
 
-        public JsonObject(Schematic schematicItem)
+        public JsonObject(Schematic schematic)
         {
-            this.drillDeph = schematicItem._drillDeph;
+            this.drillDeph = schematic._drillDeph;
+            this.isDiagram = schematic._isDiagram;
 
-            List<SchematicItem> wellParts = new List<SchematicItem>(schematicItem.others);
-            foreach (var columItem in schematicItem.colum)
+            List<SchematicItem> wellParts = new List<SchematicItem>(schematic.others);
+            foreach (var columItem in schematic.colum)
             {
                 wellParts.Add(columItem);
             }
 
-            foreach (var revestiment in schematicItem.coating)
+            foreach (var revestiment in schematic.coating)
             {
                 wellParts.Add(revestiment._sapata);
             }
 
             wellParts.Sort((partA, partB) => partA._deph < partB._deph ? -1 : 1);
-
             this.parts = wellParts.ConvertAll(part => part.ToJsonObject()).ToArray();
+
+            if (schematic.terrainFormation != null)
+            {
+                this.terrains = schematic.terrainFormation.Sections.ConvertAll(section => section.ToJsonObject()).ToArray();
+            }
+            else
+            {
+                this.terrains = new SchematicItem.JsonObject[0];
+            }
+
+            this.comments = schematic.comments.ToArray();
         }
 
         public Schematic ToObject()
@@ -105,12 +129,20 @@ public class Schematic
             var result = new Schematic();
             result.RestartSchematic();
             result._drillDeph = this.drillDeph;
+            result._isDiagram = this.isDiagram;
 
             foreach (var jsonPart in this.parts)
             {
                 result.AddItem(jsonPart.ConvertToObject());
             }
 
+            result.terrainFormation = new TerrainFormation();
+            foreach (var jsonTerrain in this.terrains)
+            {
+                result.terrainFormation.AddSection(jsonTerrain.ConvertToObject());
+            }
+
+            result.comments = new List<DrillComment>(this.comments);
             return result;
         }
     }

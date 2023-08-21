@@ -1,14 +1,17 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIGenerator : MonoBehaviour
 {
-    [SerializeField] UITextBlock txtBlockPrefab;
+    [SerializeField] UITextBlock txtBlockLeftPrefab;
+    [SerializeField] UITextBlock txtBlockRightPrefab;
     [Space]
-    [SerializeField] Canvas canvasLeft;
+    [SerializeField] RectTransform canvasLeft;
+    [SerializeField] RectTransform canvasRight;
     [SerializeField] Image whiteBg;
 
     public async UniTask DrawSchematicText(List<VisualElement> allElements) 
@@ -18,7 +21,8 @@ public class UIGenerator : MonoBehaviour
         {
             if (element.SchematicItem.element._writePartOnDoc)
             {
-                txtBlocks.Add(DrawText(element));
+                txtBlocks.Add(DrawText(element, txtBlockLeftPrefab, canvasLeft, true));
+                DrawText(element, txtBlockRightPrefab, canvasRight, false);
             }
         }
 
@@ -29,13 +33,16 @@ public class UIGenerator : MonoBehaviour
         {
             txtBlocks[i].OverlapText(txtBlocks[i + 1]);
         }
+
+        await UniTask.WaitForFixedUpdate();
+        await UniTask.WaitForFixedUpdate();
     }
 
-    public UITextBlock DrawText(VisualElement element) 
+    public UITextBlock DrawText(VisualElement element, UITextBlock txtPrefab, RectTransform parent, bool setPosition) 
     {
-        UITextBlock txtBlock = Instantiate(txtBlockPrefab, canvasLeft.transform);
+        UITextBlock txtBlock = Instantiate(txtPrefab, parent);
         txtBlock.gameObject.name = $"TXT - {element.SchematicItem.ToString()}";
-        txtBlock.SetupText(element);
+        txtBlock.SetupText(element, setPosition);
         return txtBlock;
     }
 

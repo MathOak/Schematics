@@ -170,7 +170,7 @@ public class SchematicGenerator : SerializedMonoBehaviour
             schematic.terrainFormation = await Addressables.LoadAssetAsync<TerrainFormation>("DefaultFormation");
         }
 
-        await schematic.terrainFormation.DrawTerrain();
+        await schematic.terrainFormation.DrawTerrain(schematic._drillDeph);
         await DrawList(schematic.others);
 
         schematic.coating.Sort((coatA, coatB) => coatA._sapata._deph > coatB._sapata._deph ? -1 : 1);

@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5340c93eadc02e54f9c2061c347916a6, type: 3}
-  m_Name: element_nt_2_casing
+  m_Name: BaseDraw_ARVORE
   m_EditorClassIdentifier: 
-  elementName: Revestimento
-  elementEngName: "Casing\r"
-  _writePartOnDoc: 1
-  _key: casing
-  elementIcon: {fileID: 0}
+  elementName: "\xC1rvore de Natal"
+  elementEngName: 
+  _writePartOnDoc: 0
+  _key: draw_tree
+  elementIcon: {fileID: 21300000, guid: 51bcc6feea3f7ee4294fc2081c16890f, type: 3}
   _columItem: 0
-  pivot: {x: 0.5, y: 0}
-  useBgColor: 1
+  pivot: {x: 0.5, y: 0.5}
+  useBgColor: 0
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   aditionalBgScale: {x: 1, y: 1}
-  useInsideArt: 0
-  art: {fileID: 0}
-  artColor: {r: 0, g: 0, b: 0, a: 1}
-  maskInteraction: 1
+  useInsideArt: 1
+  art: {fileID: 21300000, guid: 5a3fba1b1abaf6c41ae4900c81d59314, type: 3}
+  artColor: {r: 1, g: 0, b: 0, a: 1}
+  maskInteraction: 0
   drawMode: 0
   aditionalArtScale: {x: 1, y: 1}
   minimalVirtualHeight: 0

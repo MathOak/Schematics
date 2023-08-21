@@ -12,10 +12,14 @@ public class UITextBlock : MonoBehaviour
     [SerializeField] Collider boxCollider;
     private UITextBlock overlapParent = null;
 
-    public void SetupText(VisualElement visualElement)
+    public void SetupText(VisualElement visualElement, bool setPosition)
     {
         tmPro.text = visualElement.SchematicItem.ToString();
-        pivot.anchoredPosition = new Vector3(0, visualElement.transform.localPosition.y, 0);
+
+        if (setPosition)
+        {
+            pivot.anchoredPosition = new Vector3(0, visualElement.transform.localPosition.y, 0);
+        }
     }
 
     public void OverlapText(UITextBlock otherBlock) 
