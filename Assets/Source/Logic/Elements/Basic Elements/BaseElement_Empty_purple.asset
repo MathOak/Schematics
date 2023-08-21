@@ -18,14 +18,14 @@ MonoBehaviour:
   _key: terrain_formation
   _columItem: 0
   pivot: {x: 0.5, y: 0}
-  useBgColor: 1
-  defaultColor: {r: 0.7122642, g: 0.9136288, b: 1, a: 1}
-  aditionalBgScale: {x: 1, y: 1}
-  useInsideArt: 0
-  art: {fileID: 0}
+  useBgColor: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 1}
+  aditionalBgScale: {x: 2, y: 1}
+  useInsideArt: 1
+  art: {fileID: 21300000, guid: b06f9c57f5549e84ca36f9cac672e2c5, type: 3}
   artColor: {r: 0, g: 0, b: 0, a: 1}
-  maskInteraction: 1
+  maskInteraction: 0
   drawMode: 0
   aditionalArtScale: {x: 1, y: 1}
   minimalVirtualHeight: 0
-  sortInLayer: -50
+  sortInLayer: 50

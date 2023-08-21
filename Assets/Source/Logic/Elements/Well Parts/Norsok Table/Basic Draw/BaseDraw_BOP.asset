@@ -16,7 +16,6 @@ MonoBehaviour:
   elementEngName: 
   _writePartOnDoc: 0
   _key: draw_bop
-  elementIcon: {fileID: 0}
   _columItem: 0
   pivot: {x: 0.5, y: 0}
   useBgColor: 0
