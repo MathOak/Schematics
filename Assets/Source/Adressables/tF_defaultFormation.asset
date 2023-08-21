@@ -15,18 +15,18 @@ MonoBehaviour:
   _sections:
   - element: {fileID: 11400000, guid: 74793c8ee5a59994abc356183bf3e153, type: 2}
     _origin: 0
-    _deph: 200
+    _deph: 1600
     _widthOffset: 0
     dontFill: 0
     hideElement: 0
   - element: {fileID: 11400000, guid: 30a5148cbfe72564686bd43122267fbc, type: 2}
-    _origin: 200
-    _deph: 500
+    _origin: 1600
+    _deph: 3400
     _widthOffset: 0
     dontFill: 0
     hideElement: 0
   - element: {fileID: 11400000, guid: 505219de24afedf4b8c658eb38705001, type: 2}
-    _origin: 500
+    _origin: 3400
     _deph: 5000
     _widthOffset: 0
     dontFill: 0

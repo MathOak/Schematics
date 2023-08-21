@@ -60,23 +60,23 @@ public class SchematicItem : SchematicDrawable
     [System.Serializable]
     public struct JsonObject
     {
-        public string part;
-        public float origin;
-        public float deph;
+        public string element;
+        public float topo;
+        public float @base;
 
         public JsonObject(SchematicItem schematicItem)
         {
-            this.part = schematicItem.element.Key;
-            this.origin = schematicItem._origin;
-            this.deph = schematicItem._deph;
+            this.element = schematicItem.element.Key;
+            this.topo = schematicItem._origin;
+            this.@base = schematicItem._deph;
         }
 
         public SchematicItem ConvertToObject() 
         {
             var result = new SchematicItem();
-            result.element = SchematicGenerator.elements[this.part];
-            result._origin = this.origin;
-            result._deph = this.deph;
+            result.element = SchematicGenerator.elements[this.element];
+            result._origin = this.topo;
+            result._deph = this.@base;
             return result;
         }
     }

@@ -1,4 +1,3 @@
-#define CODING_WEB_MODULE
 using AlmostEngine.Screenshot;
 using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
@@ -294,7 +293,7 @@ public class SchematicGenerator : SerializedMonoBehaviour
         //_printCamera.rect = cameraViewRect;
        _schematicCamera.aspect = widthValue;
 
-        int baseScale = 128;
+        int baseScale = 258;
         int printWidth = (baseScale * 5) - (baseScale / 2);
         int printHeight = (Mathf.CeilToInt(drawSize / SchematicGenerator.DRAW_LIMITS_HORIZONTAL * 2)) * baseScale;
 
@@ -360,5 +359,18 @@ public class SchematicGenerator : SerializedMonoBehaviour
         }
 
         return false;
+    }
+
+    [Button]
+    public void LogPartsKeys() 
+    {
+        string partsList = "[Current Parts]";
+
+        foreach (var part in allElements)
+        {
+            partsList += $"\nKEY: | {part.Key} | PART: {part.ElementName}";
+        }
+
+        Debug.Log(partsList);
     }
 }

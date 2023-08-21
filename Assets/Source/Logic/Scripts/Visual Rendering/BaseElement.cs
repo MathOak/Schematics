@@ -10,6 +10,7 @@ public class BaseElement : ScriptableObject
 {
     [Header("Info")]
     [SerializeField] private string elementName = "Generic Part";
+    [SerializeField] private string elementEngName = "Generic Part ENG";
     public bool _writePartOnDoc = true;
     [SerializeField] private string _key;
     [SerializeField] private Sprite elementIcon;
@@ -34,9 +35,17 @@ public class BaseElement : ScriptableObject
     [SerializeField] private int sortInLayer;
 
     public string ElementName => elementName;
+    public string ElementEngName => elementEngName;
     public string Key => _key;
     public Sprite Icon => elementIcon;
     public Color DefaultColor => defaultColor;
+
+    public BaseElement(string key, string elementName, string elementEngName)
+    {
+        _key = key;
+        this.elementName = elementName;
+        this.elementEngName = elementEngName;
+    }
 
     public async UniTask<VisualElement> StartDraw(SchematicItem sElement, Rect drawArea, int additionalSort = 0) 
     {
@@ -103,5 +112,24 @@ public class BaseElement : ScriptableObject
     public override string ToString()
     {
         return elementName;
+    }
+
+    public void CopyDrawSettings(BaseElement otherElement) 
+    {
+        _writePartOnDoc = otherElement._writePartOnDoc;
+        elementIcon = otherElement.elementIcon;
+        _columItem = otherElement._columItem;
+        pivot = otherElement.pivot;
+        useBgColor = otherElement.useBgColor;
+        defaultColor = otherElement.defaultColor;
+        aditionalBgScale = otherElement.aditionalBgScale;
+        useInsideArt = otherElement.useInsideArt;
+        art = otherElement.art;
+        artColor = otherElement.artColor;
+        maskInteraction = otherElement.maskInteraction;
+        drawMode = otherElement.drawMode;
+        aditionalArtScale = otherElement.aditionalArtScale;
+        minimalVirtualHeight = otherElement.minimalVirtualHeight;
+        sortInLayer = otherElement.sortInLayer;
     }
 }
