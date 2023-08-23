@@ -13,16 +13,15 @@ MonoBehaviour:
   m_Name: element_nt_1_fluid_column
   m_EditorClassIdentifier: 
   elementName: Coluna de fluidos
-  elementEngName: "Fluid column\r"
+  elementEngName: Fluid column
   _writePartOnDoc: 1
   _key: fluid_column
-  elementIcon: {fileID: 0}
   _columItem: 0
   pivot: {x: 0.5, y: 0}
   useBgColor: 1
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   aditionalBgScale: {x: 1, y: 1}
-  useInsideArt: 0
+  useInsideArt: 1
   art: {fileID: 0}
   artColor: {r: 0, g: 0, b: 0, a: 1}
   maskInteraction: 1

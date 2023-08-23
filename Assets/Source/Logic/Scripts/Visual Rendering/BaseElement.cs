@@ -38,7 +38,8 @@ public class BaseElement : ScriptableObject
     public string ElementEngName => elementEngName;
     public string Key => _key;
     public Sprite Icon => elementIcon;
-    public Color DefaultColor => defaultColor;
+    public Color DefaultColor { get => defaultColor; set => defaultColor = value; }
+    
 
     public BaseElement(string key, string elementName, string elementEngName)
     {
@@ -70,15 +71,19 @@ public class BaseElement : ScriptableObject
         if (useBgColor)
         {
             render = await visualElement.CreateRender("FillColor", sortInLayer + additionalSort);
+            
             render.color = defaultColor;
             render.transform.localScale = visualElement.DrawArea.size * aditionalBgScale;
 
+            visualElement.renderBG = render;
+            
             SetPivotPosition(render.transform, visualElement.DrawArea.size, aditionalBgScale);
         }
 
         if (useInsideArt && art != null)
         {
             render = await visualElement.CreateRender("Art", sortInLayer + additionalSort + 1);
+
 
             render.sprite = art;
             render.color = artColor;
@@ -94,6 +99,8 @@ public class BaseElement : ScriptableObject
                 render.transform.localScale = Vector3.one;
             }
 
+            visualElement.renderArt = render;
+            
             SetPivotPosition(render.transform, visualElement.DrawArea.size, aditionalArtScale);
         }
     }

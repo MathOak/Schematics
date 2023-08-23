@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
@@ -43,6 +44,9 @@ public class SchematicGenerator : SerializedMonoBehaviour
     public const float DRAW_LIMITS_HORIZONTAL = 4f;
     public const float DRAW_WELL_SIZE = 2f;
 
+
+    public static Action onStartLoading;
+    public static Action onEndLoading;
     public static Schematic lastGeneration { get; private set; }
 
 #if CODING_WEB_MODULE || (!UNITY_EDITOR && UNITY_WEBGL)
@@ -62,7 +66,9 @@ public class SchematicGenerator : SerializedMonoBehaviour
     private static extern void InternalUnityErrorLogger(string errorMessage);
 #endif
 
-    private void Start()
+    Loading holder = new Loading();
+    
+private void Start()
     {
         elements = new Dictionary<string, BaseElement>();
 
@@ -74,6 +80,8 @@ public class SchematicGenerator : SerializedMonoBehaviour
 
 
 #if UNITY_EDITOR || UNITY_WEBGL == false
+
+        onStartLoading?.Invoke();
         GenerateSchematicFromString();
 #endif
 
@@ -105,6 +113,7 @@ public class SchematicGenerator : SerializedMonoBehaviour
 #if CODING_WEB_MODULE || (!UNITY_EDITOR && UNITY_WEBGL)
             InternalUnityLogger("Starting Unity Generation Process");
 #endif
+
             Schematic.JsonObject jsonSchematic = JsonUtility.FromJson<Schematic.JsonObject>(jsonString);
             VisualElement.ClearElements();
             await AsyncGenerator(jsonSchematic.ToObject());
@@ -123,6 +132,8 @@ public class SchematicGenerator : SerializedMonoBehaviour
             InternalUnityErrorLogger(e.Message);
             QuitApplication();
 #else
+            onEndLoading?.Invoke();
+
             Debug.LogException(e);
             QuitApplication();
 #endif
@@ -321,8 +332,47 @@ public class SchematicGenerator : SerializedMonoBehaviour
 #else
         string filePath = Path.Combine(Application.streamingAssetsPath, "generator_result.png");
         SimpleScreenshotCapture.CaptureCameraToFile(filePath, printWidth, printHeight, _printCamera);
+
+
+        this.filePath = filePath;
+        size = new Vector2Int(printWidth, printHeight);
+
+        VisualElement.ChangeItemsColor();
+        onEndLoading?.Invoke();
 #endif
     }
+
+    #region Resize Image
+    string filePath = "";
+    Vector2Int size = new Vector2Int();
+    [Button]
+    void ResizeTexture()
+    {
+        Texture2D texture = LoadPNG(filePath, size);
+
+        //size = new Vector2Int(250, 10000);
+
+        TextureScaler.Scale(texture, size.x/5, size.y/5);
+
+        byte[] bytes = texture.EncodeToJPG();
+        File.WriteAllBytes(Path.Combine(Application.streamingAssetsPath, "generator_result1.png"), bytes);
+    }
+    
+    public Texture2D LoadPNG(string filePath, Vector2Int size)
+    {
+        Texture2D tex = null;
+        byte[] fileData;
+
+        if (File.Exists(filePath))
+        {
+            fileData = File.ReadAllBytes(filePath);
+            tex = new Texture2D(size.x, size.y);
+            tex.LoadImage(fileData);
+        }
+        return tex;
+    }
+    #endregion
+
 
 #if UNITY_EDITOR
     [Button]
