@@ -305,7 +305,7 @@ private void Start()
        _schematicCamera.aspect = widthValue;
 
         int baseScale = 258;
-        int printWidth = (baseScale * 5) - (baseScale / 2);
+        int printWidth = (baseScale * 5);
         int printHeight = (Mathf.CeilToInt(drawSize / SchematicGenerator.DRAW_LIMITS_HORIZONTAL * 2)) * baseScale;
 
 

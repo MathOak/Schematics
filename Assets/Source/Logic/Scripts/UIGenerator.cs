@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,12 +18,15 @@ public class UIGenerator : MonoBehaviour
     public async UniTask DrawSchematicText(List<VisualElement> allElements) 
     {
         List<UITextBlock> txtBlocks = new List<UITextBlock>();
+
+        var rightText = DrawText("", txtBlockRightPrefab, canvasRight, false);
+
         foreach (var element in allElements)
         {
             if (element.SchematicItem.element._writePartOnDoc)
             {
-                txtBlocks.Add(DrawText(element, txtBlockLeftPrefab, canvasLeft, true));
-                DrawText(element, txtBlockRightPrefab, canvasRight, false);
+                txtBlocks.Add(DrawText("> " + element, txtBlockLeftPrefab, canvasLeft, true));
+                rightText.AddLine(element.SchematicItem.ToString());
             }
         }
 
@@ -43,6 +47,14 @@ public class UIGenerator : MonoBehaviour
         UITextBlock txtBlock = Instantiate(txtPrefab, parent);
         txtBlock.gameObject.name = $"TXT - {element.SchematicItem.ToString()}";
         txtBlock.SetupText(element, setPosition);
+        return txtBlock;
+    }
+
+    public UITextBlock DrawText(string text, UITextBlock txtPrefab, RectTransform parent, bool setPosition)
+    {
+        UITextBlock txtBlock = Instantiate(txtPrefab, parent);
+        txtBlock.gameObject.name = $"TXT - {text}";
+        txtBlock.SetupText(text, 0, setPosition);
         return txtBlock;
     }
 

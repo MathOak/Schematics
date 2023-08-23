@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,14 +13,26 @@ public class UITextBlock : MonoBehaviour
     [SerializeField] Collider boxCollider;
     private UITextBlock overlapParent = null;
 
-    public void SetupText(VisualElement visualElement, bool setPosition)
+    public void SetupText(VisualElement visualElement, bool setPosition) 
     {
-        tmPro.text = visualElement.SchematicItem.ToString();
+        SetupText(
+            visualElement.SchematicItem.ToString(),
+            visualElement.transform.localPosition.y,
+            setPosition);
+    }
 
+    public void SetupText(string text, float yPosition, bool setPosition)
+    {
+        tmPro.text = text;
         if (setPosition)
         {
-            pivot.anchoredPosition = new Vector3(0, visualElement.transform.localPosition.y, 0);
+            pivot.anchoredPosition = new Vector3(0, yPosition, 0);
         }
+    }
+
+    public void AddLine(string textLine) 
+    {
+        tmPro.text += (tmPro.text.IsNullOrWhitespace()) ? $"{textLine}" : $"\n{textLine}";
     }
 
     public void OverlapText(UITextBlock otherBlock) 
