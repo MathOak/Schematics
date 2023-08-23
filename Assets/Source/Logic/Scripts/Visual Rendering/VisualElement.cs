@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.U2D;
 
 public class VisualElement : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class VisualElement : MonoBehaviour
     }
     public Rect DrawArea => _drawArea;
 
+    public SpriteRenderer renderBG = null;
+    public SpriteRenderer renderArt = null;
+
+    public bool colorChanged = false;
     private void Awake()
     {
         visualElements.Add(this);
@@ -74,5 +79,64 @@ public class VisualElement : MonoBehaviour
         visualElement._sItem = element;
 
         return visualElement;
+    }
+
+
+    public static List<string> revestimento = new List<string>() { "#FF6C00", "#E971FB", "#FF4CA700" };
+    public static List<string> terreno = new List<string>() { "#FEFF00", "#FF0500", "#98007E" };
+
+    public static void ChangeItemsColor()
+    {
+        Color color;
+
+        List<Color32> revestimentoClone = new List<Color32>();
+        int revestimentIndex = 0;
+        for (int i = 0; i < revestimento.Count; i++)
+        {
+            ColorUtility.TryParseHtmlString(revestimento[i], out color);
+            revestimentoClone.Add(color);
+            color = Color.white;
+        }
+
+        List<Color32> terrenoClone = new List<Color32>();
+        int terrenoIndex = 0;
+        for (int i = 0; i < terreno.Count; i++)
+        {
+            ColorUtility.TryParseHtmlString(terreno[i], out color);
+            terrenoClone.Add(color);
+            color = Color.white;
+        }
+
+        for (int i = 0; i < visualElements.Count; i++)
+        {
+            VisualElement visualElement = visualElements[i];
+            SchematicItem item = visualElement.SchematicItem;
+
+            for (int j = 0; j < visualElements.Count; j++)
+            {
+                VisualElement schematicVisualElement = visualElements[j];
+                SchematicItem schematicItem = schematicVisualElement.SchematicItem;
+                if (item == schematicItem)
+                    continue;
+
+                if (schematicItem.element.Key == item.element.Key)
+                {
+                    if (schematicVisualElement.colorChanged || visualElement.colorChanged)
+                        continue;
+
+                    if (schematicItem.element.Key == "revestiment")
+                    {
+                        schematicVisualElement.renderBG.color = revestimentoClone[revestimentIndex];
+                        revestimentIndex++;
+                    }
+                    if (schematicItem.element.Key == "Terreno")
+                    {
+                        schematicVisualElement.renderBG.color = terrenoClone[terrenoIndex];
+                        terrenoIndex++;
+                    }
+                    schematicVisualElement.colorChanged = true;
+                }
+            }
+        }
     }
 }

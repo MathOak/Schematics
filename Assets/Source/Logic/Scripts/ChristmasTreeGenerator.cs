@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class ChristmasTreeGenerator : MonoBehaviour
@@ -29,6 +30,7 @@ public class ChristmasTreeGenerator : MonoBehaviour
         {
 
         }
+        await Task.Delay(10);
     }
 
     private async UniTask DrawTree(SchematicItem tree, bool haveUnderParts) 

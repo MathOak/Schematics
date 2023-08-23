@@ -16,14 +16,13 @@ MonoBehaviour:
   elementEngName: "Subsea test tree assembly\r"
   _writePartOnDoc: 1
   _key: subsea_test_tree_assembly
-  elementIcon: {fileID: 0}
   _columItem: 0
   pivot: {x: 0.5, y: 0}
   useBgColor: 1
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   aditionalBgScale: {x: 1, y: 1}
-  useInsideArt: 0
-  art: {fileID: 0}
+  useInsideArt: 1
+  art: {fileID: 21300000, guid: 5a3fba1b1abaf6c41ae4900c81d59314, type: 3}
   artColor: {r: 0, g: 0, b: 0, a: 1}
   maskInteraction: 1
   drawMode: 0

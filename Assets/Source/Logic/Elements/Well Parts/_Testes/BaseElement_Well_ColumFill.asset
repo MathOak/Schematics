@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BaseElement_Well_ColumFill
   m_EditorClassIdentifier: 
   elementName: Preenchimento de Coluna
+  elementEngName: 
   _writePartOnDoc: 0
-  _key: columFill
-  elementIcon: {fileID: 21300000, guid: 51bcc6feea3f7ee4294fc2081c16890f, type: 3}
+  _key: Coluna
   _columItem: 0
   pivot: {x: 0.5, y: 0}
   useBgColor: 0

@@ -12,18 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5340c93eadc02e54f9c2061c347916a6, type: 3}
   m_Name: element_nt_3_drill_string
   m_EditorClassIdentifier: 
-  elementName: "coluna de perfura\xE7\xE3o"
+  elementName: "Coluna de perfura\xE7\xE3o"
   elementEngName: "Drill string\r"
   _writePartOnDoc: 1
   _key: drill_string
-  elementIcon: {fileID: 0}
   _columItem: 0
   pivot: {x: 0.5, y: 0}
   useBgColor: 1
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   aditionalBgScale: {x: 1, y: 1}
-  useInsideArt: 0
-  art: {fileID: 0}
+  useInsideArt: 1
+  art: {fileID: 21300000, guid: 6ecfcabf259c85441aea2f354636e93a, type: 3}
   artColor: {r: 0, g: 0, b: 0, a: 1}
   maskInteraction: 1
   drawMode: 0
