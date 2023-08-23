@@ -11,6 +11,7 @@ public class Schematic
     [Header("Inside")]
     [SerializeField] public float _drillDeph;
     [SerializeField] public bool _isDiagram = false;
+    [SerializeField] public bool _hideAllText = false;
     [Space]
     [SerializeField] public List<SchematicItem> colum;
     [SerializeField] public List<Revestiment> coating;
@@ -89,6 +90,7 @@ public class Schematic
     {
         public float drillDeph;
         public bool isDiagram;
+        public bool hideAllText;
         public SchematicItem.JsonObject[] parts;
         public SchematicItem.JsonObject[] terrains;
         public DrillComment[] comments;
@@ -97,6 +99,7 @@ public class Schematic
         {
             this.drillDeph = schematic._drillDeph;
             this.isDiagram = schematic._isDiagram;
+            this.hideAllText = schematic._hideAllText;
 
             List<SchematicItem> wellParts = new List<SchematicItem>(schematic.others);
             foreach (var columItem in schematic.colum)
@@ -130,10 +133,18 @@ public class Schematic
             result.RestartSchematic();
             result._drillDeph = this.drillDeph;
             result._isDiagram = this.isDiagram;
+            result._hideAllText = this.hideAllText;
 
             foreach (var jsonPart in this.parts)
             {
-                result.AddItem(jsonPart.ConvertToObject());
+                if (SchematicGenerator.elements.ContainsKey(jsonPart.element))
+                {
+                    result.AddItem(jsonPart.ConvertToObject());
+                }
+                else 
+                {
+                    SchematicGenerator.InternalUnityErrorLogger($"The key {jsonPart.element} is not present on the project!");
+                }
             }
 
             result.terrainFormation = new TerrainFormation();

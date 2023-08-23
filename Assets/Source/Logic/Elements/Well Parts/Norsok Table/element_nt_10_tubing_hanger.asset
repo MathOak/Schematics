@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: "Suspensor de tubula\xE7\xE3o"
   elementEngName: "Tubing hanger\r"
-  _writePartOnDoc: 1
   _key: tubing_hanger
   _columItem: 0
+  _writePartOnDoc: 1
+  _drawRectLine: 1
+  _fixedWritePosition: 1
+  _fixedPosition: -0.6
   pivot: {x: 0.5, y: 0}
   useBgColor: 1
   defaultColor: {r: 1, g: 1, b: 1, a: 1}

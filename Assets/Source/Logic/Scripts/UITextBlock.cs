@@ -11,13 +11,22 @@ public class UITextBlock : MonoBehaviour
     [SerializeField] TextMeshProUGUI tmPro;
     [SerializeField] RectTransform pivot;
     [SerializeField] Collider boxCollider;
+    [SerializeField] Transform linePivot;
+    public Transform LinePivot => linePivot;
     private UITextBlock overlapParent = null;
 
-    public void SetupText(VisualElement visualElement, bool setPosition) 
+    public VisualElement visualElement;
+
+    public void SetupElementString(VisualElement visualElement, bool setPosition) 
     {
+        this.visualElement = visualElement;
+        float writeYpos = visualElement.SchematicItem.element._fixedWritePosition ?
+            -visualElement.SchematicItem.element._fixedPosition :
+            -visualElement.SchematicItem.GetMidPoint().RealToVirtualScale();
+
         SetupText(
             visualElement.SchematicItem.ToString(),
-            visualElement.transform.localPosition.y,
+            writeYpos,
             setPosition);
     }
 
@@ -37,7 +46,6 @@ public class UITextBlock : MonoBehaviour
 
     public void OverlapText(UITextBlock otherBlock) 
     {
-        Debug.Log($"Testing {gameObject} with {otherBlock.gameObject}");
         DebugBondingBox();
         otherBlock.DebugBondingBox();
 

@@ -19,13 +19,13 @@ public class UIGenerator : MonoBehaviour
     {
         List<UITextBlock> txtBlocks = new List<UITextBlock>();
 
-        var rightText = DrawText("", txtBlockRightPrefab, canvasRight, false);
+        var rightText = DrawStrig("", txtBlockRightPrefab, canvasRight, false);
 
         foreach (var element in allElements)
         {
-            if (element.SchematicItem.element._writePartOnDoc)
+            if (element.SchematicItem.element._writePartOnDoc && !element.SchematicItem._hideText)
             {
-                txtBlocks.Add(DrawText("> " + element, txtBlockLeftPrefab, canvasLeft, true));
+                txtBlocks.Add(DrawElementString(element, txtBlockLeftPrefab, canvasLeft, true));
                 rightText.AddLine(element.SchematicItem.ToString());
             }
         }
@@ -40,17 +40,22 @@ public class UIGenerator : MonoBehaviour
 
         await UniTask.WaitForFixedUpdate();
         await UniTask.WaitForFixedUpdate();
+
+        foreach (var txt in txtBlocks)
+        {
+            LineDrawer.instance.CreateLine(txt);
+        }
     }
 
-    public UITextBlock DrawText(VisualElement element, UITextBlock txtPrefab, RectTransform parent, bool setPosition) 
+    public UITextBlock DrawElementString(VisualElement element, UITextBlock txtPrefab, RectTransform parent, bool setPosition) 
     {
         UITextBlock txtBlock = Instantiate(txtPrefab, parent);
         txtBlock.gameObject.name = $"TXT - {element.SchematicItem.ToString()}";
-        txtBlock.SetupText(element, setPosition);
+        txtBlock.SetupElementString(element, setPosition);
         return txtBlock;
     }
 
-    public UITextBlock DrawText(string text, UITextBlock txtPrefab, RectTransform parent, bool setPosition)
+    public UITextBlock DrawStrig(string text, UITextBlock txtPrefab, RectTransform parent, bool setPosition)
     {
         UITextBlock txtBlock = Instantiate(txtPrefab, parent);
         txtBlock.gameObject.name = $"TXT - {text}";

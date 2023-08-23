@@ -1187,6 +1187,7 @@ GameObject:
   - component: {fileID: 1872632596}
   - component: {fileID: 1872632595}
   - component: {fileID: 1872632597}
+  - component: {fileID: 1872632598}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Untagged
@@ -1221,25 +1222,14 @@ MonoBehaviour:
   wellSchematic:
     _drillDeph: 2000
     _isDiagram: 0
+    _hideAllText: 0
     colum: []
     coating: []
     others: []
     comments: []
     terrainFormation: {fileID: 11400000, guid: ed6629068725d5b42ad079d6a76ca53b, type: 2}
   uiGenerator: {fileID: 698024724}
-  jsonSchematicText: "{\n  \"drillDeph\": 2000,\n  \"isDiagram\": true,\n  \"parts\":
-    [\n    {\n      \"name\": \"\",\n      \"description\": \"AAA\",\n      \"element\":
-    \"surface_tree\",\n      \"topo\": 0,\n      \"base\": 0,\n      \"mainGroup\":
-    \"default\",\n      \"subGroup\": \"\"\n    },\n    {\n      \"name\": \"b\",\n     
-    \"description\": \"\",\n      \"element\": \"tubing_hanger\",\n      \"topo\":
-    0,\n      \"base\": 0,\n      \"mainGroup\": \"default\",\n      \"subGroup\":
-    \"\"\n    },\n    {\n      \"name\": \"500\",\n      \"description\": \"\",\n     
-    \"element\": \"casing\",\n      \"topo\": 500,\n      \"base\": 550,\n      \"mainGroup\":
-    \"default\",\n      \"subGroup\": \"\"\n    }\n  ],\n  \"terrains\": [\n    {\n     
-    \"name\": \"TERRENO\",\n      \"description\": \"\",\n      \"element\": \"terrain_formation\",\n     
-    \"topo\": 0,\n      \"base\": 2000,\n      \"mainGroup\": \"default\",\n     
-    \"subGroup\": \"\"\n    }\n  ],\n  \"comments\": [\n    {\n      \"comment\":
-    \"Teste\",\n      \"base\":100\n    }\n  ]\n}"
+  jsonSchematicText: '{"drillDeph":2000.0,"isDiagram":false,"hideAllText":false,"parts":[],"terrains":[{"name":"","description":"","hideText":false,"element":"terrain_formation","topo":0.0,"base":0.0,"mainGroup":"default","subGroup":""}],"comments":[]}'
   cristmasHead: {fileID: 11400000, guid: decc3c344460c0a41b6a30f9f2e05e62, type: 2}
   columSuspensor: {fileID: 11400000, guid: d528a3c8c6a78d642810d7fcd6d66a75, type: 2}
   columFill: {fileID: 11400000, guid: f833e05f8d030f84c81d93046498e34b, type: 2}
@@ -1364,3 +1354,16 @@ MonoBehaviour:
   treeElements: []
   headElements: []
   suspensorElements: []
+--- !u!114 &1872632598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872632594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94433ac3d7992b34587dd94a24f4de2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineRenderer: {fileID: 6158643422285297457, guid: 965b0e07f4e8efb4faf87fbeec308181, type: 3}

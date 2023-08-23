@@ -11,10 +11,15 @@ public class BaseElement : ScriptableObject
     [Header("Info")]
     [SerializeField] private string elementName = "Generic Part";
     [SerializeField] private string elementEngName = "Generic Part ENG";
-    public bool _writePartOnDoc = true;
     [SerializeField] private string _key;
     private Sprite elementIcon;
     public bool _columItem;
+
+    [Header("Write Settings")]
+    public bool _writePartOnDoc = true;
+    public bool _drawRectLine = false;
+    public bool _fixedWritePosition = false;
+    [ShowIf("_fixedWritePosition")]public float _fixedPosition = 0;
 
     [Header("Drawing")]
     [SerializeField] Vector2 pivot = new Vector2(0.5f, 0f);

@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: "\xC1rvore de Natal (ANC)"
   elementEngName: "Surface tree\r"
-  _writePartOnDoc: 1
   _key: surface_tree
   _columItem: 0
+  _writePartOnDoc: 1
+  _drawRectLine: 1
+  _fixedWritePosition: 1
+  _fixedPosition: -2
   pivot: {x: 0.5, y: 0}
   useBgColor: 1
   defaultColor: {r: 1, g: 1, b: 1, a: 1}

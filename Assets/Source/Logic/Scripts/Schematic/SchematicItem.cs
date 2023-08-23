@@ -11,8 +11,9 @@ using static UnityEngine.UI.Image;
 public class SchematicItem : SchematicDrawable
 {
     [Required] public BaseElement element;
-    [Required] public string _virtualName;
-    [Required] public string _description;
+    public string _virtualName;
+    public string _description;
+    public bool _hideText = false;
     [Space]
     public float _origin;
     public float _deph;
@@ -43,21 +44,26 @@ public class SchematicItem : SchematicDrawable
         await element.StartDraw(this, drawArea, additionalSort);
     }
 
+    public float GetMidPoint() 
+    {
+        return _origin + ((_deph - _origin) / 2);
+    }
+
     public override string ToString()
     {
         string elementName = _virtualName.IsNullOrWhitespace() ? element.ToString() : _virtualName;
 
         if (_origin + _deph == 0 || (_origin < 0 && _deph < 0)) 
         {
-            return element.ToString();
+            return elementName;
         }
         if (_origin <= 0)
         {
-            return $"{element} até {_deph.ToString("F2")}m";
+            return $"{elementName} até {_deph.ToString("F2")}m";
         }
         else
         {
-            return $"{element}: {_origin.ToString("F2")} - {_deph.ToString("F2")}m";
+            return $"{elementName}: {_origin.ToString("F2")} - {_deph.ToString("F2")}m";
         }
     }
 
@@ -71,6 +77,7 @@ public class SchematicItem : SchematicDrawable
     {
         public string name;
         public string description;
+        public bool hideText;
         public string element;
         public float topo;
         public float @base;
@@ -81,6 +88,7 @@ public class SchematicItem : SchematicDrawable
         {
             this.name = schematicItem._virtualName;
             this.description = schematicItem._description;
+            this.hideText = schematicItem._hideText;
             this.element = schematicItem.element.Key;
             this.topo = schematicItem._origin;
             this.@base = schematicItem._deph;
@@ -91,9 +99,14 @@ public class SchematicItem : SchematicDrawable
         public SchematicItem ConvertToObject() 
         {
             var result = new SchematicItem();
+            result._virtualName = name;
+            result._description = description;
+            result._hideText = hideText;
             result.element = SchematicGenerator.elements[this.element];
             result._origin = this.topo;
             result._deph = this.@base;
+            result._mainGroup = mainGroup;
+            result._subGroup = subGroup;
             return result;
         }
     }

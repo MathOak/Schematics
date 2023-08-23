@@ -1,3 +1,4 @@
+#define CODING_WEB_MODULE
 using AlmostEngine.Screenshot;
 using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
@@ -60,10 +61,10 @@ public class SchematicGenerator : SerializedMonoBehaviour
     private static extern void InternalGeneratorQuitListener();
 
     [DllImport("__Internal")]
-    private static extern void InternalUnityLogger(string message);
+    public static extern void InternalUnityLogger(string message);
 
     [DllImport("__Internal")]
-    private static extern void InternalUnityErrorLogger(string errorMessage);
+    public static extern void InternalUnityErrorLogger(string errorMessage);
 #endif
 
     Loading holder = new Loading();
@@ -268,6 +269,11 @@ private void Start()
 
     private async UniTask DrawUIText(Schematic schematic) 
     {
+        if (schematic._hideAllText) 
+        {
+            return;
+        }
+
         await uiGenerator.DrawSchematicText(VisualElement.visualElements);
         var rTransform = _uiCanvas.GetComponent<RectTransform>();
         rTransform.sizeDelta = new Vector2(DRAW_LIMITS_HORIZONTAL.RealToVirtualScale() * 600, schematic._drillDeph.RealToVirtualScale());
