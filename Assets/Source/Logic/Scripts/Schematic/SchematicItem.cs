@@ -92,6 +92,7 @@ public class SchematicItem : SchematicDrawable
         {
             var result = new SchematicItem();
             result.element = SchematicGenerator.elements[this.element];
+            result._mainGroup = this.mainGroup;
             result._origin = this.topo;
             result._deph = this.@base;
             return result;
