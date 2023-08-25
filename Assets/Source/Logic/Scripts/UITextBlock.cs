@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+using static System.Net.Mime.MediaTypeNames;
 
 public class UITextBlock : MonoBehaviour
 {
@@ -13,11 +15,11 @@ public class UITextBlock : MonoBehaviour
     [SerializeField] Collider boxCollider;
     private UITextBlock overlapParent = null;
 
-    public void SetupText(VisualElement visualElement, bool setPosition) 
+    public void SetupText(VisualElement visualElement, float yPosition, bool setPosition) 
     {
         SetupText(
-            visualElement.SchematicItem.ToString(),
-            visualElement.transform.localPosition.y,
+            visualElement.SchematicItem.element.ElementName,
+            yPosition,
             setPosition);
     }
 
@@ -26,7 +28,8 @@ public class UITextBlock : MonoBehaviour
         tmPro.text = text;
         if (setPosition)
         {
-            pivot.anchoredPosition = new Vector3(0, yPosition, 0);
+            print(yPosition + " posicao");
+            pivot.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, yPosition, 0);
         }
     }
 
@@ -41,8 +44,17 @@ public class UITextBlock : MonoBehaviour
         DebugBondingBox();
         otherBlock.DebugBondingBox();
 
-        if (otherBlock.overlapParent == null && boxCollider.bounds.Intersects(otherBlock.boxCollider.bounds) == true) 
+        if (otherBlock.overlapParent == null && boxCollider.bounds.Intersects(otherBlock.boxCollider.bounds) == true)
         {
+            RectTransform rect = pivot.GetComponent<RectTransform>();
+
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    if (boxCollider.bounds.Intersects(otherBlock.boxCollider.bounds))
+            //    {
+            //        rect.anchoredPosition = new Vector3(0, rect.anchoredPosition.y, 0);
+
+            //    }
             UITextBlock parent = overlapParent == null ? this : overlapParent;
 
             otherBlock.overlapParent = parent;

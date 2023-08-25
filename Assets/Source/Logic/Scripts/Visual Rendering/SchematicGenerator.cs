@@ -66,8 +66,6 @@ public class SchematicGenerator : SerializedMonoBehaviour
     private static extern void InternalUnityErrorLogger(string errorMessage);
 #endif
 
-    Loading holder = new Loading();
-    
 private void Start()
     {
         elements = new Dictionary<string, BaseElement>();
