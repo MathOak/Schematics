@@ -1,6 +1,11 @@
 fileFormatVersion: 2
-guid: d17a514941a68764aa78a6f6aebe5129
+<<<<<<<< HEAD:Assets/AddressableAssetsData/link.xml.meta
+guid: ba2aa9a607f3fe9438afca7a8902901a
+TextScriptImporter:
+========
+guid: d1e226809ab23db4aba090428eedc56b
 NativeFormatImporter:
+>>>>>>>> d1bb3f8d333d453b1176c7b1c8431ac1efa20851:Assets/Source/Logic/Elements/Well Parts/_Testes/element_simple_revestimento1.asset.meta
   externalObjects: {}
   mainObjectFileID: 0
   userData: 

@@ -5,28 +5,21 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+using static System.Net.Mime.MediaTypeNames;
 
 public class UITextBlock : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI tmPro;
     [SerializeField] RectTransform pivot;
     [SerializeField] Collider boxCollider;
-    [SerializeField] Transform linePivot;
-    public Transform LinePivot => linePivot;
     private UITextBlock overlapParent = null;
 
-    public VisualElement visualElement;
-
-    public void SetupElementString(VisualElement visualElement, bool setPosition) 
+    public void SetupText(VisualElement visualElement, float yPosition, bool setPosition) 
     {
-        this.visualElement = visualElement;
-        float writeYpos = visualElement.SchematicItem.element._fixedWritePosition ?
-            -visualElement.SchematicItem.element._fixedPosition :
-            -visualElement.SchematicItem.GetMidPoint().RealToVirtualScale();
-
         SetupText(
-            visualElement.SchematicItem.ToString(),
-            writeYpos,
+            visualElement.SchematicItem.element.ElementName,
+            yPosition,
             setPosition);
     }
 
@@ -35,7 +28,8 @@ public class UITextBlock : MonoBehaviour
         tmPro.text = text;
         if (setPosition)
         {
-            pivot.anchoredPosition = new Vector3(0, yPosition, 0);
+            print(yPosition + " posicao");
+            pivot.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, yPosition, 0);
         }
     }
 
@@ -46,11 +40,21 @@ public class UITextBlock : MonoBehaviour
 
     public void OverlapText(UITextBlock otherBlock) 
     {
+        Debug.Log($"Testing {gameObject} with {otherBlock.gameObject}");
         DebugBondingBox();
         otherBlock.DebugBondingBox();
 
-        if (otherBlock.overlapParent == null && boxCollider.bounds.Intersects(otherBlock.boxCollider.bounds) == true) 
+        if (otherBlock.overlapParent == null && boxCollider.bounds.Intersects(otherBlock.boxCollider.bounds) == true)
         {
+            RectTransform rect = pivot.GetComponent<RectTransform>();
+
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    if (boxCollider.bounds.Intersects(otherBlock.boxCollider.bounds))
+            //    {
+            //        rect.anchoredPosition = new Vector3(0, rect.anchoredPosition.y, 0);
+
+            //    }
             UITextBlock parent = overlapParent == null ? this : overlapParent;
 
             otherBlock.overlapParent = parent;

@@ -103,6 +103,7 @@ public class SchematicItem : SchematicDrawable
             result._description = description;
             result._hideText = hideText;
             result.element = SchematicGenerator.elements[this.element];
+            result._mainGroup = this.mainGroup;
             result._origin = this.topo;
             result._deph = this.@base;
             result._mainGroup = mainGroup;
