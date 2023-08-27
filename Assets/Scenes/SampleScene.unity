@@ -265,7 +265,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435408344}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
   m_Name: 
@@ -276,13 +276,13 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 0.32
   m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
-  m_ChildScaleWidth: 1
-  m_ChildScaleHeight: 1
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
 --- !u!1 &549767560
 GameObject:
@@ -347,10 +347,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   txtBlockLeftPrefab: {fileID: 1313220559835570170, guid: e5be14454de35e846bc95b544e95dbee, type: 3}
-  txtBlockRightPrefab: {fileID: 1313220559835570170, guid: a76ceb4c1c9fde3419918ede612f3545, type: 3}
+  txtBlockRightPrefab: {fileID: 5761899990822272024, guid: a76ceb4c1c9fde3419918ede612f3545, type: 3}
   canvasLeft: {fileID: 1636121303}
   canvasRight: {fileID: 435408345}
-  whiteBg: {fileID: 427061093}
 --- !u!4 &698024725
 Transform:
   m_ObjectHideFlags: 0
@@ -620,8 +619,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6, y: 0}
-  m_SizeDelta: {x: 12, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &977584396
 Canvas:
@@ -662,7 +661,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 13
+  m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -724,7 +723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
+  m_ReferencePixelsPerUnit: 1
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1280, y: 720}
   m_ScreenMatchMode: 0
@@ -1221,45 +1220,25 @@ MonoBehaviour:
   wellSchematic:
     _drillDeph: 2000
     _isDiagram: 0
-    colum:
-    - element: {fileID: 11400000, guid: d1e226809ab23db4aba090428eedc56b, type: 2}
-      _virtualName: asdasdd
-      _description: asdasd
-      _origin: 50
-      _deph: 150
+    _hideAllText: 0
+    colum: []
+    coating: []
+    others:
+    - element: {fileID: 11400000, guid: 42d437768ee4d5b41823b04d12297eda, type: 2}
+      _virtualName: 
+      _description: 
+      _origin: 200
+      _depth: 500
       _mainGroup: default
       _subGroup: 
       _widthOffset: 0
       dontFill: 1
       hideElement: 0
-    - element: {fileID: 11400000, guid: d1e226809ab23db4aba090428eedc56b, type: 2}
-      _virtualName: asd
-      _description: asdd
-      _origin: 900
-      _deph: 1500
-      _mainGroup: Grupo 1
-      _subGroup: 
-      _widthOffset: 0
-      dontFill: 1
-      hideElement: 0
-    - element: {fileID: 11400000, guid: d1e226809ab23db4aba090428eedc56b, type: 2}
-      _virtualName: 51
-      _description: 895
-      _origin: 51
-      _deph: 52
-      _mainGroup: Grupo 1
-      _subGroup: 
-      _widthOffset: 0
-      dontFill: 1
-      hideElement: 0
-    coating: []
-    others: []
     comments: []
     terrainFormation: {fileID: 11400000, guid: ed6629068725d5b42ad079d6a76ca53b, type: 2}
   uiGenerator: {fileID: 698024724}
-  jsonSchematicText: '{"drillDeph":2000.0,"isDiagram":false,"parts":[{"name":"51","description":"895","element":"revestiment","topo":51.0,"base":52.0,"mainGroup":"Grupo
-    1","subGroup":""},{"name":"asdasdd","description":"asdasd","element":"revestiment","topo":50.0,"base":150.0,"mainGroup":"default","subGroup":""},{"name":"asd","description":"asdd","element":"revestiment","topo":900.0,"base":1500.0,"mainGroup":"Grupo
-    1","subGroup":""}],"terrains":[{"name":"","description":"","element":"terrain_formation","topo":0.0,"base":0.0,"mainGroup":"default","subGroup":""}],"comments":[]}'
+  getJsonFromWeb: 1
+  jsonSchematicText: '{"drillDeph":2000.0,"isDiagram":false,"hideAllText":false,"parts":[{"name":"","description":"","hideText":false,"element":"casing","topo":200.0,"base":500.0,"mainGroup":"default","subGroup":""}],"terrains":[{"name":"","description":"","hideText":false,"element":"terrain_formation","topo":0.0,"base":0.0,"mainGroup":"default","subGroup":""}],"comments":[]}'
   cristmasHead: {fileID: 11400000, guid: decc3c344460c0a41b6a30f9f2e05e62, type: 2}
   columSuspensor: {fileID: 11400000, guid: d528a3c8c6a78d642810d7fcd6d66a75, type: 2}
   columFill: {fileID: 11400000, guid: f833e05f8d030f84c81d93046498e34b, type: 2}
@@ -1282,7 +1261,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 359c9d2f3af5cc04291156375c43de6e, type: 2}
   - {fileID: 11400000, guid: f876c46f27c6efa4caa2ed52ff475b44, type: 2}
   - {fileID: 11400000, guid: e7b4cea0cafb3694d8f47e1dd1d2aa90, type: 2}
-  - {fileID: 11400000, guid: d1e226809ab23db4aba090428eedc56b, type: 2}
+  - {fileID: 11400000, guid: ba2aa9a607f3fe9438afca7a8902901a, type: 2}
   - {fileID: 11400000, guid: 78fb32d7fe29fbc4b80b3eb220441e18, type: 2}
   - {fileID: 11400000, guid: 523b5ad40f3f3004089bf970fc5a5d27, type: 2}
   - {fileID: 11400000, guid: 4d8d96da24e5bd646b6e85eff9a6bcf1, type: 2}
@@ -1378,9 +1357,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1872632594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2c6d9cabfac8c647b505d2383777791, type: 3}
+  m_Script: {fileID: 11500000, guid: 94433ac3d7992b34587dd94a24f4de2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treeElements: []
-  headElements: []
-  suspensorElements: []
+  lineRenderer: {fileID: 6158643422285297457, guid: 965b0e07f4e8efb4faf87fbeec308181, type: 3}

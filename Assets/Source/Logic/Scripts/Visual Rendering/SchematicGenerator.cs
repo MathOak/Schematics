@@ -1,6 +1,7 @@
 #define CODING_WEB_MODULE
 using AlmostEngine.Screenshot;
 using Cysharp.Threading.Tasks;
+using Newtonsoft.Json.Schema;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using System;
@@ -14,6 +15,7 @@ using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Networking;
 
 public class SchematicGenerator : SerializedMonoBehaviour
 {
@@ -22,7 +24,9 @@ public class SchematicGenerator : SerializedMonoBehaviour
     [SerializeField] private Canvas _uiCanvas;
     [SerializeField] private Schematic wellSchematic;
     [SerializeField] private UIGenerator uiGenerator;
-    [SerializeField][TextArea] private string jsonSchematicText;
+    [Space]
+    [SerializeField] private bool getJsonFromWeb;
+    [HideIf("getJsonFromWeb")][SerializeField][TextArea] private string jsonSchematicText;
     [Space]
     [Header("Head")]
     [SerializeField] private BaseElement cristmasHead;
@@ -45,6 +49,7 @@ public class SchematicGenerator : SerializedMonoBehaviour
     public const float DRAW_LIMITS_HORIZONTAL = 4f;
     public const float DRAW_WELL_SIZE = 2f;
 
+    public static bool throwErrorOnMissingElement = false;
 
     public static Action onStartLoading;
     public static Action onEndLoading;
@@ -81,7 +86,7 @@ private void Start()
 #if UNITY_EDITOR || UNITY_WEBGL == false
 
         onStartLoading?.Invoke();
-        GenerateSchematicFromString();
+        UnityStart().Forget();
 #endif
 
 #if CODING_WEB_MODULE || (!UNITY_EDITOR && UNITY_WEBGL)
@@ -89,21 +94,17 @@ private void Start()
 #endif
     }
 
-    private async void ReadAndGenerate() 
+#if UNITY_EDITOR
+    private async UniTask UnityStart() 
     {
-        string filePath = Path.Combine(Application.streamingAssetsPath, "Schematic.json");
-        string jsonString;
+        if (getJsonFromWeb)
+        {
+            jsonSchematicText = await GetJsonFromAPI();
+        }
 
-        if (File.Exists(filePath))
-        {
-            jsonString = File.ReadAllText(filePath);
-            await GenerateFromJson(jsonString);
-        }
-        else
-        {
-            throw new Exception("Schematic.json not found!");
-        }
+        GenerateSchematicFromString();
     }
+#endif
 
     private async UniTask GenerateFromJson(string jsonString)
     {
@@ -113,9 +114,9 @@ private void Start()
             InternalUnityLogger("Starting Unity Generation Process");
 #endif
 
-            Schematic.JsonObject jsonSchematic = JsonUtility.FromJson<Schematic.JsonObject>(jsonString);
+            JsonApiHandler jsonSchematic = JsonUtility.FromJson<JsonApiHandler>(jsonString);
             VisualElement.ClearElements();
-            await AsyncGenerator(jsonSchematic.ToObject());
+            await AsyncGenerator(jsonSchematic.data.ToObject());
 #if CODING_WEB_MODULE || (!UNITY_EDITOR && UNITY_WEBGL)
             InternalUnityLogger("Schematic Generated!");
 #endif
@@ -183,7 +184,7 @@ private void Start()
         await schematic.terrainFormation.DrawTerrain(schematic._drillDeph);
         await DrawList(schematic.others);
 
-        schematic.coating.Sort((coatA, coatB) => coatA._sapata._deph > coatB._sapata._deph ? -1 : 1);
+        schematic.coating.Sort((coatA, coatB) => coatA._sapata._depth > coatB._sapata._depth ? -1 : 1);
 
         for (int i = 0; i < schematic.coating.Count; i++)
         {
@@ -205,7 +206,7 @@ private void Start()
 
         SchematicItem voidSchematic = new SchematicItem();
         voidSchematic.element = emptyPointsElement;
-        voidSchematic._deph = Schematic._drillDeph;
+        voidSchematic._depth = Schematic._drillDeph;
 
         await voidSchematic.Draw();
         voidSchematic.element = emptyElement;
@@ -227,12 +228,12 @@ private void Start()
         SchematicItem columBase = new SchematicItem();
         columBase.element = columSuspensor;
         columBase._origin = -1 * (1.1f.VirtualToRealScale());
-        columBase._deph = -1 * (0.6f.VirtualToRealScale());
+        columBase._depth = -1 * (0.6f.VirtualToRealScale());
         await columBase.Draw();
 
         columBase.element = columFill;
         columBase._origin = -1 * (1.1f.VirtualToRealScale());
-        columBase._deph = schematic.colum[schematic.colum.Count - 1]._deph;
+        columBase._depth = schematic.colum[schematic.colum.Count - 1]._depth;
         await columBase.Draw();
 
         await DrawColumParts(schematic);
@@ -241,7 +242,7 @@ private void Start()
     private async UniTask DrawColumParts(Schematic schematic) 
     {
         var lastPart = schematic.colum[schematic.colum.Count - 1];
-        float lastAbstractDeph = lastPart._deph;
+        float lastAbstractDeph = lastPart._depth;
 
         for (int i = schematic.colum.Count - 1; i >= 0; i--)
         {
@@ -250,7 +251,7 @@ private void Start()
 
             lastAbstractDeph = abstractOrigin;
 
-            if (i - 1 > 0 && schematic.colum[i - 1]._deph < schematic.colum[i]._origin) 
+            if (i - 1 > 0 && schematic.colum[i - 1]._depth < schematic.colum[i]._origin) 
             {
                 lastAbstractDeph -= partsSpace.VirtualToRealScale();
             }
@@ -272,7 +273,7 @@ private void Start()
             return;
         }
 
-        await uiGenerator.DrawSchematicText(VisualElement.visualElements);
+        await uiGenerator.DrawSchematicText(schematic);
         var rTransform = _uiCanvas.GetComponent<RectTransform>();
         rTransform.sizeDelta = new Vector2(DRAW_LIMITS_HORIZONTAL.RealToVirtualScale() * 600, schematic._drillDeph.RealToVirtualScale());
     }
@@ -295,7 +296,7 @@ private void Start()
 #if CODING_WEB_MODULE || (!UNITY_EDITOR && UNITY_WEBGL)
         InternalUnityLogger("Rendering Schematic to image...");
 #endif
-        float lastDeph = SchematicGenerator.lastGeneration.terrainFormation.Sections[SchematicGenerator.lastGeneration.terrainFormation.Sections.Count - 1]._deph;
+        float lastDeph = SchematicGenerator.lastGeneration.terrainFormation.Sections[SchematicGenerator.lastGeneration.terrainFormation.Sections.Count - 1]._depth;
         float drawSize = (lastDeph.RealToVirtualScale() / 2) + (SchematicGenerator.HEAD_SIZE / 2);
 
         _schematicCamera.orthographicSize = drawSize;
@@ -427,4 +428,37 @@ private void Start()
 
         Debug.Log(partsList);
     }
+
+    struct JsonApiHandler
+    {
+        public bool elementDataError;
+        public Schematic.JsonObject data;
+    }
+
+#if UNITY_EDITOR
+    private async UniTask<string> GetJsonFromAPI()
+    {
+        string apiUrl = "https://api.dbragas.com:4010/schematics/schematic/12df826a-6e51-4abf-a2f6-3baf620d2f11";
+
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(apiUrl))
+        {
+            // Envia a requisição e aguarda a resposta
+            await webRequest.SendWebRequest();
+
+            // Verifica se ocorreu algum erro na requisição
+            if (webRequest.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError("Erro na requisição: " + webRequest.error);
+            }
+            else
+            {
+                string apiString = webRequest.downloadHandler.text;
+                Debug.Log("String da API: " + apiString);
+                return apiString;
+            }
+        }
+
+        return "";
+    }
+#endif
 }

@@ -44,27 +44,20 @@ public class Schematic
             revestiment._cimentacao.Add(new SchematicItem());
             revestiment._cimentacao[0].element = SchematicGenerator.elements["cimento"];
             revestiment._cimentacao[0]._origin = item._origin;
-            revestiment._cimentacao[0]._deph = item._deph;
+            revestiment._cimentacao[0]._depth = item._depth;
         }
         else
             others.Add(item);
     }
 
-    public List<SchematicItem> GetAllParts() 
+    public List<SchematicItem> GetAllParts()
     {
-        List<SchematicItem> result = new List<SchematicItem>(others);
+        List<SchematicItem> result = new List<SchematicItem>();
 
-        foreach (var columnItem in colum)
-        {
-            result.Add(columnItem);
-        }
+        result.AddRange(colum);
+        result.AddRange(others);
 
-        foreach (var otherItem in others)
-        {
-            result.Add(otherItem);
-        }
-
-        result.OrderBy(item => item._deph);
+        result = result.OrderBy(part => part.GetMidPoint()).ToList();
         return result;
     }
 
@@ -112,7 +105,7 @@ public class Schematic
                 wellParts.Add(revestiment._sapata);
             }
 
-            wellParts.Sort((partA, partB) => partA._deph < partB._deph ? -1 : 1);
+            wellParts.Sort((partA, partB) => partA._depth < partB._depth ? -1 : 1);
             this.parts = wellParts.ConvertAll(part => part.ToJsonObject()).ToArray();
 
             if (schematic.terrainFormation != null)
@@ -143,7 +136,9 @@ public class Schematic
                 }
                 else 
                 {
+#if !UNITY_EDITOR && UNITY_WEBGL
                     SchematicGenerator.InternalUnityErrorLogger($"The key {jsonPart.element} is not present on the project!");
+#endif
                 }
             }
 

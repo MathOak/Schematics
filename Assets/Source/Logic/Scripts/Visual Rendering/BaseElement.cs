@@ -65,7 +65,7 @@ public class BaseElement : ScriptableObject
         var result = new SchematicItem();
         result.element = this;
         result._origin = origin;
-        result._deph = depth;
+        result._depth = depth;
         return result;
     }
 

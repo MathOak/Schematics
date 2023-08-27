@@ -1,7 +1,9 @@
 using Cysharp.Threading.Tasks;
+using Sirenix.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using TMPro;
@@ -9,118 +11,92 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIGenerator : MonoBehaviour
+public partial class UIGenerator : MonoBehaviour
 {
-    [SerializeField] UITextBlock txtBlockLeftPrefab;
-    [SerializeField] UITextBlock txtBlockRightPrefab;
+    [SerializeField] UITextBlockLeft txtBlockLeftPrefab;
+    [SerializeField] UITextBlockRight txtBlockRightPrefab;
     [Space]
     [SerializeField] RectTransform canvasLeft;
     [SerializeField] RectTransform canvasRight;
-    [SerializeField] Image whiteBg;
 
-    public class CSBGroup
+    public async UniTask DrawSchematicText(Schematic schematic) 
     {
-        public string name;
-        public List<string> schematicNames = new List<string>();
+        var leftElements = schematic.GetAllParts().Where(part => part.WriteText).ToList();
+        await WriteLeftText(leftElements);
 
-        public CSBGroup(string name, string schematicName)
-        {
-            this.name = name;
-            this.schematicNames.Add(schematicName);
-        }
+        var rightItems = schematic.GetAllParts()
+            .Where(part => part.WriteText && (!part._mainGroup.IsNullOrWhitespace() && part._mainGroup != "default")).ToList();
+        await WriteRightText(rightItems);
+    }
 
-        public string GetListNames()
+
+    private async UniTask WriteLeftText(List<SchematicItem> schematicItems)
+    {
+        List<UITextBlockLeft> blocks = new List<UITextBlockLeft>();
+
+        foreach (var sItem in schematicItems)
         {
-            StringBuilder builder = new StringBuilder();
-            foreach(string schematicName in schematicNames)
+            var textBlock = WriteLeftBlock(sItem);
+
+            if (blocks.Count > 0 && (textBlock.IsOverlappingWith(blocks[blocks.Count - 1]) || textBlock.pivot.position.y > blocks[blocks.Count - 1].pivot.position.y))
             {
-                builder.AppendLine(schematicName);
+                float adjustment = blocks[blocks.Count - 1].pivot.rect.height;
+                textBlock.pivot.anchoredPosition = new Vector2(textBlock.pivot.anchoredPosition.x, blocks[blocks.Count - 1].pivot.anchoredPosition.y - adjustment);
             }
 
-            return builder.ToString();
+            blocks.Add(textBlock);
+            await UniTask.WaitForFixedUpdate();
+            await UniTask.WaitForFixedUpdate();
+        }
+
+        foreach (var block in blocks)
+        {
+            LineDrawer.instance.CreateLine(block);
         }
     }
 
-    public async UniTask DrawSchematicText(List<VisualElement> allElements) 
+    private UITextBlockLeft WriteLeftBlock(SchematicItem sItem)
     {
-        List<UITextBlock> txtBlocks = new List<UITextBlock>();
-
-
-        List<CSBGroup> mainGroupsNames = new List<CSBGroup>();
-
-        foreach (var element in allElements)
-        {
-            if (element.SchematicItem.element._writePartOnDoc)
-            {
-                txtBlocks.Add(DrawText(element.SchematicItem.element.ElementName, element.SchematicItem._origin, txtBlockLeftPrefab, canvasLeft, true));
-                
-                
-                if (element.SchematicItem._mainGroup != "default")
-                {
-                    Debug.Log(element.SchematicItem._mainGroup);
-
-                    CSBGroup cSBGroup = new CSBGroup(element.SchematicItem._mainGroup, element.SchematicItem.element.ElementName);
-
-                    bool hasGroup = false;
-                    for (int i = 0; i < mainGroupsNames.Count; i++)
-                    {
-                        if (mainGroupsNames[i].name == cSBGroup.name)
-                        {
-                            hasGroup = true;
-                            mainGroupsNames[i].schematicNames.Add(element.SchematicItem.element.ElementName);
-                        }
-
-                    }
-                    if(!hasGroup)
-                    {
-                        mainGroupsNames.Add(cSBGroup);
-                    }
-                }
-            }
-        }
-
-        StringBuilder builder = new StringBuilder();
-
-        foreach (CSBGroup group in mainGroupsNames)
-        {
-            builder.AppendLine(group.name);
-            builder.AppendLine();
-            builder.AppendLine(group.GetListNames());
-        }
-
-        var rightText = DrawText(builder.ToString(), 0, txtBlockRightPrefab, canvasRight, false);
-
-
-        await UniTask.WaitForFixedUpdate();
-        await UniTask.WaitForFixedUpdate();
-
-        for (int i = 0; i < txtBlocks.Count - 1; i++)
-        {
-            txtBlocks[i].OverlapText(txtBlocks[i + 1]);
-        }
-
-        await UniTask.WaitForFixedUpdate();
-        await UniTask.WaitForFixedUpdate();
-    }
-
-    public UITextBlock DrawText(VisualElement element, UITextBlock txtPrefab, RectTransform parent, bool setPosition) 
-    {
-        UITextBlock txtBlock = Instantiate(txtPrefab, parent);
-        txtBlock.gameObject.name = $"TXT - {element.SchematicItem.ToString()}";
-        txtBlock.SetupText(element,txtBlock.transform.childCount, setPosition);
+        UITextBlockLeft txtBlock = Instantiate(txtBlockLeftPrefab, canvasLeft);
+        txtBlock.gameObject.name = $"LTXT - {sItem.ToString()}";
+        txtBlock.WriteElementOnLeft(sItem);
         return txtBlock;
     }
 
-    public UITextBlock DrawText(string text, float yDistance, UITextBlock txtPrefab, RectTransform parent, bool setPosition)
+    private async UniTask WriteRightText(List<SchematicItem> schematicItems) 
     {
-        UITextBlock txtBlock = Instantiate(txtPrefab, parent);
-        txtBlock.gameObject.name = $"TXT - >  {text}";
-        txtBlock.SetupText(text, (yDistance * (-1))/200, setPosition); ;
-        return txtBlock;
+        List<ItemMainGroup> mainGroups = new List<ItemMainGroup>();
+
+        while (schematicItems.Count > 0)
+        {
+            mainGroups.Add(AggroupItems(schematicItems[0]._mainGroup, schematicItems));
+        }
+
+        mainGroups.Sort((x, y) => x._name.CompareTo(y._name));
+
+        foreach (var mainGroup in mainGroups)
+        {
+            WriteMainGroupBlock(mainGroup);
+        }
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(canvasRight);
+
+        await UniTask.WaitForFixedUpdate();
+        await UniTask.WaitForFixedUpdate();
     }
 
-    public void SetBGHeight(float height) 
+    private ItemMainGroup AggroupItems(string groupName, in List<SchematicItem> ungroupedItems) 
     {
-        whiteBg.transform.localScale += new Vector3(0, height, 0);
+        ItemMainGroup mainGroup = new ItemMainGroup(groupName, ungroupedItems.Where(item => item._mainGroup == groupName).ToList());
+        ungroupedItems.RemoveAll(item => item._mainGroup == groupName);
+        return mainGroup;
+    }
+
+    private UITextBlockRight WriteMainGroupBlock(ItemMainGroup mainGroup)
+    {
+        UITextBlockRight txtBlock = Instantiate(txtBlockRightPrefab, canvasRight.transform);
+        txtBlock.gameObject.name = $"GTXT - {mainGroup._name}";
+        txtBlock.WriteGroupBlock(mainGroup); ;
+        return txtBlock;
     }
 }

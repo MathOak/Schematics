@@ -13,22 +13,24 @@ public class SchematicItem : SchematicDrawable
     [Required] public BaseElement element;
     public string _virtualName;
     public string _description;
-    public bool _hideText = false;
+    private bool _hideText = false;
     [Space]
     public float _origin;
-    public float _deph;
+    public float _depth;
     [Space]
     public string _mainGroup = "default";
     public string _subGroup = "";
 
-    public float _lenght => Mathf.Abs(_origin) + _deph;
+    public float _length => Mathf.Abs(_origin) + _depth;
 
     [Space]
     [ShowIf("dontFill")] public float _widthOffset;
     public bool dontFill = true;
     public bool hideElement = false;
 
-    public virtual async UniTask Draw(int additionalSort = 0) => await Draw(_origin, _deph, additionalSort);
+    public bool WriteText => !_hideText && element._writePartOnDoc;
+
+    public virtual async UniTask Draw(int additionalSort = 0) => await Draw(_origin, _depth, additionalSort);
     public virtual async UniTask Draw(float origin, float deph, int additionalSort = 0)
     {
         if (hideElement)
@@ -46,24 +48,24 @@ public class SchematicItem : SchematicDrawable
 
     public float GetMidPoint() 
     {
-        return _origin + ((_deph - _origin) / 2);
+        return _origin + ((_depth - _origin) / 2);
     }
 
     public override string ToString()
     {
         string elementName = _virtualName.IsNullOrWhitespace() ? element.ToString() : _virtualName;
 
-        if (_origin + _deph == 0 || (_origin < 0 && _deph < 0)) 
+        if (_origin + _depth == 0 || (_origin < 0 && _depth < 0)) 
         {
             return elementName;
         }
         if (_origin <= 0)
         {
-            return $"{elementName} até {_deph.ToString("F2")}m";
+            return $"{elementName} até {_depth.ToString("F2")}m";
         }
         else
         {
-            return $"{elementName}: {_origin.ToString("F2")} - {_deph.ToString("F2")}m";
+            return $"{elementName}: {_origin.ToString("F2")} - {_depth.ToString("F2")}m";
         }
     }
 
@@ -91,7 +93,7 @@ public class SchematicItem : SchematicDrawable
             this.hideText = schematicItem._hideText;
             this.element = schematicItem.element.Key;
             this.topo = schematicItem._origin;
-            this.@base = schematicItem._deph;
+            this.@base = schematicItem._depth;
             this.mainGroup = schematicItem._mainGroup;
             this.subGroup = schematicItem._subGroup;
         }
@@ -105,7 +107,7 @@ public class SchematicItem : SchematicDrawable
             result.element = SchematicGenerator.elements[this.element];
             result._mainGroup = this.mainGroup;
             result._origin = this.topo;
-            result._deph = this.@base;
+            result._depth = this.@base;
             result._mainGroup = mainGroup;
             result._subGroup = subGroup;
             return result;
