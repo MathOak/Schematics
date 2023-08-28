@@ -74,9 +74,11 @@ public partial class UIGenerator : MonoBehaviour
 
         mainGroups.Sort((x, y) => x._name.CompareTo(y._name));
 
+        int index = 0;
         foreach (var mainGroup in mainGroups)
         {
-            WriteMainGroupBlock(mainGroup);
+            WriteMainGroupBlock(mainGroup, index);
+            index++;
         }
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(canvasRight);
@@ -92,11 +94,11 @@ public partial class UIGenerator : MonoBehaviour
         return mainGroup;
     }
 
-    private UITextBlockRight WriteMainGroupBlock(ItemMainGroup mainGroup)
+    private UITextBlockRight WriteMainGroupBlock(ItemMainGroup mainGroup,int index)
     {
         UITextBlockRight txtBlock = Instantiate(txtBlockRightPrefab, canvasRight.transform);
         txtBlock.gameObject.name = $"GTXT - {mainGroup._name}";
-        txtBlock.WriteGroupBlock(mainGroup); ;
+        txtBlock.WriteGroupBlock(mainGroup, index);
         return txtBlock;
     }
 }
