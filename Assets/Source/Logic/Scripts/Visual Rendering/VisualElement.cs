@@ -81,7 +81,6 @@ public class VisualElement : MonoBehaviour
         return visualElement;
     }
 
-
     public static List<string> revestimento = new List<string>() { "#FF6C00", "#E971FB", "#FF4CA700" };
     public static List<string> terreno = new List<string>() { "#FEFF00", "#FF0500", "#98007E" };
 
@@ -124,7 +123,7 @@ public class VisualElement : MonoBehaviour
                     if (schematicVisualElement.colorChanged || visualElement.colorChanged)
                         continue;
 
-                    if (schematicItem.element.Key == "revestiment")
+                    if (schematicItem.element.Key == "sealant")
                     {
                         schematicVisualElement.renderBG.color = revestimentoClone[revestimentIndex];
                         revestimentIndex++;

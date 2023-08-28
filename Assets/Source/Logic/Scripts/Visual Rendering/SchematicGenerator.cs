@@ -1,4 +1,4 @@
-#define CODING_WEB_MODULE
+//#define CODING_WEB_MODULE
 using AlmostEngine.Screenshot;
 using Cysharp.Threading.Tasks;
 using Newtonsoft.Json.Schema;
@@ -19,16 +19,32 @@ using UnityEngine.Networking;
 
 public class SchematicGenerator : SerializedMonoBehaviour
 {
+    private enum testMode 
+    {
+        Inspector,
+        JsonString,
+        WebApi
+    }
+
+    [Header("Generator Setup")]
     [SerializeField] private Camera _schematicCamera;
     [SerializeField] private Camera _printCamera;
     [SerializeField] private Canvas _uiCanvas;
-    [SerializeField] private Schematic wellSchematic;
     [SerializeField] private UIGenerator uiGenerator;
+    [SerializeField] private TerrainGenerator terrainGenerator;
+    [Header("Debug")]
+#if UNITY_EDITOR
+    [SerializeField] private bool writeApiKeyNames;
+#endif
+    [SerializeField] private testMode getSchematicFrom;
+    private bool debugFromInspectorList => getSchematicFrom == testMode.Inspector;
+    private bool debugWebApi => getSchematicFrom == testMode.WebApi;
+    private bool debugJsonString => getSchematicFrom == testMode.JsonString;
+
+    [ShowIf("debugFromInspectorList")][SerializeField] private Schematic debugSchematic;
+    [ShowIf("debugJsonString")][SerializeField][TextArea] private string jsonSchematicText;
     [Space]
-    [SerializeField] private bool getJsonFromWeb;
-    [HideIf("getJsonFromWeb")][SerializeField][TextArea] private string jsonSchematicText;
-    [Space]
-    [Header("Head")]
+    [Header("Header")]
     [SerializeField] private BaseElement cristmasHead;
 
     [Header("Colum")]
@@ -40,7 +56,8 @@ public class SchematicGenerator : SerializedMonoBehaviour
     [Header("Hole")]
     [SerializeField] private BaseElement emptyElement;
     [SerializeField] private BaseElement emptyPointsElement;
-    [Space]
+    
+    [Header("Database")]
     [SerializeField] private List<BaseElement> allElements;
 
     public static Dictionary<string, BaseElement> elements;
@@ -84,7 +101,6 @@ private void Start()
 
 
 #if UNITY_EDITOR || UNITY_WEBGL == false
-
         onStartLoading?.Invoke();
         UnityStart().Forget();
 #endif
@@ -97,12 +113,29 @@ private void Start()
 #if UNITY_EDITOR
     private async UniTask UnityStart() 
     {
-        if (getJsonFromWeb)
+        switch (getSchematicFrom)
         {
-            jsonSchematicText = await GetJsonFromAPI();
+            case testMode.Inspector:
+                foreach (var item in debugSchematic.GetAllParts())
+                {
+                    if(item.useElementKey)
+                        item.element = elements[item.elementKey];
+                }
+
+                await AsyncGenerator(debugSchematic);
+                break;
+            case testMode.JsonString:
+                GenerateSchematicFromString();
+                break;
+            case testMode.WebApi:
+                jsonSchematicText = await GetJsonFromAPI();
+                GenerateSchematicFromString();
+                break;
+            default:
+                break;
         }
 
-        GenerateSchematicFromString();
+        RenderSchematic();
     }
 #endif
 
@@ -152,53 +185,55 @@ private void Start()
 #endif
     }
 
-    [Button]
-    public void ConvertToJson() 
-    {
-        jsonSchematicText = wellSchematic.ToJsonFormat();
-    }
-
-    [Button]
     public void GenerateSchematicFromString() 
     {
         GenerateFromJson(jsonSchematicText).Forget();
     }
 
+#if UNITY_EDITOR
     [Button]
     public void GenerateSchematic() 
     {
-        if (Application.isPlaying && wellSchematic != null)
+        if (Application.isPlaying && debugSchematic != null)
         {
             VisualElement.ClearElements();
-            AsyncGenerator(wellSchematic).Forget();
+            UnityStart().Forget();
         }
     }
+#endif
 
     private async UniTask AsyncGenerator(Schematic schematic) 
     {
-        if (schematic.terrainFormation == null) 
+#if UNITY_EDITOR
+        if (writeApiKeyNames)
+            ShowApiKeyNames(schematic);
+#endif
+
+        await DrawList(schematic.parts);
+
+        //schematic.coating.Sort((coatA, coatB) => coatA._sapata._depth > coatB._sapata._depth ? -1 : 1);
+
+        //for (int i = 0; i < schematic.coating.Count; i++)
         {
-            schematic.terrainFormation = await Addressables.LoadAssetAsync<TerrainFormation>("DefaultFormation");
+            //schematic.coating[i]._sapata._widthOffset = i * 140f;
+            //schematic.coating[i]._cimentacao[0]._widthOffset = i * 140f;
+            //await schematic.coating[i].Draw(additionalSort: i);
         }
 
-        await schematic.terrainFormation.DrawTerrain(schematic._drillDeph);
-        await DrawList(schematic.others);
-
-        schematic.coating.Sort((coatA, coatB) => coatA._sapata._depth > coatB._sapata._depth ? -1 : 1);
-
-        for (int i = 0; i < schematic.coating.Count; i++)
-        {
-            schematic.coating[i]._sapata._widthOffset = i * 140f;
-            schematic.coating[i]._cimentacao[0]._widthOffset = i * 140f;
-            await schematic.coating[i].Draw(additionalSort: i);
-        }
-
-        await DrawColum(schematic);
+        await terrainGenerator.GenerateTerrain(schematic);
         await DrawVoidSpaces(schematic);
+        await DrawColum(schematic);
         await DrawUIText(schematic);
 
         lastGeneration = schematic;
     }
+
+#if UNITY_EDITOR
+    private void ShowApiKeyNames(Schematic schematic) 
+    {
+       schematic.GetAllParts().ForEach(part => part._virtualName = part.element.Key);
+    }
+#endif
 
     private async UniTask DrawVoidSpaces(Schematic Schematic) 
     {
@@ -206,7 +241,7 @@ private void Start()
 
         SchematicItem voidSchematic = new SchematicItem();
         voidSchematic.element = emptyPointsElement;
-        voidSchematic._depth = Schematic._drillDeph;
+        voidSchematic._depth = Schematic._drillDepth;
 
         await voidSchematic.Draw();
         voidSchematic.element = emptyElement;
@@ -222,7 +257,7 @@ private void Start()
 
     private async UniTask DrawColum(Schematic schematic)
     {
-        if (schematic.colum == null || schematic.colum.Count == 0)
+        if (schematic.column == null || schematic.column.Count == 0)
             return;
 
         SchematicItem columBase = new SchematicItem();
@@ -233,7 +268,7 @@ private void Start()
 
         columBase.element = columFill;
         columBase._origin = -1 * (1.1f.VirtualToRealScale());
-        columBase._depth = schematic.colum[schematic.colum.Count - 1]._depth;
+        columBase._depth = schematic.column[schematic.column.Count - 1]._depth;
         await columBase.Draw();
 
         await DrawColumParts(schematic);
@@ -241,17 +276,17 @@ private void Start()
 
     private async UniTask DrawColumParts(Schematic schematic) 
     {
-        var lastPart = schematic.colum[schematic.colum.Count - 1];
+        var lastPart = schematic.column[schematic.column.Count - 1];
         float lastAbstractDeph = lastPart._depth;
 
-        for (int i = schematic.colum.Count - 1; i >= 0; i--)
+        for (int i = schematic.column.Count - 1; i >= 0; i--)
         {
             float abstractOrigin = lastAbstractDeph - partsSize.VirtualToRealScale();
-            await schematic.colum[i].Draw(abstractOrigin, lastAbstractDeph);
+            await schematic.column[i].Draw(abstractOrigin, lastAbstractDeph);
 
             lastAbstractDeph = abstractOrigin;
 
-            if (i - 1 > 0 && schematic.colum[i - 1]._depth < schematic.colum[i]._origin) 
+            if (i - 1 > 0 && schematic.column[i - 1]._depth < schematic.column[i]._origin) 
             {
                 lastAbstractDeph -= partsSpace.VirtualToRealScale();
             }
@@ -275,7 +310,7 @@ private void Start()
 
         await uiGenerator.DrawSchematicText(schematic);
         var rTransform = _uiCanvas.GetComponent<RectTransform>();
-        rTransform.sizeDelta = new Vector2(DRAW_LIMITS_HORIZONTAL.RealToVirtualScale() * 600, schematic._drillDeph.RealToVirtualScale());
+        rTransform.sizeDelta = new Vector2(DRAW_LIMITS_HORIZONTAL.RealToVirtualScale() * 600, schematic.GetLastDepth().RealToVirtualScale());
     }
 
     private List<SchematicItem> GetSchematicItems(Schematic schematic) 
@@ -290,13 +325,12 @@ private void Start()
         return result;
     }
 
-    [Button]
     public void RenderSchematic()
     {
 #if CODING_WEB_MODULE || (!UNITY_EDITOR && UNITY_WEBGL)
         InternalUnityLogger("Rendering Schematic to image...");
 #endif
-        float lastDeph = SchematicGenerator.lastGeneration.terrainFormation.Sections[SchematicGenerator.lastGeneration.terrainFormation.Sections.Count - 1]._depth;
+        float lastDeph = SchematicGenerator.lastGeneration.GetLastDepth();
         float drawSize = (lastDeph.RealToVirtualScale() / 2) + (SchematicGenerator.HEAD_SIZE / 2);
 
         _schematicCamera.orthographicSize = drawSize;
@@ -350,7 +384,7 @@ private void Start()
     #region Resize Image
     string filePath = "";
     Vector2Int size = new Vector2Int();
-    [Button]
+
     void ResizeTexture()
     {
         Texture2D texture = LoadPNG(filePath, size);
@@ -381,7 +415,7 @@ private void Start()
 
 #if UNITY_EDITOR
     [Button]
-    public void GetAllBaseElementInProject()
+    public void UpdatePartsDatabase()
     {
         List<BaseElement> elements = new List<BaseElement>();
 
@@ -416,7 +450,6 @@ private void Start()
         return false;
     }
 
-    [Button]
     public void LogPartsKeys() 
     {
         string partsList = "[Current Parts]";
@@ -460,5 +493,25 @@ private void Start()
 
         return "";
     }
+
+    [System.Serializable]
+    private class DebugSchematic 
+    {
+        public float drillDepth = 500;
+
+        [System.Serializable]
+        public class DebugItem
+        {
+            public bool useElementKey = true;
+            [ShowIf("useElementKey")] public string elementKey = "casing";
+            [HideIf("useElementKey")] public BaseElement element;
+            public float depth = 0;
+            public float origin = 50;
+
+            [FoldoutGroup("Grouping", expanded: false)] public string mainGroup = "default";
+            [FoldoutGroup("Grouping", expanded: false)] public string subGroup;
+        }
+    }
+
 #endif
 }

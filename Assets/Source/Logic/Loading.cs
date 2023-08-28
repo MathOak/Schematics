@@ -13,11 +13,6 @@ public class Loading : MonoBehaviour
 
     public bool isLoading = false;
 
-    private void Start()
-    {
-        
-    }
-
     void Update()
     {
         if (isLoading)

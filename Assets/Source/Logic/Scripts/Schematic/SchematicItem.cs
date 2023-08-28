@@ -10,23 +10,28 @@ using static UnityEngine.UI.Image;
 [System.Serializable]
 public class SchematicItem : SchematicDrawable
 {
-    [Required] public BaseElement element;
-    public string _virtualName;
-    public string _description;
+#if UNITY_EDITOR
+    public bool useElementKey = true;
+    [ShowIf("useElementKey")] public string elementKey = "casing";
+    [HideIf("useElementKey")]
+#endif
+    public BaseElement element;
+    [HideInInspector] public string _virtualName;
+    [HideInInspector] public string _description;
     private bool _hideText = false;
     [Space]
     public float _origin;
     public float _depth;
     [Space]
-    public string _mainGroup = "default";
-    public string _subGroup = "";
+    [FoldoutGroup("Grouping", expanded: false)] public string _mainGroup = "default";
+    [FoldoutGroup("Grouping", expanded: false)] public string _subGroup = "";
 
     public float _length => Mathf.Abs(_origin) + _depth;
 
     [Space]
-    [ShowIf("dontFill")] public float _widthOffset;
-    public bool dontFill = true;
-    public bool hideElement = false;
+    [HideInInspector] public bool dontFill = true;
+    [HideInInspector] public float _widthOffset;
+    [HideInInspector] public bool hideElement = false;
 
     public bool WriteText => !_hideText && element._writePartOnDoc;
 

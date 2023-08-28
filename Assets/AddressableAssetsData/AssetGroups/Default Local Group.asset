@@ -46,6 +46,22 @@ MonoBehaviour:
     m_Address: txt-block
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 31ec0698e48eb8f48aa08d1b2f85e750
+    m_Address: GenericTerrain
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6b56a5ced209f564590029f83e45b0de
+    m_Address: spr_pattern_points
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9acb6031527e0e64a9b6011bb776fc3a
+    m_Address: spr_pattern_waves
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8efe99a9f3091d447b6228742c2871da
+    m_Address: spr_pattern_lines
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6024420bf01ab5b4c90346140d2558d3, type: 2}
   m_SchemaSet:

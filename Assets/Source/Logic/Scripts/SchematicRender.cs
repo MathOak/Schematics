@@ -12,7 +12,7 @@ public class SchematicRender : MonoBehaviour
     [Button]
     public void RenderSchematic()
     {
-        float lastDepth = SchematicGenerator.lastGeneration.terrainFormation.Sections[SchematicGenerator.lastGeneration.terrainFormation.Sections.Count - 1]._depth;
+        float lastDepth = SchematicGenerator.lastGeneration.terrains[SchematicGenerator.lastGeneration.terrains.Count - 1].depth;
         float drawSize = (lastDepth.RealToVirtualScale() / 2) + (SchematicGenerator.HEAD_SIZE / 2);
 
         _printCamera.orthographicSize = drawSize;
