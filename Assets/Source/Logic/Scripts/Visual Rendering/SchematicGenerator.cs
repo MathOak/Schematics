@@ -1,4 +1,4 @@
-#define CODING_WEB_MODULE
+//#define CODING_WEB_MODULE
 using AlmostEngine.Screenshot;
 using Cysharp.Threading.Tasks;
 using Newtonsoft.Json.Schema;
