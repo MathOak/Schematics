@@ -661,7 +661,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: 0.48
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -1244,7 +1244,7 @@ MonoBehaviour:
   uiGenerator: {fileID: 698024724}
   terrainGenerator: {fileID: 1872632598}
   writeApiKeyNames: 0
-  getSchematicFrom: 0
+  getSchematicFrom: 2
   debugSchematic:
     _drillDepth: 2000
     _isDiagram: 0

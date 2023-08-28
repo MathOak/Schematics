@@ -9,7 +9,8 @@ public class UITextBlockRight : MonoBehaviour
     [SerializeField] TextMeshProUGUI grouptmPro;
     [SerializeField] Image backgroundImage;
     [SerializeField] Image backgroundImage2;
-    List<Color> colorList = new List<Color>() { Color.blue, Color.red };
+    List<Color> colorList = new List<Color>() { Color.blue, Color.red, Color.green};
+
     public void WriteGroupBlock(ItemMainGroup mainGroup, int index)
     {
         while(index >= colorList.Count) 
@@ -19,8 +20,7 @@ public class UITextBlockRight : MonoBehaviour
         
 
         Color color = colorList[index];
-
-        grouptmPro.text = $"**{mainGroup._name}**";
+        grouptmPro.text = $"{mainGroup._name}";
 
         backgroundImage.color = color;
         backgroundImage2.color = color;
