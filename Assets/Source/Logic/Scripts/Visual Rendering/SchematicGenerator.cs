@@ -123,6 +123,7 @@ private void Start()
                 }
 
                 await AsyncGenerator(debugSchematic);
+                RenderSchematic();
                 break;
             case testMode.JsonString:
                 GenerateSchematicFromString();
@@ -134,8 +135,6 @@ private void Start()
             default:
                 break;
         }
-
-        RenderSchematic();
     }
 #endif
 
@@ -462,6 +461,7 @@ private void Start()
         Debug.Log(partsList);
     }
 
+    [System.Serializable]
     struct JsonApiHandler
     {
         public bool elementDataError;
