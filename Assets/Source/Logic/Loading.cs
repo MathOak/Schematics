@@ -6,46 +6,25 @@ using System.ComponentModel;
 
 public class Loading : MonoBehaviour
 {
-    public float progress;
-    public int maxProgress = 1;
+    public static Loading instance;
+    private float progress = 0;
+    private int maxProgress = 1;
 
     public float currentProgress => (float)progress / (float)maxProgress * 100;
 
-    public bool isLoading = false;
-
-    void Update()
+    private void Awake()
     {
-        if (isLoading)
-        {
-            progress += Time.deltaTime;
-
-            if (progress > maxProgress)
-            {
-                progress = 0.9f;
-            }
-        }
-
-        Debug.Log(currentProgress);
-    }
-    void StartLoading()
-    {
-        isLoading = true;
+        instance = this;
+        AddCounter();
     }
 
-    void StopLoading()
+    public void AddMaxProgress(int value)
     {
-        progress = 1;
-        isLoading = false;
-    }
-    void OnEnable()
-    {
-        SchematicGenerator.onStartLoading += StartLoading;
-        SchematicGenerator.onEndLoading += StopLoading;
+        maxProgress += value;
     }
 
-    void OnDisable()
+    public void AddCounter()
     {
-        SchematicGenerator.onEndLoading -= StopLoading;
-        SchematicGenerator.onStartLoading -= StartLoading;
+        progress += 1;
     }
 }

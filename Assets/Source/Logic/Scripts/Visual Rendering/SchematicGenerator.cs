@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -68,9 +69,8 @@ public class SchematicGenerator : SerializedMonoBehaviour
 
     public static bool throwErrorOnMissingElement = false;
 
-    public static Action onStartLoading;
-    public static Action onEndLoading;
     public static Schematic lastGeneration { get; private set; }
+
 
 #if CODING_WEB_MODULE || (!UNITY_EDITOR && UNITY_WEBGL)
     [DllImport("__Internal")]
@@ -93,6 +93,7 @@ private void Start()
     {
         elements = new Dictionary<string, BaseElement>();
 
+
         foreach (var element in allElements)
         {
             if(!element.Key.IsNullOrWhitespace())
@@ -101,7 +102,6 @@ private void Start()
 
 
 #if UNITY_EDITOR || UNITY_WEBGL == false
-        onStartLoading?.Invoke();
         UnityStart().Forget();
 #endif
 
@@ -123,7 +123,6 @@ private void Start()
                 }
 
                 await AsyncGenerator(debugSchematic);
-                RenderSchematic();
                 break;
             case testMode.JsonString:
                 GenerateSchematicFromString();
@@ -135,6 +134,8 @@ private void Start()
             default:
                 break;
         }
+
+        RenderSchematic();
     }
 #endif
 
@@ -148,6 +149,8 @@ private void Start()
 
             JsonApiHandler jsonSchematic = JsonUtility.FromJson<JsonApiHandler>(jsonString);
             VisualElement.ClearElements();
+            Loading.instance.AddMaxProgress(jsonSchematic.data.ToObject().parts.Count);
+
             await AsyncGenerator(jsonSchematic.data.ToObject());
 #if CODING_WEB_MODULE || (!UNITY_EDITOR && UNITY_WEBGL)
             InternalUnityLogger("Schematic Generated!");
@@ -164,8 +167,6 @@ private void Start()
             InternalUnityErrorLogger(e.Message);
             QuitApplication();
 #else
-            onEndLoading?.Invoke();
-
             Debug.LogException(e);
             QuitApplication();
 #endif
@@ -297,6 +298,8 @@ private void Start()
         foreach (var item in items)
         {
             await item.Draw();
+            Loading.instance.AddCounter();
+
         }
     }
 
@@ -373,24 +376,30 @@ private void Start()
 
 
         this.filePath = filePath;
-        size = new Vector2Int(printWidth, printHeight);
+        //size = new Vector2Int(printWidth, printHeight);
 
         VisualElement.ChangeItemsColor();
-        onEndLoading?.Invoke();
+
+        //ResizeTexture();
 #endif
     }
 
-    #region Resize Image
-    string filePath = "";
-    Vector2Int size = new Vector2Int();
+    #region
+    string filePath = string.Empty;
 
+    public Vector2Int size = new Vector2Int();
+    Vector2Int oldSize = new Vector2Int();
+
+    [Button]
     void ResizeTexture()
     {
         Texture2D texture = LoadPNG(filePath, size);
 
-        //size = new Vector2Int(250, 10000);
+        float proportion = oldSize.y / size.y;
 
-        TextureScaler.Scale(texture, size.x/5, size.y/5);
+        Vector2Int newSize = new Vector2Int(oldSize.x / (int)proportion, oldSize.y / (int)proportion); 
+
+        TextureScaler.Scale(texture, newSize.x, newSize.y);
 
         byte[] bytes = texture.EncodeToJPG();
         File.WriteAllBytes(Path.Combine(Application.streamingAssetsPath, "generator_result1.png"), bytes);
@@ -406,6 +415,8 @@ private void Start()
             fileData = File.ReadAllBytes(filePath);
             tex = new Texture2D(size.x, size.y);
             tex.LoadImage(fileData);
+
+            oldSize = new Vector2Int(tex.width, tex.height);
         }
         return tex;
     }
@@ -461,7 +472,6 @@ private void Start()
         Debug.Log(partsList);
     }
 
-    [System.Serializable]
     struct JsonApiHandler
     {
         public bool elementDataError;
