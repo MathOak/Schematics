@@ -1243,37 +1243,6 @@ MonoBehaviour:
   _uiCanvas: {fileID: 1197373114}
   uiGenerator: {fileID: 698024724}
   terrainGenerator: {fileID: 1872632598}
-  writeApiKeyNames: 0
-  getSchematicFrom: 2
-  debugSchematic:
-    _drillDepth: 2000
-    _isDiagram: 0
-    _hideAllText: 1
-    parts:
-    - useElementKey: 1
-      elementKey: drilling_bop
-      element: {fileID: 11400000, guid: ba2aa9a607f3fe9438afca7a8902901a, type: 2}
-      _virtualName: 
-      _description: 
-      _origin: 580
-      _depth: 600
-      _mainGroup: default
-      _subGroup: 
-      dontFill: 1
-      _widthOffset: 0
-      hideElement: 0
-    column: []
-    terrains:
-    - terrainName: 
-      terrainDesc: 
-      origin: 0
-      depth: 600
-      mainGroup: 
-      subGroup: 
-      colorHex: 
-      patternKey: 
-    comments: []
-  jsonSchematicText: '{"drillDeph":2000.0,"isDiagram":false,"hideAllText":false,"parts":[{"name":"","description":"","hideText":false,"element":"casing","topo":200.0,"base":500.0,"mainGroup":"default","subGroup":""}],"terrains":[{"name":"","description":"","hideText":false,"element":"terrain_formation","topo":0.0,"base":0.0,"mainGroup":"default","subGroup":""}],"comments":[]}'
   cristmasHead: {fileID: 11400000, guid: decc3c344460c0a41b6a30f9f2e05e62, type: 2}
   columSuspensor: {fileID: 11400000, guid: d528a3c8c6a78d642810d7fcd6d66a75, type: 2}
   columFill: {fileID: 11400000, guid: f833e05f8d030f84c81d93046498e34b, type: 2}
@@ -1368,6 +1337,37 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2de4733aab1f397408435f7c7a6393e3, type: 2}
   - {fileID: 11400000, guid: 8fb562e42fbee8f489206177db132339, type: 2}
   - {fileID: 11400000, guid: 5ca422a5f2eaf7345870354409dc71c6, type: 2}
+  writeApiKeyNames: 0
+  getSchematicFrom: 0
+  debugSchematic:
+    _drillDepth: 2000
+    _isDiagram: 0
+    _hideAllText: 1
+    parts:
+    - useElementKey: 1
+      elementKey: drilling_bop
+      element: {fileID: 11400000, guid: ba2aa9a607f3fe9438afca7a8902901a, type: 2}
+      _virtualName: 
+      _description: 
+      _origin: 580
+      _depth: 600
+      _mainGroup: default
+      _subGroup: 
+      dontFill: 1
+      _widthOffset: 0
+      hideElement: 0
+    column: []
+    terrains:
+    - terrainName: 
+      terrainDesc: 
+      origin: 0
+      depth: 600
+      mainGroup: 
+      subGroup: 
+      colorHex: 
+      patternKey: 
+    comments: []
+  jsonSchematicText: '{"drillDeph":2000.0,"isDiagram":false,"hideAllText":false,"parts":[{"name":"","description":"","hideText":false,"element":"casing","topo":200.0,"base":500.0,"mainGroup":"default","subGroup":""}],"terrains":[{"name":"","description":"","hideText":false,"element":"terrain_formation","topo":0.0,"base":0.0,"mainGroup":"default","subGroup":""}],"comments":[]}'
 --- !u!114 &1872632597
 MonoBehaviour:
   m_ObjectHideFlags: 0
