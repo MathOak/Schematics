@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: BaseElement_Empty_draw
   m_EditorClassIdentifier: 
   elementName: Vazio/Contorno
-  _writePartOnDoc: 0
+  elementEngName: 
   _key: emptyCorners
-  elementIcon: {fileID: 0}
   _columItem: 0
+  _writePartOnDoc: 0
+  _drawRectLine: 0
+  _fixedWritePosition: 0
+  _fixedPosition: 0
   pivot: {x: 0.5, y: 0}
   useBgColor: 1
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
@@ -27,5 +30,5 @@ MonoBehaviour:
   maskInteraction: 0
   drawMode: 2
   aditionalArtScale: {x: 1.02, y: 1.005}
-  minimalVirtualHeight: 0
+  minimalVirtualHeight: 0.05
   sortInLayer: 0

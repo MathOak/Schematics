@@ -703,10 +703,23 @@ MonoBehaviour:
     description: 
     refElement: {fileID: 11400000, guid: e232b4ce753b32948a5da074ba7a6fb6, type: 2}
     baseElements:
-    - {fileID: 11400000, guid: e232b4ce753b32948a5da074ba7a6fb6, type: 2}
     - {fileID: 11400000, guid: d9510d969e848f24e980849bbf0afbc8, type: 2}
     - {fileID: 11400000, guid: 376dbfbac25b1e243b69f62711990b44, type: 2}
     - {fileID: 11400000, guid: 34963cf6d9e8562478898c51744771eb, type: 2}
+  - drawName: 
+    description: 
+    refElement: {fileID: 11400000, guid: 5584e4a71a052f246a964be0866ab2a5, type: 2}
+    baseElements:
+    - {fileID: 11400000, guid: 67693740019b6cb4b82983045234bd21, type: 2}
+    - {fileID: 11400000, guid: 7c0c2ab32327bc740bbad9784ee86d6d, type: 2}
+    - {fileID: 11400000, guid: 843774b92c4409f478f378fb83801a78, type: 2}
+    - {fileID: 11400000, guid: 594f91219d977774d9564662bef9d5e7, type: 2}
+    - {fileID: 11400000, guid: 0364de46b8b87f74b9e47998ce69f1a2, type: 2}
+    - {fileID: 11400000, guid: aaa57c719478fe245ad773a1c42a3173, type: 2}
+    - {fileID: 11400000, guid: c969802d95b75774eb2868c05421134e, type: 2}
+    - {fileID: 11400000, guid: 2c6c72406fdc5044a8a4cfae35c6282a, type: 2}
+    - {fileID: 11400000, guid: 148512f4d453e214791d9d3b7a2103a0, type: 2}
+    - {fileID: 11400000, guid: 285dc0cab78dcdc4d87eb7c230516ca8, type: 2}
 --- !u!4 &1012555327
 Transform:
   m_ObjectHideFlags: 0
@@ -1206,11 +1219,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1872632600}
+  - component: {fileID: 1872632599}
   - component: {fileID: 1872632595}
   - component: {fileID: 1872632597}
   - component: {fileID: 1872632598}
-  - component: {fileID: 1872632599}
   - component: {fileID: 1872632601}
+  - component: {fileID: 1872632602}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Untagged
@@ -1244,38 +1258,7 @@ MonoBehaviour:
   _uiCanvas: {fileID: 1197373114}
   uiGenerator: {fileID: 698024724}
   terrainGenerator: {fileID: 1872632598}
-  writeApiKeyNames: 0
-  getSchematicFrom: 0
-  debugSchematic:
-    _drillDepth: 2000
-    _isDiagram: 0
-    _hideAllText: 0
-    parts:
-    - useElementKey: 1
-      elementKey: drilling_bop
-      element: {fileID: 11400000, guid: ba2aa9a607f3fe9438afca7a8902901a, type: 2}
-      _virtualName: 
-      _description: 
-      _origin: 580
-      _depth: 600
-      _mainGroup: teste
-      _subGroup: 
-      dontFill: 1
-      _widthOffset: 0
-      hideElement: 0
-    column: []
-    terrains:
-    - terrainName: 
-      terrainDesc: 
-      origin: 0
-      depth: 600
-      mainGroup: 
-      subGroup: 
-      colorHex: 
-      patternKey: 
-    comments: []
-  jsonSchematicText: '{"drillDeph":2000.0,"isDiagram":false,"hideAllText":false,"parts":[{"name":"","description":"","hideText":false,"element":"casing","topo":200.0,"base":500.0,"mainGroup":"default","subGroup":""}],"terrains":[{"name":"","description":"","hideText":false,"element":"terrain_formation","topo":0.0,"base":0.0,"mainGroup":"default","subGroup":""}],"comments":[]}'
-  cristmasHead: {fileID: 11400000, guid: decc3c344460c0a41b6a30f9f2e05e62, type: 2}
+  cristmasGenerator: {fileID: 1872632602}
   columSuspensor: {fileID: 11400000, guid: d528a3c8c6a78d642810d7fcd6d66a75, type: 2}
   columFill: {fileID: 11400000, guid: f833e05f8d030f84c81d93046498e34b, type: 2}
   partsSize: 0.4
@@ -1284,26 +1267,29 @@ MonoBehaviour:
   emptyPointsElement: {fileID: 11400000, guid: 006db2855b96b8941ae592287d769ac6, type: 2}
   allElements:
   - {fileID: 11400000, guid: 006db2855b96b8941ae592287d769ac6, type: 2}
-  - {fileID: 11400000, guid: 31ec0698e48eb8f48aa08d1b2f85e750, type: 2}
   - {fileID: 11400000, guid: d6a283edcca636a4dbc5071fbbd1f317, type: 2}
+  - {fileID: 11400000, guid: 31ec0698e48eb8f48aa08d1b2f85e750, type: 2}
   - {fileID: 11400000, guid: decc3c344460c0a41b6a30f9f2e05e62, type: 2}
   - {fileID: 11400000, guid: f833e05f8d030f84c81d93046498e34b, type: 2}
   - {fileID: 11400000, guid: d528a3c8c6a78d642810d7fcd6d66a75, type: 2}
   - {fileID: 11400000, guid: 9f66bf2787338e149a5b6942c10d943d, type: 2}
   - {fileID: 11400000, guid: 3679a13b4af91504f8bd858325cb2363, type: 2}
+  - {fileID: 11400000, guid: 6c2e3870698c588449d869c716002b29, type: 2}
   - {fileID: 11400000, guid: d0531c7afa5a29e41a6f614e8a8e067e, type: 2}
   - {fileID: 11400000, guid: eda359fe14cc655428807eb2b1c75f26, type: 2}
   - {fileID: 11400000, guid: cce27877839346442b8c3e150036acce, type: 2}
   - {fileID: 11400000, guid: 359c9d2f3af5cc04291156375c43de6e, type: 2}
   - {fileID: 11400000, guid: f876c46f27c6efa4caa2ed52ff475b44, type: 2}
   - {fileID: 11400000, guid: e7b4cea0cafb3694d8f47e1dd1d2aa90, type: 2}
-  - {fileID: 11400000, guid: ba2aa9a607f3fe9438afca7a8902901a, type: 2}
   - {fileID: 11400000, guid: 78fb32d7fe29fbc4b80b3eb220441e18, type: 2}
   - {fileID: 11400000, guid: 523b5ad40f3f3004089bf970fc5a5d27, type: 2}
+  - {fileID: 11400000, guid: ba2aa9a607f3fe9438afca7a8902901a, type: 2}
   - {fileID: 11400000, guid: 4d8d96da24e5bd646b6e85eff9a6bcf1, type: 2}
+  - {fileID: 11400000, guid: 46ec690536d461e45a00412888437cd7, type: 2}
   - {fileID: 11400000, guid: 57e0afb09ce1cb842bbb54a2df53f081, type: 2}
   - {fileID: 11400000, guid: b5c11f94467082b4eaabfa01a38721e6, type: 2}
   - {fileID: 11400000, guid: 150462584aa67cc4794dff576826c896, type: 2}
+  - {fileID: 11400000, guid: 1f9c184bac706ab4793007ac680fae34, type: 2}
   - {fileID: 11400000, guid: 422984a0ff9dac84abefa100789c2225, type: 2}
   - {fileID: 11400000, guid: aba295f1b28a2f14fa2da0fc160fb478, type: 2}
   - {fileID: 11400000, guid: c191a30119f984a40b0a53f541c3158b, type: 2}
@@ -1369,6 +1355,180 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2de4733aab1f397408435f7c7a6393e3, type: 2}
   - {fileID: 11400000, guid: 8fb562e42fbee8f489206177db132339, type: 2}
   - {fileID: 11400000, guid: 5ca422a5f2eaf7345870354409dc71c6, type: 2}
+  writeApiKeyNames: 0
+  getSchematicFrom: 1
+  debugSchematic:
+    _drillDepth: 2000
+    _isDiagram: 0
+    _hideAllText: 0
+    parts:
+    - useElementKey: 1
+      elementKey: drilling_bop
+      element: {fileID: 11400000, guid: ba2aa9a607f3fe9438afca7a8902901a, type: 2}
+      _virtualName: 
+      _description: 
+      _origin: 580
+      _depth: 600
+      _mainGroup: teste4
+      _subGroup: 
+      dontFill: 1
+      _widthOffset: 0
+      hideElement: 0
+    - useElementKey: 1
+      elementKey: casing
+      element: {fileID: 0}
+      _virtualName: 
+      _description: 
+      _origin: 0
+      _depth: 0
+      _mainGroup: default
+      _subGroup: 
+      dontFill: 1
+      _widthOffset: 0
+      hideElement: 0
+    - useElementKey: 1
+      elementKey: drilling_bop
+      element: {fileID: 11400000, guid: ba2aa9a607f3fe9438afca7a8902901a, type: 2}
+      _virtualName: 
+      _description: 
+      _origin: 580
+      _depth: 600
+      _mainGroup: teste3
+      _subGroup: 
+      dontFill: 1
+      _widthOffset: 0
+      hideElement: 0
+    - useElementKey: 1
+      elementKey: drilling_bop
+      element: {fileID: 11400000, guid: ba2aa9a607f3fe9438afca7a8902901a, type: 2}
+      _virtualName: 
+      _description: 
+      _origin: 580
+      _depth: 600
+      _mainGroup: teste2
+      _subGroup: 
+      dontFill: 1
+      _widthOffset: 0
+      hideElement: 0
+    - useElementKey: 1
+      elementKey: drilling_bop
+      element: {fileID: 11400000, guid: ba2aa9a607f3fe9438afca7a8902901a, type: 2}
+      _virtualName: 
+      _description: 
+      _origin: 580
+      _depth: 600
+      _mainGroup: teste1
+      _subGroup: 
+      dontFill: 1
+      _widthOffset: 0
+      hideElement: 0
+    - useElementKey: 1
+      elementKey: casing
+      element: {fileID: 0}
+      _virtualName: 
+      _description: 
+      _origin: 0
+      _depth: 0
+      _mainGroup: teste
+      _subGroup: 
+      dontFill: 1
+      _widthOffset: 0
+      hideElement: 0
+    column: []
+    terrains:
+    - terrainName: 
+      terrainDesc: 
+      origin: 0
+      depth: 600
+      mainGroup: 
+      subGroup: 
+      colorHex: 
+      patternKey: 
+    comments: []
+  jsonSchematicText: "{\r\n\t\"elementDataError\": true,\r\n\t\"data\": {\r\n   
+    \"isDiagram\": true,\r\n    \"hideAllText\": false,\r\n    \"drillDeph\": 2121,\r\n   
+    \"parts\": [\r\n        {\r\n            \"hideText\": false,\r\n           
+    \"name\": \"ADAPTADOR PARA AN\",\r\n            \"description\": \"\",\r\n           
+    \"element\": \"tubing_hanger\",\r\n            \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n           
+    \"subGroup\": \"\",\r\n            \"topo\": 4,\r\n            \"base\": 4.5\r\n       
+    },\r\n        {\r\n            \"hideText\": false,\r\n            \"name\":
+    \"CABE\xC7A DE PROD FLANGEADA T16 CBV 11-X-7 1/16'' - 3000\",\r\n           
+    \"description\": \"\",\r\n            \"element\": \"wellhead\",\r\n           
+    \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n            \"subGroup\": \"\",\r\n           
+    \"topo\": 4.5,\r\n            \"base\": 5\r\n        },\r\n        {\r\n           
+    \"hideText\": true,\r\n            \"name\": \"REVESTIMENTO\",\r\n           
+    \"description\": \"\",\r\n            \"element\": \"casing\",\r\n           
+    \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n            \"subGroup\": \"\",\r\n           
+    \"topo\": 5,\r\n            \"base\": 1503\r\n        },\r\n        {\r\n           
+    \"hideText\": true,\r\n            \"name\": \"SELANTE ROCHA SELANTE\",\r\n           
+    \"description\": \"\",\r\n            \"element\": \"casing\",\r\n           
+    \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n            \"subGroup\": \"\",\r\n           
+    \"topo\": 1470,\r\n            \"base\": 1500\r\n        },\r\n        {\r\n           
+    \"hideText\": true,\r\n            \"name\": \"AN BM Teste Sea\",\r\n           
+    \"description\": \"\",\r\n            \"element\": \"surface_tree\",\r\n           
+    \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n            \"subGroup\": \"\",\r\n           
+    \"topo\": 2.2,\r\n            \"base\": 4\r\n        },\r\n        {\r\n           
+    \"hideText\": true,\r\n            \"name\": \"CIMENTA\xC7\xC3O PRIM\xC1RIA\",\r\n           
+    \"description\": \"CIMENTA\xC7\xC3O PRIM\xC1RIA\",\r\n            \"element\":
+    \"casing_cement\",\r\n            \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n           
+    \"subGroup\": \"\",\r\n            \"topo\": 1443,\r\n            \"base\": 1503\r\n       
+    },\r\n        {\r\n            \"hideText\": true,\r\n            \"name\": \"FLUIDO
+    PRODUZIDO\",\r\n            \"description\": \"\",\r\n            \"element\":
+    \"fluid_column\",\r\n            \"mainGroup\": \"CSB 1 Prim\xE1rio\",\r\n           
+    \"subGroup\": \"\",\r\n            \"topo\": 50,\r\n            \"base\": 2111\r\n       
+    },\r\n        {\r\n            \"hideText\": true,\r\n            \"name\": \"BOP\",\r\n           
+    \"description\": \"\",\r\n            \"element\": \"draw_luva\",\r\n           
+    \"mainGroup\": \"CSB 1 Prim\xE1rio\",\r\n            \"subGroup\": \"\",\r\n           
+    \"topo\": 550,\r\n            \"base\": 600\r\n        },\r\n        {\r\n           
+    \"hideText\": true,\r\n            \"name\": \"Valvula snub\",\r\n           
+    \"description\": \"\",\r\n            \"element\": \"snubbing_check_valves\",\r\n           
+    \"mainGroup\": \"CSB 1 Prim\xE1rio\",\r\n            \"subGroup\": \"\",\r\n           
+    \"topo\": 350,\r\n            \"base\": 400\r\n        },\r\n        {\r\n           
+    \"hideText\": true,\r\n            \"name\": \"Packer\",\r\n            \"description\":
+    \"\",\r\n            \"element\": \"production_packer\",\r\n            \"mainGroup\":
+    \"CSB 1 Prim\xE1rio\",\r\n            \"subGroup\": \"\",\r\n            \"topo\":
+    2100,\r\n            \"base\": 2150\r\n        },\r\n        {\r\n           
+    \"hideText\": false,\r\n            \"name\": \"Tamp\xE3o Cimento\",\r\n           
+    \"description\": \"\",\r\n            \"element\": \"cement_plug\",\r\n           
+    \"mainGroup\": \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\":
+    1900,\r\n            \"base\": 1950\r\n        },\r\n        {\r\n           
+    \"hideText\": false,\r\n            \"name\": \"a9c52735-0206-426b-a967-ba56e2e3e47e\",\r\n           
+    \"description\": \"\",\r\n            \"element\": \"draw_bomb\",\r\n           
+    \"mainGroup\": \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\":
+    750,\r\n            \"base\": 750\r\n        },\r\n        {\r\n            \"hideText\":
+    false,\r\n            \"name\": \"Tamp\xF5es Mec\xE2nicos\",\r\n            \"description\":
+    \"\",\r\n            \"element\": \"mechanical_tubular_plugs\",\r\n           
+    \"mainGroup\": \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\":
+    1950,\r\n            \"base\": 2000\r\n        },\r\n        {\r\n           
+    \"hideText\": false,\r\n            \"name\": \"Tamp\xE3o 2\",\r\n           
+    \"description\": \"\",\r\n            \"element\": \"mechanical_tubular_plugs\",\r\n           
+    \"mainGroup\": \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\":
+    850,\r\n            \"base\": 900\r\n        },\r\n        {\r\n            \"hideText\":
+    false,\r\n            \"name\": \"d9e1823c-8c87-418e-a3de-eeff6473325c\",\r\n           
+    \"description\": \"\",\r\n            \"element\": \"perforation\",\r\n           
+    \"mainGroup\": \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\":
+    700,\r\n            \"base\": 750\r\n        },\r\n        {\r\n            \"hideText\":
+    false,\r\n            \"name\": \"d9e1823c-8c87-418e-a3de-eeff6473325c\",\r\n           
+    \"description\": \"\",\r\n            \"element\": \"perforation\",\r\n           
+    \"mainGroup\": \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\":
+    800,\r\n            \"base\": 850\r\n        },\r\n        {\r\n            \"hideText\":
+    false,\r\n            \"name\": \"d9e1823c-8c87-418e-a3de-eeff6473325c\",\r\n           
+    \"description\": \"\",\r\n            \"element\": \"perforation\",\r\n           
+    \"mainGroup\": \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\":
+    600,\r\n            \"base\": 625\r\n        },\r\n        {\r\n            \"hideText\":
+    false,\r\n            \"name\": \"d9e1823c-8c87-418e-a3de-eeff6473325c\",\r\n           
+    \"description\": \"\",\r\n            \"element\": \"perforation\",\r\n           
+    \"mainGroup\": \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\":
+    625,\r\n            \"base\": 650\r\n        },\r\n        {\r\n            \"hideText\":
+    false,\r\n            \"name\": \"db707ee7-882d-4221-bd55-d8e992ac9ceb\",\r\n           
+    \"description\": \"\",\r\n            \"element\": \"production_packer\",\r\n           
+    \"mainGroup\": \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\":
+    1500,\r\n            \"base\": 1500\r\n        }\r\n    ],\r\n    \"comments\":
+    [],\r\n    \"terrains\": [\r\n        {\r\n            \"hideText\": true,\r\n           
+    \"name\": \"\",\r\n            \"description\": \"\",\r\n            \"element\":
+    \"terrain_formation\",\r\n            \"mainGroup\": \"default\",\r\n           
+    \"subGroup\": \"\",\r\n            \"topo\": 500,\r\n            \"base\": 700\r\n       
+    }\r\n    ]\r\n}\r\n}"
   size: {x: 0, y: 0}
 --- !u!114 &1872632597
 MonoBehaviour:
@@ -1436,3 +1596,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d0c34e475f59c43ad6ef01b664eb64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1872632602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872632594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2c6d9cabfac8c647b505d2383777791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headSize: 3.25

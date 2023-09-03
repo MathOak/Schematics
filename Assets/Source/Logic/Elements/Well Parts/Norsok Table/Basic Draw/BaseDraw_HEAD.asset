@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Suspensor de Coluna
   elementEngName: 
-  _writePartOnDoc: 0
   _key: draw_head
-  elementIcon: {fileID: 21300000, guid: 51bcc6feea3f7ee4294fc2081c16890f, type: 3}
   _columItem: 0
+  _writePartOnDoc: 0
+  _drawRectLine: 0
+  _fixedWritePosition: 0
+  _fixedPosition: 0
   pivot: {x: 0.5, y: 0.5}
   useBgColor: 0
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
@@ -28,5 +30,5 @@ MonoBehaviour:
   maskInteraction: 0
   drawMode: 0
   aditionalArtScale: {x: 1, y: 1}
-  minimalVirtualHeight: 0
+  minimalVirtualHeight: 0.05
   sortInLayer: 0

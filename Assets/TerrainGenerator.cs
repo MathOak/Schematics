@@ -11,7 +11,7 @@ public class TerrainGenerator : MonoBehaviour
 
     public async UniTask GenerateTerrain(Schematic schematic) 
     {
-        if (schematic.terrains == null || schematic.terrains.Count == 0) 
+        if (schematic._isDiagram == false && schematic.terrains == null || schematic.terrains.Count == 0) 
         {
             return;
         }

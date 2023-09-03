@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: BASIC VALVULA
   elementEngName: 
-  _writePartOnDoc: 1
   _key: draw_valvula
-  elementIcon: {fileID: 21300000, guid: 51bcc6feea3f7ee4294fc2081c16890f, type: 3}
   _columItem: 1
+  _writePartOnDoc: 1
+  _drawRectLine: 0
+  _fixedWritePosition: 0
+  _fixedPosition: 0
   pivot: {x: 0.5, y: 0}
   useBgColor: 0
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
@@ -28,5 +30,5 @@ MonoBehaviour:
   maskInteraction: 0
   drawMode: 1
   aditionalArtScale: {x: 0.275, y: 1}
-  minimalVirtualHeight: 0
+  minimalVirtualHeight: 0.05
   sortInLayer: 110

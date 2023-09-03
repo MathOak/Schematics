@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Fluido
   elementEngName: 
-  _writePartOnDoc: 0
   _key: fluidGeneric
-  elementIcon: {fileID: 0}
   _columItem: 0
+  _writePartOnDoc: 0
+  _drawRectLine: 0
+  _fixedWritePosition: 0
+  _fixedPosition: 0
   pivot: {x: 0.5, y: 0}
   useBgColor: 1
   defaultColor: {r: 0.8470589, g: 0.8470589, b: 0.9960785, a: 1}
@@ -28,5 +30,5 @@ MonoBehaviour:
   maskInteraction: 1
   drawMode: 0
   aditionalArtScale: {x: 1, y: 1}
-  minimalVirtualHeight: 0
+  minimalVirtualHeight: 0.05
   sortInLayer: 50

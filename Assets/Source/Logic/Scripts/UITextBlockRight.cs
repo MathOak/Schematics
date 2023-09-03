@@ -13,18 +13,22 @@ public class UITextBlockRight : MonoBehaviour
 
     public void WriteGroupBlock(ItemMainGroup mainGroup, int index)
     {
-        while(index >= colorList.Count) 
-        {
-            index -= colorList.Count;
-        }
-        
+        Color mainColor = colorList[index % colorList.Count];
 
-        Color color = colorList[index];
+        if (index >= colorList.Count)
+        {
+            int multiplier = index / colorList.Count;
+            Color.RGBToHSV(mainColor, out float h, out float s, out float v);
+            mainColor = Color.HSVToRGB(h + (0.1f) * multiplier, s, v);
+        }
+
         grouptmPro.text = $"{mainGroup._name}";
 
-        backgroundImage.color = color;
-        backgroundImage2.color = color;
+        backgroundImage.color = mainColor;
+        backgroundImage2.color = mainColor;
         string text = $"\n{mainGroup.GetListNames()}";
         tmPro.text = text;
+
+        VisualElement.SetGroupColor(mainGroup._name, mainColor);
     }
 }

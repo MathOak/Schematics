@@ -26,9 +26,9 @@ MonoBehaviour:
   aditionalBgScale: {x: 1, y: 1}
   useInsideArt: 1
   art: {fileID: 21300000, guid: 3e29e06748c44b84ba53ea78b9c87e13, type: 3}
-  artColor: {r: 1, g: 1, b: 1, a: 1}
+  artColor: {r: 0, g: 0, b: 0, a: 1}
   maskInteraction: 0
   drawMode: 1
   aditionalArtScale: {x: 1, y: 1}
-  minimalVirtualHeight: 0
+  minimalVirtualHeight: 0.2
   sortInLayer: 500
