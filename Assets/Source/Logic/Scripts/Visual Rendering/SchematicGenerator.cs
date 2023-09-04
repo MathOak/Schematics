@@ -33,17 +33,6 @@ public class SchematicGenerator : SerializedMonoBehaviour
     [SerializeField] private Canvas _uiCanvas;
     [SerializeField] private UIGenerator uiGenerator;
     [SerializeField] private TerrainGenerator terrainGenerator;
-    [Header("Debug")]
-#if UNITY_EDITOR
-    [SerializeField] private bool writeApiKeyNames;
-#endif
-    [SerializeField] private testMode getSchematicFrom;
-    private bool debugFromInspectorList => getSchematicFrom == testMode.Inspector;
-    private bool debugWebApi => getSchematicFrom == testMode.WebApi;
-    private bool debugJsonString => getSchematicFrom == testMode.JsonString;
-
-    [ShowIf("debugFromInspectorList")][SerializeField] private Schematic debugSchematic;
-    [ShowIf("debugJsonString")][SerializeField][TextArea] private string jsonSchematicText;
     [Space]
     [Header("Header")]
     [SerializeField] private BaseElement cristmasHead;
@@ -60,6 +49,19 @@ public class SchematicGenerator : SerializedMonoBehaviour
     
     [Header("Database")]
     [SerializeField] private List<BaseElement> allElements;
+    [Space]
+    [Header("Debug")]
+#if UNITY_EDITOR
+    [SerializeField] private bool writeApiKeyNames;
+#endif
+    [SerializeField] private testMode getSchematicFrom;
+    private bool debugFromInspectorList => getSchematicFrom == testMode.Inspector;
+    private bool debugWebApi => getSchematicFrom == testMode.WebApi;
+    private bool debugJsonString => getSchematicFrom == testMode.JsonString;
+
+    [ShowIf("debugFromInspectorList")][SerializeField] private Schematic debugSchematic;
+    [ShowIf("debugJsonString")][SerializeField][TextArea] private string jsonSchematicText;
+
 
     public static Dictionary<string, BaseElement> elements;
 
@@ -88,8 +90,7 @@ public class SchematicGenerator : SerializedMonoBehaviour
     [DllImport("__Internal")]
     public static extern void InternalUnityErrorLogger(string errorMessage);
 #endif
-
-private void Start()
+    private void Start()
     {
         elements = new Dictionary<string, BaseElement>();
 
@@ -253,6 +254,10 @@ private void Start()
         SchematicItem head = new SchematicItem();
         head.element = cristmasHead;
         await head.element.StartDraw(head, new Rect(Vector2.zero, Vector2.one * HEAD_SIZE));
+        var text = uiGenerator.WriteLeftBlock(head);
+        text.transform.GetComponent<RectTransform>().position = new Vector2(text.transform.position.x, text.transform.position.y + 1.5f);
+        LineDrawer.instance.CreateHeadLine(text);
+
     }
 
     private async UniTask DrawColum(Schematic schematic)
@@ -290,6 +295,10 @@ private void Start()
             {
                 lastAbstractDeph -= partsSpace.VirtualToRealScale();
             }
+
+            var text = uiGenerator.WriteLeftBlock(schematic.column[i]);
+            text.transform.GetComponent<RectTransform>().position = new Vector2(text.transform.position.x, text.transform.position.y);
+            LineDrawer.instance.CreateLine(text);
         }
     }
 
