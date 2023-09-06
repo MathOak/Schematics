@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: BaseElement_Well_Sapata
   m_EditorClassIdentifier: 
   elementName: Sapata
+  elementEngName: 
   _key: sapata
-  elementIcon: {fileID: 21300000, guid: 51bcc6feea3f7ee4294fc2081c16890f, type: 3}
   _columItem: 0
+  _writePartOnDoc: 0
+  _drawRectLine: 0
+  _fixedWritePosition: 0
+  _fixedPosition: 0
   pivot: {x: 0.5, y: 0}
   useBgColor: 0
   defaultColor: {r: 0, g: 0, b: 0, a: 0}
@@ -26,5 +30,5 @@ MonoBehaviour:
   maskInteraction: 0
   drawMode: 2
   aditionalArtScale: {x: 1, y: 1}
-  minimalVirtualHeight: 0
+  minimalVirtualHeight: 0.05
   sortInLayer: 30

@@ -8,6 +8,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -35,7 +36,7 @@ public class SchematicGenerator : SerializedMonoBehaviour
     [SerializeField] private TerrainGenerator terrainGenerator;
     [Space]
     [Header("Header")]
-    [SerializeField] private BaseElement cristmasHead;
+    [SerializeField] private ChristmasTreeGenerator cristmasGenerator;
 
     [Header("Colum")]
     [SerializeField] private BaseElement columSuspensor;
@@ -65,7 +66,6 @@ public class SchematicGenerator : SerializedMonoBehaviour
 
     public static Dictionary<string, BaseElement> elements;
 
-    public const float HEAD_SIZE = 3.25f;
     public const float DRAW_LIMITS_HORIZONTAL = 4f;
     public const float DRAW_WELL_SIZE = 2f;
 
@@ -124,6 +124,7 @@ public class SchematicGenerator : SerializedMonoBehaviour
                 }
 
                 await AsyncGenerator(debugSchematic);
+                RenderSchematic();
                 break;
             case testMode.JsonString:
                 GenerateSchematicFromString();
@@ -135,8 +136,6 @@ public class SchematicGenerator : SerializedMonoBehaviour
             default:
                 break;
         }
-
-        RenderSchematic();
     }
 #endif
 
@@ -210,7 +209,7 @@ public class SchematicGenerator : SerializedMonoBehaviour
             ShowApiKeyNames(schematic);
 #endif
 
-        await DrawList(schematic.parts);
+        await DrawList(schematic.parts.Where(part => !part.element._headItem).ToList());
 
         //schematic.coating.Sort((coatA, coatB) => coatA._sapata._depth > coatB._sapata._depth ? -1 : 1);
 
@@ -226,7 +225,9 @@ public class SchematicGenerator : SerializedMonoBehaviour
         await DrawColum(schematic);
         await DrawUIText(schematic);
 
+
         lastGeneration = schematic;
+        VisualElement.ChangeItemsColor();
     }
 
 #if UNITY_EDITOR
@@ -236,28 +237,17 @@ public class SchematicGenerator : SerializedMonoBehaviour
     }
 #endif
 
-    private async UniTask DrawVoidSpaces(Schematic Schematic) 
+    private async UniTask DrawVoidSpaces(Schematic schematic) 
     {
-        await DrawHead();
+        await cristmasGenerator.DrawHead(schematic);
 
         SchematicItem voidSchematic = new SchematicItem();
         voidSchematic.element = emptyPointsElement;
-        voidSchematic._depth = Schematic._drillDepth;
+        voidSchematic._depth = schematic._drillDepth;
 
         await voidSchematic.Draw();
         voidSchematic.element = emptyElement;
         await voidSchematic.Draw();
-    }
-
-    private async UniTask DrawHead() 
-    {
-        SchematicItem head = new SchematicItem();
-        head.element = cristmasHead;
-        await head.element.StartDraw(head, new Rect(Vector2.zero, Vector2.one * HEAD_SIZE));
-        var text = uiGenerator.WriteLeftBlock(head);
-        text.transform.GetComponent<RectTransform>().position = new Vector2(text.transform.position.x, text.transform.position.y + 1.5f);
-        LineDrawer.instance.CreateHeadLine(text);
-
     }
 
     private async UniTask DrawColum(Schematic schematic)
@@ -266,39 +256,27 @@ public class SchematicGenerator : SerializedMonoBehaviour
             return;
 
         SchematicItem columBase = new SchematicItem();
-        columBase.element = columSuspensor;
-        columBase._origin = -1 * (1.1f.VirtualToRealScale());
-        columBase._depth = -1 * (0.6f.VirtualToRealScale());
-        await columBase.Draw();
+        if (schematic.GetAllParts().Any(part => part.element.Key == "tubing_hanger"))
+        {
+            columBase.element = columSuspensor;
+            columBase._origin = -1 * (1.1f.VirtualToRealScale());
+            columBase._depth = -1 * (0.6f.VirtualToRealScale());
+            await columBase.Draw();
+        }
 
         columBase.element = columFill;
         columBase._origin = -1 * (1.1f.VirtualToRealScale());
-        columBase._depth = schematic.column[schematic.column.Count - 1]._depth;
-        await columBase.Draw();
+        columBase._depth = schematic.GetColumDepth();
 
+        await columBase.Draw();
         await DrawColumParts(schematic);
     }
 
     private async UniTask DrawColumParts(Schematic schematic) 
     {
-        var lastPart = schematic.column[schematic.column.Count - 1];
-        float lastAbstractDeph = lastPart._depth;
-
-        for (int i = schematic.column.Count - 1; i >= 0; i--)
+        foreach (var item in schematic.column)
         {
-            float abstractOrigin = lastAbstractDeph - partsSize.VirtualToRealScale();
-            await schematic.column[i].Draw(abstractOrigin, lastAbstractDeph);
-
-            lastAbstractDeph = abstractOrigin;
-
-            if (i - 1 > 0 && schematic.column[i - 1]._depth < schematic.column[i]._origin) 
-            {
-                lastAbstractDeph -= partsSpace.VirtualToRealScale();
-            }
-
-            var text = uiGenerator.WriteLeftBlock(schematic.column[i]);
-            text.transform.GetComponent<RectTransform>().position = new Vector2(text.transform.position.x, text.transform.position.y);
-            LineDrawer.instance.CreateLine(text);
+            await item.Draw();
         }
     }
 
@@ -324,28 +302,16 @@ public class SchematicGenerator : SerializedMonoBehaviour
         rTransform.sizeDelta = new Vector2(DRAW_LIMITS_HORIZONTAL.RealToVirtualScale() * 600, schematic.GetLastDepth().RealToVirtualScale());
     }
 
-    private List<SchematicItem> GetSchematicItems(Schematic schematic) 
-    {
-        var result = schematic.GetAllParts();
-        SchematicItem head = cristmasHead.CreateVirtualItem();
-        SchematicItem suspensor = columSuspensor.CreateVirtualItem();
-        SchematicItem production = columSuspensor.CreateVirtualItem();
-        result.Insert(0, production);
-        result.Insert(0, suspensor);
-        result.Insert(0, head);
-        return result;
-    }
-
     public void RenderSchematic()
     {
 #if CODING_WEB_MODULE || (!UNITY_EDITOR && UNITY_WEBGL)
         InternalUnityLogger("Rendering Schematic to image...");
 #endif
         float lastDeph = SchematicGenerator.lastGeneration.GetLastDepth();
-        float drawSize = (lastDeph.RealToVirtualScale() / 2) + (SchematicGenerator.HEAD_SIZE / 2);
+        float drawSize = (lastDeph.RealToVirtualScale() / 2) + (ChristmasTreeGenerator.HeadSize / 2);
 
         _schematicCamera.orthographicSize = drawSize;
-        _schematicCamera.transform.position = new Vector3(0, -drawSize + (SchematicGenerator.HEAD_SIZE), -10);
+        _schematicCamera.transform.position = new Vector3(0, -drawSize + (ChristmasTreeGenerator.HeadSize), -10);
 
         Rect cameraViewRect = new Rect(_printCamera.rect);
         float widthValue = Mathf.InverseLerp(0, _printCamera.orthographicSize, SchematicGenerator.DRAW_LIMITS_HORIZONTAL / 2);
@@ -386,9 +352,6 @@ public class SchematicGenerator : SerializedMonoBehaviour
 
         this.filePath = filePath;
         //size = new Vector2Int(printWidth, printHeight);
-
-        VisualElement.ChangeItemsColor();
-
         //ResizeTexture();
 #endif
     }

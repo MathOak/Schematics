@@ -81,11 +81,38 @@ public class VisualElement : MonoBehaviour
         return visualElement;
     }
 
+    public void SetToGrayscale() 
+    {
+        if (renderBG != null)
+            ConvertToGrayscale(renderBG);
+
+        if (renderArt != null)
+            ConvertToGrayscale(renderArt);
+    }
+
+    void ConvertToGrayscale(SpriteRenderer render)
+    {
+        Color originalColor = render.color;
+        float grayValue = originalColor.r * 0.299f + originalColor.g * 0.587f + originalColor.b * 0.114f;
+        render.color = new Color(grayValue, grayValue, grayValue, originalColor.a);
+    }
+
+
     public static List<string> revestimento = new List<string>() { "#FF6C00", "#E971FB", "#FF4CA700" };
     public static List<string> terreno = new List<string>() { "#FEFF00", "#FF0500", "#98007E" };
 
     public static void ChangeItemsColor()
     {
+        if (SchematicGenerator.lastGeneration._isDiagram == false) 
+        {
+            foreach (var visualElement in visualElements)
+            {
+                visualElement.SetToGrayscale();
+            }
+
+            return;
+        }
+
         Color color;
 
         List<Color32> revestimentoClone = new List<Color32>();
@@ -111,31 +138,46 @@ public class VisualElement : MonoBehaviour
             VisualElement visualElement = visualElements[i];
             SchematicItem item = visualElement.SchematicItem;
 
-            for (int j = 0; j < visualElements.Count; j++)
+            if (visualElement.SchematicItem._mainGroup == "default")
             {
-                VisualElement schematicVisualElement = visualElements[j];
-                SchematicItem schematicItem = schematicVisualElement.SchematicItem;
-                if (item == schematicItem)
-                    continue;
-
-                if (schematicItem.element.Key == item.element.Key)
+                for (int j = 0; j < visualElements.Count; j++)
                 {
-                    if (schematicVisualElement.colorChanged || visualElement.colorChanged)
+                    VisualElement schematicVisualElement = visualElements[j];
+                    SchematicItem schematicItem = schematicVisualElement.SchematicItem;
+                    if (item == schematicItem)
                         continue;
 
-                    if (schematicItem.element.Key == "sealant")
+                    if (schematicItem.element.Key == item.element.Key)
                     {
-                        schematicVisualElement.renderBG.color = revestimentoClone[revestimentIndex];
-                        revestimentIndex++;
+                        if (schematicVisualElement.colorChanged || visualElement.colorChanged)
+                            continue;
+
+                        if (schematicItem.element.Key == "sealant")
+                        {
+                            schematicVisualElement.renderBG.color = revestimentoClone[revestimentIndex];
+                            revestimentIndex++;
+                        }
+                        if (schematicItem.element.Key == "Terreno")
+                        {
+                            schematicVisualElement.renderBG.color = terrenoClone[terrenoIndex];
+                            terrenoIndex++;
+                        }
+                        schematicVisualElement.colorChanged = true;
                     }
-                    if (schematicItem.element.Key == "Terreno")
-                    {
-                        schematicVisualElement.renderBG.color = terrenoClone[terrenoIndex];
-                        terrenoIndex++;
-                    }
-                    schematicVisualElement.colorChanged = true;
                 }
             }
+        }
+    }
+
+    public static void SetGroupColor(string group, Color color) 
+    {
+        var elements = visualElements.FindAll(x => x.SchematicItem._mainGroup == group);
+        foreach (var element in elements)
+        {
+            if (element.renderArt != null)
+                element.renderArt.color = color;
+            else if (element.renderBG != null)
+                element.renderBG.color = color;
         }
     }
 }

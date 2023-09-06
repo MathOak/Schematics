@@ -106,16 +106,27 @@ public class SchematicItem : SchematicDrawable
         public SchematicItem ConvertToObject() 
         {
             var result = new SchematicItem();
-            result._virtualName = name;
+            result._virtualName = LimitAndAppend(name);
             result._description = description;
             result._hideText = hideText;
             result.element = SchematicGenerator.elements[this.element];
             result._mainGroup = this.mainGroup;
+            result._subGroup = this.subGroup;
             result._origin = this.topo;
             result._depth = this.@base;
-            result._mainGroup = mainGroup;
-            result._subGroup = subGroup;
+
             return result;
+        }
+
+        private string LimitAndAppend(string input, int maxLength = 45)
+        {
+            if (input == null)
+                return null;
+
+            if (input.Length <= maxLength)
+                return input;
+
+            return input.Substring(0, maxLength - 3) + "... ";
         }
     }
 }

@@ -30,5 +30,5 @@ MonoBehaviour:
   maskInteraction: 0
   drawMode: 1
   aditionalArtScale: {x: 0.275, y: 1}
-  minimalVirtualHeight: 0
-  sortInLayer: 500
+  minimalVirtualHeight: 0.05
+  sortInLayer: 110

@@ -64,6 +64,27 @@ public class Schematic
         return result;
     }
 
+    public float GetColumDepth()
+    {
+        float result = 0;
+
+        var fluidC = column.Find(s => s.element.Key == "fluid_column");
+        if (fluidC != null)
+        {
+            result = fluidC._depth;
+        }
+        else 
+        {
+            foreach (var part in column)
+            {
+                if (part._depth > result)
+                    result = part._depth;
+            }
+        }
+
+        return result;
+    }
+
     public string ToJsonFormat ()
     {
         return JsonUtility.ToJson(this.ToJsonObject());

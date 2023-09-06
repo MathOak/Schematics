@@ -29,9 +29,12 @@ public partial class UIGenerator : MonoBehaviour
         var leftElements = schematic.GetAllParts().Where(part => part.WriteText).ToList();
         await WriteLeftText(leftElements);
 
-        var rightItems = schematic.GetAllParts()
-            .Where(part => part.WriteText && (!part._mainGroup.IsNullOrWhitespace() && part._mainGroup != "default")).ToList();
-        await WriteRightText(rightItems);
+        if (schematic._isDiagram)
+        {
+            var rightItems = schematic.GetAllParts()
+                .Where(part => part.WriteText && (!part._mainGroup.IsNullOrWhitespace() && part._mainGroup != "default")).ToList();
+            await WriteRightText(rightItems);
+        }
     }
 
 

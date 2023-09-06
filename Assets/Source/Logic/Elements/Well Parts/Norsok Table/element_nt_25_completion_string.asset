@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: "Coluna de completa\xE7\xE3o"
   elementEngName: "Completion string\r"
-  _writePartOnDoc: 1
   _key: completion_string
   _columItem: 0
+  _writePartOnDoc: 1
+  _drawRectLine: 0
+  _fixedWritePosition: 0
+  _fixedPosition: 0
   pivot: {x: 0.5, y: 0}
   useBgColor: 1
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
@@ -27,5 +30,5 @@ MonoBehaviour:
   maskInteraction: 1
   drawMode: 0
   aditionalArtScale: {x: 1, y: 1}
-  minimalVirtualHeight: 0
+  minimalVirtualHeight: 0.05
   sortInLayer: 0

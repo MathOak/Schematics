@@ -13,7 +13,8 @@ public class BaseElement : ScriptableObject
     [SerializeField] private string elementEngName = "Generic Part ENG";
     [SerializeField] private string _key;
     private Sprite elementIcon;
-    public bool _columItem;
+    public bool _headItem = false;
+    [HideIf("_headItem")]public bool _columItem;
 
     [Header("Write Settings")]
     public bool _writePartOnDoc = true;

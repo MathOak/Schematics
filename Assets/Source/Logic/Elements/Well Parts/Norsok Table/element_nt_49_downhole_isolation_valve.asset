@@ -14,18 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: "V\xE1lvula de isolamento subsuperficie"
   elementEngName: "Downhole isolation valve\r"
-  _writePartOnDoc: 1
   _key: downhole_isolation_valve
-  _columItem: 0
+  _columItem: 1
+  _writePartOnDoc: 1
+  _drawRectLine: 0
+  _fixedWritePosition: 0
+  _fixedPosition: 0
   pivot: {x: 0.5, y: 0}
-  useBgColor: 1
+  useBgColor: 0
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   aditionalBgScale: {x: 1, y: 1}
   useInsideArt: 1
   art: {fileID: 21300000, guid: 43b9c60786964bb47897b921ea1606d2, type: 3}
   artColor: {r: 0, g: 0, b: 0, a: 1}
-  maskInteraction: 1
-  drawMode: 0
-  aditionalArtScale: {x: 1, y: 1}
-  minimalVirtualHeight: 0
-  sortInLayer: 0
+  maskInteraction: 0
+  drawMode: 1
+  aditionalArtScale: {x: 0.275, y: 1}
+  minimalVirtualHeight: 0.05
+  sortInLayer: 110

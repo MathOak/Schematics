@@ -22,7 +22,7 @@ MonoBehaviour:
   _fixedPosition: 0
   pivot: {x: 0.5, y: 0}
   useBgColor: 1
-  defaultColor: {r: 1, g: 0.9100906, b: 0.5801887, a: 1}
+  defaultColor: {r: 1, g: 0.93800485, b: 0.5803922, a: 1}
   aditionalBgScale: {x: 2, y: 1}
   useInsideArt: 0
   art: {fileID: 21300000, guid: 6b56a5ced209f564590029f83e45b0de, type: 3}
@@ -30,5 +30,5 @@ MonoBehaviour:
   maskInteraction: 1
   drawMode: 0
   aditionalArtScale: {x: 1, y: 1}
-  minimalVirtualHeight: 0
+  minimalVirtualHeight: 0.05
   sortInLayer: -50

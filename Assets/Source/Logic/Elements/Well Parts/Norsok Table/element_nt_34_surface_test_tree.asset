@@ -15,20 +15,21 @@ MonoBehaviour:
   elementName: "\xC1rvore de Natal (ANC de teste)"
   elementEngName: "Surface test tree\r"
   _key: surface_test_tree
+  _headItem: 1
   _columItem: 0
   _writePartOnDoc: 1
   _drawRectLine: 1
   _fixedWritePosition: 1
   _fixedPosition: -2
-  pivot: {x: 0.5, y: 0}
+  pivot: {x: 0.5, y: 0.5}
   useBgColor: 1
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   aditionalBgScale: {x: 1, y: 1}
   useInsideArt: 1
-  art: {fileID: 21300000, guid: 5a3fba1b1abaf6c41ae4900c81d59314, type: 3}
+  art: {fileID: 21300000, guid: 59bcc7d4fbf5b52469d4be611280256f, type: 3}
   artColor: {r: 0, g: 0, b: 0, a: 1}
-  maskInteraction: 1
+  maskInteraction: 0
   drawMode: 0
   aditionalArtScale: {x: 1, y: 1}
-  minimalVirtualHeight: 0
+  minimalVirtualHeight: 0.05
   sortInLayer: 0

@@ -32,13 +32,4 @@ public class LineDrawer : MonoBehaviour
         }
         lines = new List<LineRenderer>();
     }
-    public void CreateHeadLine(UITextBlockLeft textBlock)
-    {
-        LineRenderer line = Instantiate(lineRenderer);
-        float xPos = textBlock.schematicItem.element._columItem ? 0 : -0.95f;
-        line.SetPosition(0, new Vector3(textBlock.LinePivot.transform.position.x, textBlock.LinePivot.transform.position.y, 0));
-        float yPos = textBlock.schematicItem.element._drawRectLine ? textBlock.LinePivot.transform.position.y : -textBlock.schematicItem.GetMidPoint().RealToVirtualScale();
-        line.SetPosition(1, new Vector3(xPos, yPos + 1.5f, 0));
-        lines.Add(line);
-    }
 }

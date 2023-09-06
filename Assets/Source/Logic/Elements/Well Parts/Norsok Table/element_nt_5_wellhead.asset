@@ -15,20 +15,21 @@ MonoBehaviour:
   elementName: "Cabe\xE7a de Po\xE7o"
   elementEngName: "Wellhead\r"
   _key: wellhead
+  _headItem: 1
   _columItem: 0
   _writePartOnDoc: 1
   _drawRectLine: 1
   _fixedWritePosition: 1
   _fixedPosition: -0.55
-  pivot: {x: 0.5, y: 0}
+  pivot: {x: 0.5, y: 0.5}
   useBgColor: 0
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   aditionalBgScale: {x: 1, y: 1}
-  useInsideArt: 0
-  art: {fileID: 21300000, guid: 850c914df84b78e478a1a9cd94882b8f, type: 3}
+  useInsideArt: 1
+  art: {fileID: 21300000, guid: f8d2c5f6498ce9a468c87aa21859f5c0, type: 3}
   artColor: {r: 0, g: 0, b: 0, a: 1}
-  maskInteraction: 1
+  maskInteraction: 0
   drawMode: 0
   aditionalArtScale: {x: 1, y: 1}
-  minimalVirtualHeight: 0
+  minimalVirtualHeight: 0.05
   sortInLayer: 0
