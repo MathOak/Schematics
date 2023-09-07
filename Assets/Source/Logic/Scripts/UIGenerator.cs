@@ -41,10 +41,28 @@ public partial class UIGenerator : MonoBehaviour
     public async UniTask WriteLeftText(List<SchematicItem> schematicItems)
     {
         leftBlocks = new List<UITextBlockLeft>();
+        schematicItems = RemoveItemCopies(schematicItems);
+
+        var indexedItems = schematicItems.Select((item, index) => new { Item = item, Index = index }).ToList();
+        indexedItems.Sort((a, b) =>
+        {
+            if (b.Item.element._headItem && a.Item.element._headItem)
+                return b.Item.element._headItem.CompareTo(a.Item.element._headItem);
+            if (b.Item.element._headItem)
+                return 1;
+            if (a.Item.element._headItem)
+                return -1;
+            return a.Index.CompareTo(b.Index);
+        });
+
+        schematicItems = indexedItems.Select(x => x.Item).ToList();
 
         foreach (var sItem in schematicItems)
         {
             var textBlock = WriteLeftBlock(sItem);
+
+            await UniTask.WaitForFixedUpdate();
+            await UniTask.WaitForFixedUpdate();
 
             if (leftBlocks.Count > 0 && (textBlock.IsOverlappingWith(leftBlocks[leftBlocks.Count - 1]) || textBlock.pivot.position.y > leftBlocks[leftBlocks.Count - 1].pivot.position.y))
             {
@@ -63,6 +81,32 @@ public partial class UIGenerator : MonoBehaviour
         {
             LineDrawer.instance.CreateLine(block);
         }
+    }
+
+    public static List<SchematicItem> RemoveItemCopies(List<SchematicItem> schematicItems)
+    {
+        HashSet<string> uniqueItems = new HashSet<string>();
+        List<SchematicItem> itemsToRemove = new List<SchematicItem>();
+
+        foreach (var item in schematicItems)
+        {
+            string uniqueKey = item.ToString();
+            if (uniqueItems.Contains(uniqueKey))
+            {
+                itemsToRemove.Add(item);
+            }
+            else
+            {
+                uniqueItems.Add(uniqueKey);
+            }
+        }
+
+        foreach (var block in itemsToRemove)
+        {
+            schematicItems.Remove(block);
+        }
+
+        return schematicItems;
     }
 
     public UITextBlockLeft WriteLeftBlock(SchematicItem sItem)

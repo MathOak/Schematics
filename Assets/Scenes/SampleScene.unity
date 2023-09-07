@@ -1445,46 +1445,46 @@ MonoBehaviour:
       colorHex: 
       patternKey: 
     comments: []
-  jsonSchematicText: "{\r\n\t\"elementDataError\": true,\r\n\t\"data\": {\r\n   
-    \"isDiagram\": true,\r\n    \"hideAllText\": false,\r\n    \"drillDeph\": 2121,\r\n   
-    \"parts\": [\r\n        {\r\n            \"hideText\": false,\r\n           
+  jsonSchematicText: "{\r\n    \"elementDataError\": true,\r\n    \"data\":\r\n   
+    {\r\n    \"isDiagram\": true,\r\n    \"hideAllText\": false,\r\n    \"drillDeph\":
+    2121,\r\n    \"parts\": [\r\n        {\r\n            \"hideText\": false,\r\n           
     \"name\": \"ADAPTADOR PARA AN\",\r\n            \"description\": \"\",\r\n           
-    \"element\": \"tubing_hanger\",\r\n            \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n           
+    \"element\": \"surface_tree\",\r\n            \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n           
     \"subGroup\": \"\",\r\n            \"topo\": 4,\r\n            \"base\": 4.5\r\n       
     },\r\n        {\r\n            \"hideText\": false,\r\n            \"name\":
     \"CABE\xC7A DE PROD FLANGEADA T16 CBV 11-X-7 1/16'' - 3000\",\r\n           
     \"description\": \"\",\r\n            \"element\": \"wellhead\",\r\n           
     \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n            \"subGroup\": \"\",\r\n           
     \"topo\": 4.5,\r\n            \"base\": 5\r\n        },\r\n        {\r\n           
-    \"hideText\": true,\r\n            \"name\": \"REVESTIMENTO\",\r\n           
+    \"hideText\": false,\r\n            \"name\": \"REVESTIMENTO\",\r\n           
     \"description\": \"\",\r\n            \"element\": \"casing\",\r\n           
     \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n            \"subGroup\": \"\",\r\n           
     \"topo\": 5,\r\n            \"base\": 1503\r\n        },\r\n        {\r\n           
-    \"hideText\": true,\r\n            \"name\": \"SELANTE ROCHA SELANTE\",\r\n           
+    \"hideText\": false,\r\n            \"name\": \"SELANTE ROCHA SELANTE\",\r\n           
     \"description\": \"\",\r\n            \"element\": \"casing\",\r\n           
     \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n            \"subGroup\": \"\",\r\n           
     \"topo\": 1470,\r\n            \"base\": 1500\r\n        },\r\n        {\r\n           
-    \"hideText\": true,\r\n            \"name\": \"AN BM Teste Sea\",\r\n           
+    \"hideText\": false,\r\n            \"name\": \"AN BM Teste Sea\",\r\n           
     \"description\": \"\",\r\n            \"element\": \"surface_tree\",\r\n           
     \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n            \"subGroup\": \"\",\r\n           
     \"topo\": 2.2,\r\n            \"base\": 4\r\n        },\r\n        {\r\n           
-    \"hideText\": true,\r\n            \"name\": \"CIMENTA\xC7\xC3O PRIM\xC1RIA\",\r\n           
+    \"hideText\": false,\r\n            \"name\": \"CIMENTA\xC7\xC3O PRIM\xC1RIA\",\r\n           
     \"description\": \"CIMENTA\xC7\xC3O PRIM\xC1RIA\",\r\n            \"element\":
     \"casing_cement\",\r\n            \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n           
     \"subGroup\": \"\",\r\n            \"topo\": 1443,\r\n            \"base\": 1503\r\n       
-    },\r\n        {\r\n            \"hideText\": true,\r\n            \"name\": \"FLUIDO
-    PRODUZIDO\",\r\n            \"description\": \"\",\r\n            \"element\":
+    },\r\n        {\r\n            \"hideText\": false,\r\n            \"name\":
+    \"FLUIDO PRODUZIDO\",\r\n            \"description\": \"\",\r\n            \"element\":
     \"fluid_column\",\r\n            \"mainGroup\": \"CSB 1 Prim\xE1rio\",\r\n           
     \"subGroup\": \"\",\r\n            \"topo\": 50,\r\n            \"base\": 2111\r\n       
-    },\r\n        {\r\n            \"hideText\": true,\r\n            \"name\": \"BOP\",\r\n           
-    \"description\": \"\",\r\n            \"element\": \"draw_luva\",\r\n           
+    },\r\n        {\r\n            \"hideText\": false,\r\n            \"name\":
+    \"BOP\",\r\n            \"description\": \"\",\r\n            \"element\": \"drilling_bop\",\r\n           
     \"mainGroup\": \"CSB 1 Prim\xE1rio\",\r\n            \"subGroup\": \"\",\r\n           
     \"topo\": 550,\r\n            \"base\": 600\r\n        },\r\n        {\r\n           
-    \"hideText\": true,\r\n            \"name\": \"Valvula snub\",\r\n           
+    \"hideText\": false,\r\n            \"name\": \"Valvula snub\",\r\n           
     \"description\": \"\",\r\n            \"element\": \"snubbing_check_valves\",\r\n           
     \"mainGroup\": \"CSB 1 Prim\xE1rio\",\r\n            \"subGroup\": \"\",\r\n           
     \"topo\": 350,\r\n            \"base\": 400\r\n        },\r\n        {\r\n           
-    \"hideText\": true,\r\n            \"name\": \"Packer\",\r\n            \"description\":
+    \"hideText\": false,\r\n            \"name\": \"Packer\",\r\n            \"description\":
     \"\",\r\n            \"element\": \"production_packer\",\r\n            \"mainGroup\":
     \"CSB 1 Prim\xE1rio\",\r\n            \"subGroup\": \"\",\r\n            \"topo\":
     2100,\r\n            \"base\": 2150\r\n        },\r\n        {\r\n           
@@ -1492,43 +1492,74 @@ MonoBehaviour:
     \"description\": \"\",\r\n            \"element\": \"cement_plug\",\r\n           
     \"mainGroup\": \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\":
     1900,\r\n            \"base\": 1950\r\n        },\r\n        {\r\n           
-    \"hideText\": false,\r\n            \"name\": \"a9c52735-0206-426b-a967-ba56e2e3e47e\",\r\n           
-    \"description\": \"\",\r\n            \"element\": \"draw_bomb\",\r\n           
-    \"mainGroup\": \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\":
-    750,\r\n            \"base\": 750\r\n        },\r\n        {\r\n            \"hideText\":
-    false,\r\n            \"name\": \"Tamp\xF5es Mec\xE2nicos\",\r\n            \"description\":
-    \"\",\r\n            \"element\": \"mechanical_tubular_plugs\",\r\n           
-    \"mainGroup\": \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\":
-    1950,\r\n            \"base\": 2000\r\n        },\r\n        {\r\n           
-    \"hideText\": false,\r\n            \"name\": \"Tamp\xE3o 2\",\r\n           
-    \"description\": \"\",\r\n            \"element\": \"mechanical_tubular_plugs\",\r\n           
-    \"mainGroup\": \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\":
-    850,\r\n            \"base\": 900\r\n        },\r\n        {\r\n            \"hideText\":
-    false,\r\n            \"name\": \"d9e1823c-8c87-418e-a3de-eeff6473325c\",\r\n           
-    \"description\": \"\",\r\n            \"element\": \"perforation\",\r\n           
-    \"mainGroup\": \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\":
-    700,\r\n            \"base\": 750\r\n        },\r\n        {\r\n            \"hideText\":
-    false,\r\n            \"name\": \"d9e1823c-8c87-418e-a3de-eeff6473325c\",\r\n           
+    \"hideText\": false,\r\n            \"name\": \"Peixe\",\r\n            \"description\":
+    \"\",\r\n            \"element\": \"fish\",\r\n            \"mainGroup\": \"\",\r\n           
+    \"subGroup\": \"\",\r\n            \"topo\": 750,\r\n            \"base\": 750\r\n       
+    },\r\n        {\r\n            \"hideText\": false,\r\n            \"name\":
+    \"Tamp\xF5es Mec\xE2nicos\",\r\n            \"description\": \"\",\r\n           
+    \"element\": \"mechanical_tubular_plugs\",\r\n            \"mainGroup\": \"\",\r\n           
+    \"subGroup\": \"\",\r\n            \"topo\": 1950,\r\n            \"base\": 2000\r\n       
+    },\r\n        {\r\n            \"hideText\": false,\r\n            \"name\":
+    \"Tamp\xE3o 2\",\r\n            \"description\": \"\",\r\n            \"element\":
+    \"mechanical_tubular_plugs\",\r\n            \"mainGroup\": \"\",\r\n           
+    \"subGroup\": \"\",\r\n            \"topo\": 850,\r\n            \"base\": 900\r\n       
+    },\r\n        {\r\n            \"hideText\": false,\r\n            \"name\":
+    \"Canhoneio\",\r\n            \"description\": \"\",\r\n            \"element\":
+    \"perforation\",\r\n            \"mainGroup\": \"\",\r\n            \"subGroup\":
+    \"\",\r\n            \"topo\": 700,\r\n            \"base\": 750\r\n        },\r\n       
+    {\r\n            \"hideText\": false,\r\n            \"name\": \"Canhoneio\",\r\n           
     \"description\": \"\",\r\n            \"element\": \"perforation\",\r\n           
     \"mainGroup\": \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\":
     800,\r\n            \"base\": 850\r\n        },\r\n        {\r\n            \"hideText\":
-    false,\r\n            \"name\": \"d9e1823c-8c87-418e-a3de-eeff6473325c\",\r\n           
-    \"description\": \"\",\r\n            \"element\": \"perforation\",\r\n           
+    false,\r\n            \"name\": \"Canhoneio\",\r\n            \"description\":
+    \"\",\r\n            \"element\": \"perforation\",\r\n            \"mainGroup\":
+    \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\": 600,\r\n           
+    \"base\": 625\r\n        },\r\n        {\r\n            \"hideText\": false,\r\n           
+    \"name\": \"Canhoneio\",\r\n            \"description\": \"\",\r\n           
+    \"element\": \"perforation\",\r\n            \"mainGroup\": \"\",\r\n           
+    \"subGroup\": \"\",\r\n            \"topo\": 625,\r\n            \"base\": 650\r\n       
+    },\r\n        {\r\n            \"hideText\": false,\r\n            \"name\":
+    \"TUBING   3 1/2 EU-9,3 LB/P\xC9-N80-NOVOS (05/10)\",\r\n            \"description\":
+    \"\",\r\n            \"element\": \"coiled_tubing\",\r\n            \"mainGroup\":
+    \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\": 4,\r\n           
+    \"base\": 4\r\n        },\r\n        {\r\n            \"hideText\": false,\r\n           
+    \"name\": \"TUBING   2 7/8 EU-6,5 LB/P\xC9-N80-USADO (12/08)\",\r\n           
+    \"description\": \"\",\r\n            \"element\": \"coiled_tubing\",\r\n           
     \"mainGroup\": \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\":
-    600,\r\n            \"base\": 625\r\n        },\r\n        {\r\n            \"hideText\":
-    false,\r\n            \"name\": \"d9e1823c-8c87-418e-a3de-eeff6473325c\",\r\n           
-    \"description\": \"\",\r\n            \"element\": \"perforation\",\r\n           
-    \"mainGroup\": \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\":
-    625,\r\n            \"base\": 650\r\n        },\r\n        {\r\n            \"hideText\":
-    false,\r\n            \"name\": \"db707ee7-882d-4221-bd55-d8e992ac9ceb\",\r\n           
-    \"description\": \"\",\r\n            \"element\": \"production_packer\",\r\n           
-    \"mainGroup\": \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\":
-    1500,\r\n            \"base\": 1500\r\n        }\r\n    ],\r\n    \"comments\":
-    [],\r\n    \"terrains\": [\r\n        {\r\n            \"hideText\": true,\r\n           
-    \"name\": \"\",\r\n            \"description\": \"\",\r\n            \"element\":
-    \"terrain_formation\",\r\n            \"mainGroup\": \"default\",\r\n           
-    \"subGroup\": \"\",\r\n            \"topo\": 500,\r\n            \"base\": 700\r\n       
-    }\r\n    ]\r\n}\r\n}"
+    750.76,\r\n            \"base\": 750.76\r\n        },\r\n        {\r\n           
+    \"hideText\": false,\r\n            \"name\": \"TUBING   2 7/8 EU-6,5 LB/P\xC9-N80-USADO
+    (12/08)\",\r\n            \"description\": \"\",\r\n            \"element\":
+    \"coiled_tubing\",\r\n            \"mainGroup\": \"\",\r\n            \"subGroup\":
+    \"\",\r\n            \"topo\": 1397.72,\r\n            \"base\": 1397.72\r\n       
+    },\r\n        {\r\n            \"hideText\": false,\r\n            \"name\":
+    \"TUBING   2 7/8 EU-6,5 LB/P\xC9-N80-USADO (12/08)\",\r\n            \"description\":
+    \"\",\r\n            \"element\": \"coiled_tubing\",\r\n            \"mainGroup\":
+    \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\": 1508.1,\r\n           
+    \"base\": 1508.1\r\n        },\r\n        {\r\n            \"hideText\": false,\r\n           
+    \"name\": \"BOMBA BM   THM-20-175-11-4-4-BF-3,3 NS: 3333\",\r\n            \"description\":
+    \"\",\r\n            \"element\": \"draw_bomb\",\r\n            \"mainGroup\":
+    \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\": 1493.16,\r\n           
+    \"base\": 1493.16\r\n        },\r\n        {\r\n            \"hideText\": false,\r\n           
+    \"name\": \"TUBING   2 7/8 EU COM ANC GAS DE 9,0 M\",\r\n            \"description\":
+    \"\",\r\n            \"element\": \"coiled_tubing\",\r\n            \"mainGroup\":
+    \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\": 1498.6,\r\n           
+    \"base\": 1498.6\r\n        },\r\n        {\r\n            \"hideText\": false,\r\n           
+    \"name\": \"TUBING ANCHOR   5 1/2 NS.: 1140 REC\",\r\n            \"description\":
+    \"\",\r\n            \"element\": \"coiled_tubing\",\r\n            \"mainGroup\":
+    \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\": 1396.86,\r\n           
+    \"base\": 1396.86\r\n        },\r\n        {\r\n            \"hideText\": false,\r\n           
+    \"name\": \"LUVA TAMPONADA   2 7/8 EU TAMPONADA\",\r\n            \"description\":
+    \"\",\r\n            \"element\": \"draw_luva\",\r\n            \"mainGroup\":
+    \"\",\r\n            \"subGroup\": \"\",\r\n            \"topo\": 1527.12,\r\n           
+    \"base\": 1527.12\r\n        },\r\n        {\r\n            \"hideText\": false,\r\n           
+    \"name\": \"Tubing anchor\",\r\n            \"description\": \"\",\r\n           
+    \"element\": \"coiled_tubing\",\r\n            \"mainGroup\": \"\",\r\n           
+    \"subGroup\": \"\",\r\n            \"topo\": 1500,\r\n            \"base\": 1500\r\n       
+    }\r\n    ],\r\n    \"comments\": [],\r\n    \"terrains\": [\r\n        {\r\n           
+    \"hideText\": true,\r\n            \"name\": \"\",\r\n            \"description\":
+    \"\",\r\n            \"element\": \"terrain_formation\",\r\n            \"mainGroup\":
+    \"default\",\r\n            \"subGroup\": \"\",\r\n            \"topo\": 500,\r\n           
+    \"base\": 700\r\n        }\r\n    ]\r\n}}"
   size: {x: 0, y: 0}
 --- !u!114 &1872632597
 MonoBehaviour:

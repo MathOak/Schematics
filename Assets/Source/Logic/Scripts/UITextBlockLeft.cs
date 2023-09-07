@@ -2,6 +2,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +19,7 @@ public class UITextBlockLeft : MonoBehaviour
     public void WriteElementOnLeft(SchematicItem sItem) 
     {
         this.schematicItem = sItem;
-        tmPro.text = sItem.ToString();
+        tmPro.text = sItem.GetElementName(SchematicItem.truncateMethod.warp) + sItem.GetElementPositions();
 
         float yPos = sItem.element._fixedWritePosition ? sItem.element._fixedPosition : sItem.GetMidPoint().RealToVirtualScale();
         

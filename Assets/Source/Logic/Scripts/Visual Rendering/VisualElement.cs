@@ -169,15 +169,17 @@ public class VisualElement : MonoBehaviour
         }
     }
 
-    public static void SetGroupColor(string group, Color color) 
+    public static void SetGroupColor(string group, Color color)
     {
         var elements = visualElements.FindAll(x => x.SchematicItem._mainGroup == group);
-        foreach (var element in elements)
+        for (int i = elements.Count - 1; i >= 0; i--)
         {
+            var element = elements[i];
             if (element.renderArt != null)
                 element.renderArt.color = color;
             else if (element.renderBG != null)
                 element.renderBG.color = color;
         }
     }
+
 }

@@ -33,6 +33,8 @@ public class SchematicItem : SchematicDrawable
     [HideInInspector] public float _widthOffset;
     [HideInInspector] public bool hideElement = false;
 
+    public enum truncateMethod { none, warp, breakLine}
+
     public bool WriteText => !_hideText && element._writePartOnDoc;
 
     public virtual async UniTask Draw(int additionalSort = 0) => await Draw(_origin, _depth, additionalSort);
@@ -58,20 +60,50 @@ public class SchematicItem : SchematicDrawable
 
     public override string ToString()
     {
-        string elementName = _virtualName.IsNullOrWhitespace() ? element.ToString() : _virtualName;
+        return GetElementName() + GetElementPositions();
+    }
 
-        if (_origin + _depth == 0 || (_origin < 0 && _depth < 0)) 
+    public string GetElementName(truncateMethod truncate = truncateMethod.none)
+    {
+        var result = _virtualName.IsNullOrWhitespace() ? element.ToString() : _virtualName;
+
+        if (truncate == truncateMethod.none)
+            return result;
+        else if (truncate == truncateMethod.warp)
+            return LimitAndAppend(result, 35 - GetElementPositions().Length);
+        else
         {
-            return elementName;
+            result = Regex.Replace(result, @"(.{35})", "$1\n");
+
+            return result;
+        }
+    }
+
+    public string GetElementPositions() 
+    {
+        if (_origin + _depth == 0 || (_origin < 0 && _depth < 0))
+        {
+            return "";
         }
         if (_origin <= 0)
         {
-            return $"{elementName} até {_depth.ToString("F2")}m";
+            return $" até {_depth.ToString("F2")}m";
         }
         else
         {
-            return $"{elementName}: {_origin.ToString("F2")} - {_depth.ToString("F2")}m";
+            return $" {_origin.ToString("F2")} - {_depth.ToString("F2")}m";
         }
+    }
+
+    private string LimitAndAppend(string input, int maxLength)
+    {
+        if (input == null)
+            return null;
+
+        if (input.Length <= maxLength)
+            return input;
+
+        return input.Substring(0, maxLength - 3) + "... ";
     }
 
     public JsonObject ToJsonObject() 
@@ -106,7 +138,7 @@ public class SchematicItem : SchematicDrawable
         public SchematicItem ConvertToObject() 
         {
             var result = new SchematicItem();
-            result._virtualName = LimitAndAppend(name);
+            result._virtualName = name;
             result._description = description;
             result._hideText = hideText;
             result.element = SchematicGenerator.elements[this.element];
@@ -116,17 +148,6 @@ public class SchematicItem : SchematicDrawable
             result._depth = this.@base;
 
             return result;
-        }
-
-        private string LimitAndAppend(string input, int maxLength = 45)
-        {
-            if (input == null)
-                return null;
-
-            if (input.Length <= maxLength)
-                return input;
-
-            return input.Substring(0, maxLength - 3) + "... ";
         }
     }
 }

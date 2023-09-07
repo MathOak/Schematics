@@ -282,6 +282,8 @@ public class SchematicGenerator : SerializedMonoBehaviour
 
     private async UniTask DrawList(List<SchematicItem> items) 
     {
+        items = UIGenerator.RemoveItemCopies(items);
+
         foreach (var item in items)
         {
             await item.Draw();
@@ -307,52 +309,79 @@ public class SchematicGenerator : SerializedMonoBehaviour
 #if CODING_WEB_MODULE || (!UNITY_EDITOR && UNITY_WEBGL)
         InternalUnityLogger("Rendering Schematic to image...");
 #endif
+        int MAX_WIDTH = 2550;
+        int MAX_HEIGHT = 3300;
+
+        // Calculando lastDeph e drawSize
         float lastDeph = SchematicGenerator.lastGeneration.GetLastDepth();
         float drawSize = (lastDeph.RealToVirtualScale() / 2) + (ChristmasTreeGenerator.HeadSize / 2);
 
+        // Configurando _schematicCamera
         _schematicCamera.orthographicSize = drawSize;
         _schematicCamera.transform.position = new Vector3(0, -drawSize + (ChristmasTreeGenerator.HeadSize), -10);
 
-        Rect cameraViewRect = new Rect(_printCamera.rect);
-        float widthValue = Mathf.InverseLerp(0, _printCamera.orthographicSize, SchematicGenerator.DRAW_LIMITS_HORIZONTAL / 2);
-        cameraViewRect.size = new Vector2(widthValue, cameraViewRect.height);
+        // Calculando a proporção da imagem baseada na drawSize
+        float cameraAspect = _schematicCamera.aspect;
+        float imageWidth = MAX_HEIGHT * cameraAspect;
+        float imageHeight = MAX_HEIGHT;
 
-        //_printCamera.rect = cameraViewRect;
-       _schematicCamera.aspect = widthValue;
-
-        int baseScale = 258;
-        int printWidth = (baseScale * 5);
-        int printHeight = (Mathf.CeilToInt(drawSize / SchematicGenerator.DRAW_LIMITS_HORIZONTAL * 2)) * baseScale;
-
-
-        //PrintCamera
-        float printCameraWidth = widthValue * 5;
-        _printCamera.orthographicSize = _schematicCamera.orthographicSize;
-        _printCamera.aspect = printCameraWidth;
-        _printCamera.transform.position = new Vector3(0, _schematicCamera.transform.position.y, -10);
-
-        _printCamera.transform.position = new Vector3(_printCamera.transform.position.x, _schematicCamera.transform.position.y, _printCamera.transform.position.z);
-
-#if CODING_WEB_MODULE || (!UNITY_EDITOR && UNITY_WEBGL)
-        var tex = SimpleScreenshotCapture.CaptureCameraToTexture(printWidth, printHeight, _printCamera);
-        var jpgBytes = tex.EncodeToJPG();
-
-        InternalUnityLogger($"Schematic Rendered! Returning Base64...");
-
-        if (Application.isEditor)
+        if (imageWidth > MAX_WIDTH)
         {
-            Debug.Log(jpgBytes);
+            imageWidth = MAX_WIDTH;
+            imageHeight = MAX_WIDTH / cameraAspect;
         }
 
-        InternalBase64Generated(Convert.ToBase64String(jpgBytes));
-#else
-        string filePath = Path.Combine(Application.streamingAssetsPath, "generator_result.png");
-        SimpleScreenshotCapture.CaptureCameraToFile(filePath, printWidth, printHeight, _printCamera);
+        // Configurando a RenderTexture para _schematicCamera
+        RenderTexture renderTexture = new RenderTexture((int)imageWidth, (int)imageHeight, 24);
+        _schematicCamera.targetTexture = renderTexture;
 
+        // Configurando _printCamera
+        _printCamera.orthographicSize = _schematicCamera.orthographicSize;
+        _printCamera.aspect = cameraAspect;
+        _printCamera.transform.position = new Vector3(0, _schematicCamera.transform.position.y, -10);
+
+        // Capturando a imagem da _printCamera
+        var tempTex = SimpleScreenshotCapture.CaptureCameraToTexture((int)imageWidth, (int)imageHeight, _printCamera);
+
+        // Criando uma nova Texture2D com as dimensões desejadas
+        Texture2D finalTex = new Texture2D(MAX_WIDTH, MAX_HEIGHT);
+
+        // Preenchendo a textura com branco
+        Color[] fillColorArray = finalTex.GetPixels();
+
+        for (int i = 0; i < fillColorArray.Length; i++)
+        {
+            fillColorArray[i] = Color.white;
+        }
+
+        finalTex.SetPixels(fillColorArray);
+        finalTex.Apply();
+
+        // Calculando posições para centralizar a RenderTexture temporária na Texture2D final
+        int startX = (MAX_WIDTH - (int)imageWidth) / 2;
+        int startY = (MAX_HEIGHT - (int)imageHeight) / 2;
+
+        // Copiando pixels
+        finalTex.SetPixels(startX, startY, (int)imageWidth, (int)imageHeight, tempTex.GetPixels());
+        finalTex.Apply();
+
+#if CODING_WEB_MODULE || (!UNITY_EDITOR && UNITY_WEBGL)
+    var jpgBytes = finalTex.EncodeToJPG();
+
+    InternalUnityLogger($"Schematic Rendered! Returning Base64...");
+
+    if (Application.isEditor)
+    {
+        Debug.Log(jpgBytes);
+    }
+
+    InternalBase64Generated(Convert.ToBase64String(jpgBytes));
+#else
+        byte[] pngBytes = finalTex.EncodeToPNG();
+        string filePath = Path.Combine(Application.streamingAssetsPath, "generator_result.png");
+        File.WriteAllBytes(filePath, pngBytes);
 
         this.filePath = filePath;
-        //size = new Vector2Int(printWidth, printHeight);
-        //ResizeTexture();
 #endif
     }
 

@@ -19,7 +19,7 @@ public class ChristmasTreeGenerator : MonoBehaviour
 
     public async UniTask DrawHead(Schematic schematic)
     {
-        var allParts = schematic.GetAllParts().Where(part => part.element._headItem);
+        var allParts = UIGenerator.RemoveItemCopies(schematic.GetAllParts().Where(part => part.element._headItem).ToList());
 
         foreach (var part in allParts)
         {

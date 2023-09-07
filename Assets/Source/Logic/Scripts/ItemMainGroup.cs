@@ -18,7 +18,7 @@ public class ItemMainGroup
         StringBuilder builder = new StringBuilder();
         foreach (var item in items)
         {
-            builder.AppendLine(AutoWordWrap(item.ToString()));
+            builder.AppendLine($"-<indent=3%>{item.GetElementName(SchematicItem.truncateMethod.breakLine) + item.GetElementPositions()}</indent>");
         }
 
         return builder.ToString();
@@ -26,7 +26,7 @@ public class ItemMainGroup
 
     string AutoWordWrap(string textToAppend)
     {
-        if (textToAppend.Length <= 40)
+        if (textToAppend.Length <= 30)
         {
             return textToAppend;
         }
@@ -39,7 +39,7 @@ public class ItemMainGroup
 
         foreach (string word in words)
         {
-            if (numLetters + word.Length > 40)
+            if (numLetters + word.Length > 30)
             {
                 stringBuilder.Append("\n" + word + " ");
                 numLetters = 0;
