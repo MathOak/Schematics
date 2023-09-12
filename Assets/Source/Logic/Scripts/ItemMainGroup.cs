@@ -26,7 +26,7 @@ public class ItemMainGroup
 
     string AutoWordWrap(string textToAppend)
     {
-        if (textToAppend.Length <= 30)
+        if (textToAppend.Length <= 25)
         {
             return textToAppend;
         }
@@ -39,7 +39,7 @@ public class ItemMainGroup
 
         foreach (string word in words)
         {
-            if (numLetters + word.Length > 30)
+            if (numLetters + word.Length > 25)
             {
                 stringBuilder.Append("\n" + word + " ");
                 numLetters = 0;

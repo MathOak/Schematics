@@ -15,6 +15,7 @@ MonoBehaviour:
   elementName: "Componente de coluna de teste de po\xE7o"
   elementEngName: "Well test string components\r"
   _key: well_test_string_components
+  _headItem: 0
   _columItem: 0
   _writePartOnDoc: 1
   _drawRectLine: 0
@@ -25,7 +26,7 @@ MonoBehaviour:
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   aditionalBgScale: {x: 1, y: 1}
   useInsideArt: 1
-  art: {fileID: 21300000, guid: 6ecfcabf259c85441aea2f354636e93a, type: 3}
+  art: {fileID: 21300000, guid: 6946e8fe39b0a5748a597a1e62abf4d4, type: 3}
   artColor: {r: 0, g: 0, b: 0, a: 1}
   maskInteraction: 1
   drawMode: 0

@@ -70,10 +70,10 @@ public class SchematicItem : SchematicDrawable
         if (truncate == truncateMethod.none)
             return result;
         else if (truncate == truncateMethod.warp)
-            return LimitAndAppend(result, 35 - GetElementPositions().Length);
+            return LimitAndAppend(result, 25 - GetElementPositions().Length);
         else
         {
-            result = Regex.Replace(result, @"(.{35})", "$1\n");
+            result = Regex.Replace(result, @"(.{25})", "$1\n");
 
             return result;
         }
