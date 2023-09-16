@@ -234,8 +234,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 1.625}
-  m_SizeDelta: {x: 0, y: 3.25}
+  m_AnchoredPosition: {x: -0.25, y: 1.625}
+  m_SizeDelta: {x: 0.5, y: 3.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &435408347
 Canvas:
@@ -1356,7 +1356,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8fb562e42fbee8f489206177db132339, type: 2}
   - {fileID: 11400000, guid: 5ca422a5f2eaf7345870354409dc71c6, type: 2}
   writeApiKeyNames: 0
-  getSchematicFrom: 1
+  getSchematicFrom: 0
   debugSchematic:
     _drillDepth: 2000
     _isDiagram: 0
