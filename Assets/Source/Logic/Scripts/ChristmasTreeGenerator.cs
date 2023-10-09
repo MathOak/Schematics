@@ -23,6 +23,7 @@ public class ChristmasTreeGenerator : MonoBehaviour
 
         foreach (var part in allParts)
         {
+            part.element.useBgColor = false;
             await DrawTree(part);
         }
     }

@@ -15,12 +15,15 @@ MonoBehaviour:
   elementName: PACKER
   elementEngName: 
   _key: packer
+  useDrawSettings: 0
+  drawSettings: {fileID: 0}
   _headItem: 0
   _columItem: 1
   _writePartOnDoc: 0
   _drawRectLine: 0
   _fixedWritePosition: 0
   _fixedPosition: 0
+  addHasOffset: 0
   pivot: {x: 0.5, y: 0}
   useBgColor: 0
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
@@ -31,5 +34,7 @@ MonoBehaviour:
   maskInteraction: 0
   drawMode: 1
   aditionalArtScale: {x: 0.87, y: 1}
-  minimalVirtualHeight: 0.2
+  minimalVirtualHeight: 0.3
+  ignoreResize: 0
+  ignoreCSBColor: 0
   sortInLayer: 110

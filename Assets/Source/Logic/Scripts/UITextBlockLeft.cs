@@ -19,7 +19,7 @@ public class UITextBlockLeft : MonoBehaviour
     public void WriteElementOnLeft(SchematicItem sItem) 
     {
         this.schematicItem = sItem;
-        tmPro.text = sItem.GetElementName(SchematicItem.truncateMethod.warp) + sItem.GetElementPositions();
+        tmPro.text = $"{sItem.GetElementName(SchematicItem.truncateMethod.warp)} <b>{sItem.GetElementPositions()}</b>";
 
         float yPos = sItem.element._fixedWritePosition ? sItem.element._fixedPosition : sItem.GetMidPoint().RealToVirtualScale();
         

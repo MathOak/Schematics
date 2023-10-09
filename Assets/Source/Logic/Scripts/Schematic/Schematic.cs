@@ -42,11 +42,52 @@ public class Schematic
         result.AddRange(column);
         result.AddRange(parts);
 
-        result = result.OrderBy(part => part.GetMidPoint()).ToList();
+        int n = result.Count;
+
+        for (int i = 1; i < n; i++)
+        {
+            SchematicItem current = result[i];
+            float currentMidPoint = current.GetMidPoint();
+            int j = i - 1;
+
+            while (j >= 0 && result[j].GetMidPoint() > currentMidPoint)
+            {
+                result[j + 1] = result[j];
+                j--;
+            }
+
+            result[j + 1] = current;
+        }
         return result;
     }
 
-    public float GetLastDepth()
+    public List<SchematicItem> GetAllPartsByDepth()
+    {
+        List<SchematicItem> result = new List<SchematicItem>();
+
+        result.AddRange(column);
+        result.AddRange(parts);
+
+        int n = result.Count;
+
+        for (int i = 1; i < n; i++)
+        {
+            SchematicItem current = result[i];
+            float currentDepth = current.__depth;
+            int j = i - 1;
+
+            while (j >= 0 && result[j].__depth > currentDepth)
+            {
+                result[j + 1] = result[j];
+                j--;
+            }
+
+            result[j + 1] = current;
+        }
+        return result;
+    }
+
+    public float GetLastDepth(float offset = 0)
     {
         float result = _drillDepth;
         foreach (var part in GetAllParts())
@@ -61,14 +102,24 @@ public class Schematic
                 result = terrain.depth;
         }
 
-        return result;
+        return result + offset;
     }
 
     public float GetColumDepth()
     {
         float result = 0;
 
-        var fluidC = column.Find(s => s.element.Key == "fluid_column");
+        var fluids = column.FindAll(s => s.element.Key == "fluid_column");
+        var fluidC = fluids.Find(fluid => fluid._depth > result);
+
+        foreach (var fluid in fluids)
+        {
+            if (fluid._depth > fluidC._depth) 
+            {
+                fluidC = fluid;
+            }
+        }
+
         if (fluidC != null)
         {
             result = fluidC._depth;
@@ -149,15 +200,13 @@ public class Schematic
 
             foreach (var jsonPart in this.parts)
             {
-                if (SchematicGenerator.elements.ContainsKey(jsonPart.element))
+                if (ElementDatabase.Elements.ContainsKey(jsonPart.element))
                 {
                     result.AddItem(jsonPart.ConvertToObject());
                 }
                 else 
                 {
-#if !UNITY_EDITOR && UNITY_WEBGL
-                    SchematicGenerator.InternalUnityErrorLogger($"The key {jsonPart.element} is not present on the project!");
-#endif
+                    Logger.Error($"The key {jsonPart.element} is not present on the project!");
                 }
             }
 

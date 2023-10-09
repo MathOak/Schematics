@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b50e3a858000c41abdd3982703a374, type: 3}
+  m_Name: draw_column_casing
+  m_EditorClassIdentifier: 
+  _headItem: 0
+  _columItem: 1
+  _writePartOnDoc: 1
+  _drawRectLine: 0
+  _fixedWritePosition: 0
+  _fixedPosition: 0
+  addHasOffset: 0
+  pivot: {x: 0.5, y: 0}
+  useBgColor: 0
+  defaultColor: {r: 0.85882354, g: 0.92156863, b: 0.9647059, a: 1}
+  additionalBgScale: {x: 0.75, y: 1}
+  useInsideArt: 1
+  art: {fileID: 21300000, guid: f6340c7d04b2b7d41917094ae42688d7, type: 3}
+  artColor: {r: 0, g: 0, b: 0, a: 1}
+  maskInteraction: 0
+  drawMode: 1
+  additionalArtScale: {x: 0.275, y: 1}
+  minimalVirtualHeight: 0.05
+  ignoreResize: 1
+  sortInLayer: 200

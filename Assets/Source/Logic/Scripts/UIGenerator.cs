@@ -13,21 +13,36 @@ using UnityEngine.UI;
 
 public partial class UIGenerator : MonoBehaviour
 {
-    [SerializeField] UITextBlockLeft txtBlockLeftPrefab;
+    [SerializeField] private Canvas _uiCanvas;
+    [Space]
+    [SerializeField] UITextBlockLeft txtBlockLeftSimple;
+    [SerializeField] UITextBlockLeft txtBlockRightSimple;
     [SerializeField] UITextBlockRight txtBlockRightPrefab;
     [Space]
     [SerializeField] RectTransform canvasLeft;
     [SerializeField] RectTransform canvasRight;
+    [SerializeField] RectTransform canvasRightSimple;
 
     List<UITextBlockLeft> leftBlocks = new List<UITextBlockLeft>();
     List<UITextBlockRight> rightBlocks = new List<UITextBlockRight>();
 
+    public async UniTask DrawUIText(Schematic schematic)
+    {
+        if (schematic._hideAllText)
+        {
+            return;
+        }
+
+        var rTransform = _uiCanvas.GetComponent<RectTransform>();
+        rTransform.sizeDelta = new Vector2(Constants.DRAW_LIMITS_HORIZONTAL.RealToVirtualScale() * 600, schematic.GetLastDepth().RealToVirtualScale());
+
+        await DrawSchematicText(schematic);
+    }
+
     public async UniTask DrawSchematicText(Schematic schematic) 
     {
         ClearTexts();
-
-        var leftElements = schematic.GetAllParts().Where(part => part.WriteText).ToList();
-        await WriteLeftText(leftElements);
+        await WriteLeftText(schematic);
 
         if (schematic._isDiagram)
         {
@@ -37,9 +52,9 @@ public partial class UIGenerator : MonoBehaviour
         }
     }
 
-
-    public async UniTask WriteLeftText(List<SchematicItem> schematicItems)
+    public async UniTask WriteLeftText(Schematic schematic)
     {
+        var schematicItems = schematic.GetAllParts().Where(part => part.WriteText).ToList();
         leftBlocks = new List<UITextBlockLeft>();
         schematicItems = RemoveItemCopies(schematicItems);
 
@@ -56,18 +71,37 @@ public partial class UIGenerator : MonoBehaviour
         });
 
         schematicItems = indexedItems.Select(x => x.Item).ToList();
+        bool writeOnLeft = false;
+        int startIndex = schematic._isDiagram ? 0 : 1;
+        int interval = schematic._isDiagram ? 1 : 2;
+        
+        canvasRight.gameObject.SetActive(schematic._isDiagram);
 
         foreach (var sItem in schematicItems)
         {
-            var textBlock = WriteLeftBlock(sItem);
+            UITextBlockLeft textBlock = null;
 
-            await UniTask.WaitForFixedUpdate();
-            await UniTask.WaitForFixedUpdate();
-
-            if (leftBlocks.Count > 0 && (textBlock.IsOverlappingWith(leftBlocks[leftBlocks.Count - 1]) || textBlock.pivot.position.y > leftBlocks[leftBlocks.Count - 1].pivot.position.y))
+            if (!schematic._isDiagram)
             {
-                float adjustment = leftBlocks[leftBlocks.Count - 1].pivot.rect.height;
-                textBlock.pivot.anchoredPosition = new Vector2(textBlock.pivot.anchoredPosition.x, leftBlocks[leftBlocks.Count - 1].pivot.anchoredPosition.y - adjustment);
+                if (writeOnLeft)
+                    textBlock = WriteLeftBlock(sItem);
+                else
+                    textBlock = WriteLeftAtRightBlock(sItem);
+
+                writeOnLeft = !writeOnLeft;
+            }
+            else 
+            {
+                textBlock = WriteLeftBlock(sItem);
+            }
+
+            await UniTask.WaitForFixedUpdate();
+            await UniTask.WaitForFixedUpdate();
+
+            if (leftBlocks.Count > startIndex && (textBlock.IsOverlappingWith(leftBlocks[leftBlocks.Count - interval]) || textBlock.pivot.position.y > leftBlocks[leftBlocks.Count - interval].pivot.position.y))
+            {
+                float adjustment = leftBlocks[leftBlocks.Count - interval].pivot.rect.height;
+                textBlock.pivot.anchoredPosition = new Vector2(textBlock.pivot.anchoredPosition.x, leftBlocks[leftBlocks.Count - interval].pivot.anchoredPosition.y - adjustment);
             }
 
             leftBlocks.Add(textBlock);
@@ -84,7 +118,7 @@ public partial class UIGenerator : MonoBehaviour
     }
 
     public static List<SchematicItem> RemoveItemCopies(List<SchematicItem> schematicItems)
-    {
+    {        
         HashSet<string> uniqueItems = new HashSet<string>();
         List<SchematicItem> itemsToRemove = new List<SchematicItem>();
 
@@ -111,8 +145,16 @@ public partial class UIGenerator : MonoBehaviour
 
     public UITextBlockLeft WriteLeftBlock(SchematicItem sItem)
     {
-        UITextBlockLeft txtBlock = Instantiate(txtBlockLeftPrefab, canvasLeft);
+        UITextBlockLeft txtBlock = Instantiate(txtBlockLeftSimple, canvasLeft);
         txtBlock.gameObject.name = $"LTXT - {sItem.ToString()}";
+        txtBlock.WriteElementOnLeft(sItem);
+        return txtBlock;
+    }
+
+    public UITextBlockLeft WriteLeftAtRightBlock(SchematicItem sItem)
+    {
+        UITextBlockLeft txtBlock = Instantiate(txtBlockRightSimple, canvasRightSimple);
+        txtBlock.gameObject.name = $"RSIMPLE - {sItem.ToString()}";
         txtBlock.WriteElementOnLeft(sItem);
         return txtBlock;
     }
@@ -172,4 +214,6 @@ public partial class UIGenerator : MonoBehaviour
         leftBlocks.Clear();
         rightBlocks.Clear();
     }
+
+
 }

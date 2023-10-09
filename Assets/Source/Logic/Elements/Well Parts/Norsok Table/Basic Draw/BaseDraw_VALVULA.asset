@@ -15,6 +15,9 @@ MonoBehaviour:
   elementName: BASIC VALVULA
   elementEngName: 
   _key: draw_valvula
+  useDrawSettings: 1
+  drawSettings: {fileID: 11400000, guid: 8f47fb03a7c9d88458f7ab1a0736726e, type: 2}
+  _headItem: 0
   _columItem: 1
   _writePartOnDoc: 1
   _drawRectLine: 0

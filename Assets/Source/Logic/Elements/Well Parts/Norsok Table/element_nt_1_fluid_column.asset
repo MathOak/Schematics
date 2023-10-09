@@ -15,21 +15,26 @@ MonoBehaviour:
   elementName: Coluna de fluidos
   elementEngName: Fluid column
   _key: fluid_column
+  useDrawSettings: 1
+  drawSettings: {fileID: 11400000, guid: 603c26e3307106b498dd099a18f43f7d, type: 2}
   _headItem: 0
   _columItem: 1
   _writePartOnDoc: 1
   _drawRectLine: 0
   _fixedWritePosition: 0
   _fixedPosition: 0
+  addHasOffset: 0
   pivot: {x: 0.5, y: 0}
-  useBgColor: 0
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  aditionalBgScale: {x: 1, y: 1}
+  useBgColor: 1
+  defaultColor: {r: 0.85882354, g: 0.92156863, b: 0.9647059, a: 1}
+  aditionalBgScale: {x: 0.75, y: 1}
   useInsideArt: 1
-  art: {fileID: 21300000, guid: b06f9c57f5549e84ca36f9cac672e2c5, type: 3}
-  artColor: {r: 0.85882354, g: 0.92156863, b: 0.9647059, a: 1}
-  maskInteraction: 1
-  drawMode: 0
-  aditionalArtScale: {x: 0.25, y: 1}
+  art: {fileID: 21300000, guid: f6340c7d04b2b7d41917094ae42688d7, type: 3}
+  artColor: {r: 0, g: 0, b: 0, a: 1}
+  maskInteraction: 0
+  drawMode: 1
+  aditionalArtScale: {x: 0.275, y: 1}
   minimalVirtualHeight: 0.05
-  sortInLayer: 0
+  ignoreResize: 1
+  ignoreCSBColor: 1
+  sortInLayer: 200

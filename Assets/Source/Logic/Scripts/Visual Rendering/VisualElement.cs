@@ -81,6 +81,59 @@ public class VisualElement : MonoBehaviour
         return visualElement;
     }
 
+    public async UniTask GenerateDrawing(int additionalSort = 0)
+    {
+        SpriteRenderer render = null;
+        BaseElement element = _sItem.element;
+
+        if (element.useBgColor)
+        {
+            render = await CreateRender("FillColor", element.sortInLayer + additionalSort);
+
+            render.color = element.defaultColor;
+            render.transform.localScale = DrawArea.size * element.aditionalBgScale;
+
+            renderBG = render;
+
+            SetPivotPosition(render.transform, element.pivot, DrawArea.size, element.aditionalBgScale);;
+        }
+
+        if (element.useInsideArt && element.art != null)
+        {
+            render = await CreateRender("Art", element.sortInLayer + additionalSort + 1);
+
+
+            render.sprite = element.art;
+            render.color = element.artColor;
+            render.maskInteraction = element.maskInteraction;
+            render.drawMode = element.drawMode;
+
+            if (element.drawMode == SpriteDrawMode.Simple)
+                render.transform.localScale = DrawArea.size * element.aditionalArtScale;
+            else
+            {
+                render.size = new Vector2(DrawArea.size.x, Mathf.Clamp(DrawArea.size.y, element.minimalVirtualHeight, Mathf.Infinity));
+                render.size *= element.aditionalArtScale;
+                render.transform.localScale = Vector3.one;
+            }
+
+            renderArt = render;
+
+            SetPivotPosition(render.transform, element.pivot, DrawArea.size, element.aditionalArtScale);
+        }
+    }
+
+    private void SetPivotPosition(Transform transform, Vector2 pivot, Vector2 drawSize, Vector2 scale)
+    {
+        Vector3 pivotPosition = new Vector3
+        (
+            Mathf.Lerp(-drawSize.x / 2, drawSize.x / 2, pivot.x),
+            Mathf.Lerp(-drawSize.y / 2, drawSize.y / 2, pivot.y)
+        );
+
+        transform.localPosition = pivotPosition * scale;
+    }
+
     public void SetToGrayscale() 
     {
         if (renderBG != null)
@@ -175,10 +228,16 @@ public class VisualElement : MonoBehaviour
         for (int i = elements.Count - 1; i >= 0; i--)
         {
             var element = elements[i];
-            if (element.renderArt != null)
-                element.renderArt.color = color;
-            else if (element.renderBG != null)
-                element.renderBG.color = color;
+
+            if (!element._sItem.element.ignoreCSBColor)
+            {
+                if (element.renderArt != null)
+                    element.renderArt.color = color;
+                else if (element.renderBG != null)
+                    element.renderBG.color = color;
+
+                element.transform.SetAsFirstSibling();
+            }
         }
     }
 

@@ -12,38 +12,44 @@ public class BaseElement : ScriptableObject
     [SerializeField] private string elementName = "Generic Part";
     [SerializeField] private string elementEngName = "Generic Part ENG";
     [SerializeField] private string _key;
-    private Sprite elementIcon;
-    public bool _headItem = false;
-    [HideIf("_headItem")]public bool _columItem;
+    [Space]
+    public bool useDrawSettings = false;
+    [ShowIf("useDrawSettings")] public ElementDrawSettings drawSettings;
+    [Space]
+    [Header("Position")]
+    [HideIf("useDrawSettings")] public bool _headItem = false;
+    [HideIf("_headItem")][HideIf("useDrawSettings")] public bool _columItem;
 
     [Header("Write Settings")]
-    public bool _writePartOnDoc = true;
-    public bool _drawRectLine = false;
-    public bool _fixedWritePosition = false;
-    [ShowIf("_fixedWritePosition")]public float _fixedPosition = 0;
+    [HideIf("useDrawSettings")] public bool _writePartOnDoc = true;
+    [HideIf("useDrawSettings")] public bool _drawRectLine = false;
+    [HideIf("useDrawSettings")] public bool _fixedWritePosition = false;
+    [ShowIf("_fixedWritePosition")][HideIf("useDrawSettings")] public float _fixedPosition = 0;
+    [ShowIf("_fixedWritePosition")][HideIf("useDrawSettings")] public bool addHasOffset = false;
 
     [Header("Drawing")]
-    [SerializeField] Vector2 pivot = new Vector2(0.5f, 0f);
+    [HideIf("useDrawSettings")][SerializeField] public Vector2 pivot = new Vector2(0.5f, 0f);
     [Space]
-    [SerializeField] private bool useBgColor = true;
-    [ShowIf("useBgColor")][SerializeField] private Color defaultColor = Color.white;
-    [ShowIf("useBgColor")][SerializeField] Vector2 aditionalBgScale = Vector2.one;
+    [HideIf("useDrawSettings")][SerializeField] public bool useBgColor = true;
+    [ShowIf("useBgColor")][HideIf("useDrawSettings")][SerializeField] public Color defaultColor = Color.white;
+    [ShowIf("useBgColor")][HideIf("useDrawSettings")][SerializeField] public Vector2 aditionalBgScale = Vector2.one;
     [Space]
-    [SerializeField] private bool useInsideArt = false;
-    [SerializeField][ShowIf("useInsideArt")] private Sprite art;
-    [SerializeField][ShowIf("useInsideArt")] private Color artColor = Color.black;
-    [SerializeField][ShowIf("useInsideArt")] SpriteMaskInteraction maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
-    [SerializeField][ShowIf("useInsideArt")] SpriteDrawMode drawMode = SpriteDrawMode.Simple;
+    [HideIf("useDrawSettings")][SerializeField] public bool useInsideArt = false;
+    [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public Sprite art;
+    [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public Color artColor = Color.black;
+    [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public SpriteMaskInteraction maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+    [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public SpriteDrawMode drawMode = SpriteDrawMode.Simple;
     [Space]
-    [SerializeField][ShowIf("useInsideArt")] Vector2 aditionalArtScale = Vector2.one;
-    [SerializeField][ShowIf("useInsideArt")] float minimalVirtualHeight = 0;
+    [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public Vector2 aditionalArtScale = Vector2.one;
+    [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public float minimalVirtualHeight = 0;
+    [SerializeField] public bool ignoreResize = false;
+    [SerializeField] public bool ignoreCSBColor = false;
     [Space]
-    [SerializeField] private int sortInLayer;
+    [HideIf("useDrawSettings")][SerializeField] public int sortInLayer;
 
     public string ElementName => elementName;
     public string ElementEngName => elementEngName;
     public string Key => _key;
-    public Sprite Icon => elementIcon;
     public Color DefaultColor { get => defaultColor; set => defaultColor = value; }
     
 
@@ -56,70 +62,10 @@ public class BaseElement : ScriptableObject
 
     public async UniTask<VisualElement> StartDraw(SchematicItem sElement, Rect drawArea, int additionalSort = 0) 
     {
+        GetValuesFromDrawSettings();
         VisualElement visualElement = await VisualElement.CreateNew(sElement, drawArea);
-        await GenerateDrawing(visualElement, additionalSort);
+        await visualElement.GenerateDrawing(additionalSort);
         return visualElement;
-    }
-
-    public SchematicItem CreateVirtualItem(float origin = 0, float depth = 0) 
-    {
-        var result = new SchematicItem();
-        result.element = this;
-        result._origin = origin;
-        result._depth = depth;
-        return result;
-    }
-
-    protected async UniTask GenerateDrawing(VisualElement visualElement, int additionalSort = 0)
-    {
-        SpriteRenderer render = null;
-
-        if (useBgColor)
-        {
-            render = await visualElement.CreateRender("FillColor", sortInLayer + additionalSort);
-            
-            render.color = defaultColor;
-            render.transform.localScale = visualElement.DrawArea.size * aditionalBgScale;
-
-            visualElement.renderBG = render;
-            
-            SetPivotPosition(render.transform, visualElement.DrawArea.size, aditionalBgScale);
-        }
-
-        if (useInsideArt && art != null)
-        {
-            render = await visualElement.CreateRender("Art", sortInLayer + additionalSort + 1);
-
-
-            render.sprite = art;
-            render.color = artColor;
-            render.maskInteraction = maskInteraction;
-            render.drawMode = drawMode;
-
-            if (drawMode == SpriteDrawMode.Simple)
-                render.transform.localScale = visualElement.DrawArea.size * aditionalArtScale;
-            else 
-            {
-                render.size = new Vector2(visualElement.DrawArea.size.x, Mathf.Clamp(visualElement.DrawArea.size.y, minimalVirtualHeight, Mathf.Infinity));
-                render.size *= aditionalArtScale;
-                render.transform.localScale = Vector3.one;
-            }
-
-            visualElement.renderArt = render;
-            
-            SetPivotPosition(render.transform, visualElement.DrawArea.size, aditionalArtScale);
-        }
-    }
-
-    private void SetPivotPosition(Transform transform, Vector2 drawSize, Vector2 scale) 
-    {
-        Vector3 pivotPosition = new Vector3
-        (
-            Mathf.Lerp(-drawSize.x / 2, drawSize.x / 2, pivot.x),
-            Mathf.Lerp(-drawSize.y / 2, drawSize.y / 2, pivot.y)
-        );
-
-        transform.localPosition = pivotPosition * scale;
     }
 
     public override string ToString()
@@ -127,10 +73,20 @@ public class BaseElement : ScriptableObject
         return elementName;
     }
 
+    public async UniTask<SchematicItem> DrawHasGeneric(float origin, float depth) 
+    {
+        var result = new SchematicItem();
+        result.element = this;
+        result.__origin = origin;
+        result.__depth = depth;
+
+        await result.Draw();
+        return result;
+    }
+
     public void CopyDrawSettings(BaseElement otherElement) 
     {
         _writePartOnDoc = otherElement._writePartOnDoc;
-        elementIcon = otherElement.elementIcon;
         _columItem = otherElement._columItem;
         pivot = otherElement.pivot;
         useBgColor = otherElement.useBgColor;
@@ -144,5 +100,37 @@ public class BaseElement : ScriptableObject
         aditionalArtScale = otherElement.aditionalArtScale;
         minimalVirtualHeight = otherElement.minimalVirtualHeight;
         sortInLayer = otherElement.sortInLayer;
+    }
+
+    public void GetValuesFromDrawSettings()
+    {
+        if (useDrawSettings && drawSettings != null)
+        {
+            pivot = drawSettings.pivot;
+            useBgColor = drawSettings.useBgColor;
+            defaultColor = drawSettings.defaultColor;
+            aditionalBgScale = drawSettings.additionalBgScale;
+            useInsideArt = drawSettings.useInsideArt;
+            art = drawSettings.art;
+            artColor = drawSettings.artColor;
+            maskInteraction = drawSettings.maskInteraction;
+            drawMode = drawSettings.drawMode;
+            aditionalArtScale = drawSettings.additionalArtScale;
+            minimalVirtualHeight = drawSettings.minimalVirtualHeight;
+            sortInLayer = drawSettings.sortInLayer;
+            _headItem = drawSettings._headItem;
+            _columItem = drawSettings._columItem;
+            _writePartOnDoc = drawSettings._writePartOnDoc;
+            _drawRectLine = drawSettings._drawRectLine;
+            _fixedWritePosition = drawSettings._fixedWritePosition;
+            _fixedPosition = drawSettings._fixedPosition;
+            addHasOffset = drawSettings.addHasOffset;
+            ignoreResize = drawSettings.ignoreResize;
+            ignoreCSBColor = drawSettings.ignoreCSBColor;            
+        }
+        else 
+        {
+            Logger.Warning($"Draw Settings of {this.name} is not updated!");
+        }
     }
 }

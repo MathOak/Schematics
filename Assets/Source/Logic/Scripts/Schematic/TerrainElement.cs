@@ -6,8 +6,14 @@ public class TerrainElement
 {
     public string terrainName = "Terreno Genérico";
     [HideInInspector] public string terrainDesc;
-    public float origin = 0;
-    public float depth = 100;
+    public float _origin = 0;
+    public float _depth = 100;
+
+    public float origin => _origin + offsetOrigin;
+    public float depth => _depth + offsetDepth;
+
+    public float offsetOrigin = 0;
+    public float offsetDepth = 100;
     [Space]
     public string mainGroup = "default";
     [HideInInspector] public string subGroup;
@@ -18,8 +24,8 @@ public class TerrainElement
     {
         this.terrainName = name;
         this.terrainDesc = desc;
-        this.origin = origin;
-        this.depth = depth;
+        this._origin = origin;
+        this._depth = depth;
         this.mainGroup = mainGroup;
         this.subGroup = subGroup;
         this.colorHex = colorHex;

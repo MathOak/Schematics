@@ -15,6 +15,8 @@ MonoBehaviour:
   elementName: "Cabe\xE7a de Po\xE7o"
   elementEngName: "Wellhead\r"
   _key: wellhead
+  useDrawSettings: 1
+  drawSettings: {fileID: 11400000, guid: 53fcd6674823460459488618eed973fa, type: 2}
   _headItem: 1
   _columItem: 0
   _writePartOnDoc: 1

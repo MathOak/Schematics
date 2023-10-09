@@ -14,12 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Preenchimento de Coluna
   elementEngName: 
-  _key: Coluna
-  _columItem: 0
+  _key: column_casing
+  useDrawSettings: 0
+  drawSettings: {fileID: 0}
+  _headItem: 0
+  _columItem: 1
   _writePartOnDoc: 0
   _drawRectLine: 0
   _fixedWritePosition: 0
   _fixedPosition: 0
+  addHasOffset: 0
   pivot: {x: 0.5, y: 0}
   useBgColor: 0
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
@@ -31,4 +35,6 @@ MonoBehaviour:
   drawMode: 1
   aditionalArtScale: {x: 0.275, y: 1}
   minimalVirtualHeight: 0.05
+  ignoreResize: 1
+  ignoreCSBColor: 0
   sortInLayer: 200

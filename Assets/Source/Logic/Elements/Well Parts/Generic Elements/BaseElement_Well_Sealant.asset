@@ -15,6 +15,9 @@ MonoBehaviour:
   elementName: Revestimento
   elementEngName: Casing
   _key: sealant
+  useDrawSettings: 1
+  drawSettings: {fileID: 11400000, guid: 36e7203fad9d71d4297afd065ebaa527, type: 2}
+  _headItem: 0
   _columItem: 0
   _writePartOnDoc: 1
   _drawRectLine: 0

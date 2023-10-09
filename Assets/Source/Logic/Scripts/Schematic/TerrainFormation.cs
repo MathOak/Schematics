@@ -17,7 +17,7 @@ public class TerrainFormation : ScriptableObject
 
         for (int i = 0; i < _sections.Count; i++)
         {
-            _sections[i]._depth = wellSize + 200;
+            _sections[i].__depth = wellSize + 200;
             await _sections[i].Draw();
         }
     }

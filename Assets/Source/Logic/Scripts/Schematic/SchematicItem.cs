@@ -20,8 +20,14 @@ public class SchematicItem : SchematicDrawable
     [HideInInspector] public string _description;
     private bool _hideText = false;
     [Space]
-    public float _origin;
-    public float _depth;
+    public float __origin;
+    public float __depth;
+
+    public float originOffset = 0;
+    public float depthOffset = 0;
+    
+    public float _origin => __origin + originOffset;
+    public float _depth => __depth + depthOffset;
     [Space]
     [FoldoutGroup("Grouping", expanded: false)] public string _mainGroup = "default";
     [FoldoutGroup("Grouping", expanded: false)] public string _subGroup = "";
@@ -45,7 +51,7 @@ public class SchematicItem : SchematicDrawable
 
         Rect drawArea = new Rect();
 
-        float width = !dontFill ? SchematicGenerator.DRAW_LIMITS_HORIZONTAL : SchematicGenerator.DRAW_WELL_SIZE + _widthOffset.RealToVirtualScale();
+        float width = !dontFill ? Constants.DRAW_LIMITS_HORIZONTAL : Constants.DRAW_WELL_SIZE + _widthOffset.RealToVirtualScale();
 
         drawArea.size = new Vector2(width, (deph - origin).RealToVirtualScale());
         drawArea.position = new Vector2(0, -1 * (origin.RealToVirtualScale()));
@@ -56,6 +62,30 @@ public class SchematicItem : SchematicDrawable
     public float GetMidPoint() 
     {
         return _origin + ((_depth - _origin) / 2);
+    }
+
+    public float GetBotPoint()
+    {
+        float result = _depth;
+
+        if (element.minimalVirtualHeight > 0 && (_depth - _origin).RealToVirtualScale() < element.minimalVirtualHeight) 
+        {
+            result = GetMidPoint() + (element.minimalVirtualHeight / 2).VirtualToRealScale();
+        }
+
+        return result;
+    }
+
+    public float GetTopPoint()
+    {
+        float result = _origin;
+
+        if (element.minimalVirtualHeight > 0 && (_depth - _origin).RealToVirtualScale() < element.minimalVirtualHeight)
+        {
+            result = GetMidPoint() - (element.minimalVirtualHeight / 2).VirtualToRealScale();
+        }
+
+        return result;
     }
 
     public override string ToString()
@@ -70,10 +100,10 @@ public class SchematicItem : SchematicDrawable
         if (truncate == truncateMethod.none)
             return result;
         else if (truncate == truncateMethod.warp)
-            return LimitAndAppend(result, 25 - GetElementPositions().Length);
+            return LimitAndAppend(result, Constants.DEFAULT_CHARS_LIMIT - GetElementPositions().Length);
         else
         {
-            result = Regex.Replace(result, @"(.{25})", "$1\n");
+            result = Regex.Replace(result, Constants.DEFAULT_CHARS_LIMIT.ToString(), "$1\n");
 
             return result;
         }
@@ -81,17 +111,17 @@ public class SchematicItem : SchematicDrawable
 
     public string GetElementPositions() 
     {
-        if (_origin + _depth == 0 || (_origin < 0 && _depth < 0))
+        if (__origin + __depth == 0 || (__origin < 0 && __depth < 0))
         {
             return "";
         }
-        if (_origin <= 0)
+        if (__origin <= 0)
         {
-            return $" até {_depth.ToString("F2")}m";
+            return $" até {__depth.ToString("F2")}m";
         }
         else
         {
-            return $" {_origin.ToString("F2")} - {_depth.ToString("F2")}m";
+            return $" {__origin.ToString("F2")}-{__depth.ToString("F2")}m";
         }
     }
 
@@ -129,8 +159,8 @@ public class SchematicItem : SchematicDrawable
             this.description = schematicItem._description;
             this.hideText = schematicItem._hideText;
             this.element = schematicItem.element.Key;
-            this.topo = schematicItem._origin;
-            this.@base = schematicItem._depth;
+            this.topo = schematicItem.__origin;
+            this.@base = schematicItem.__depth;
             this.mainGroup = schematicItem._mainGroup;
             this.subGroup = schematicItem._subGroup;
         }
@@ -141,11 +171,11 @@ public class SchematicItem : SchematicDrawable
             result._virtualName = name;
             result._description = description;
             result._hideText = hideText;
-            result.element = SchematicGenerator.elements[this.element];
+            result.element = ElementDatabase.Elements[this.element];
             result._mainGroup = this.mainGroup;
             result._subGroup = this.subGroup;
-            result._origin = this.topo;
-            result._depth = this.@base;
+            result.__origin = this.topo;
+            result.__depth = this.@base;
 
             return result;
         }

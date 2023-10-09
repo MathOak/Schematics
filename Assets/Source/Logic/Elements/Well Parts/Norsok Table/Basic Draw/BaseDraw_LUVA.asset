@@ -15,6 +15,8 @@ MonoBehaviour:
   elementName: BASIC LUVA
   elementEngName: 
   _key: draw_luva
+  useDrawSettings: 1
+  drawSettings: {fileID: 11400000, guid: 94352121202569744bdf3fa26a5ce5df, type: 2}
   _headItem: 0
   _columItem: 1
   _writePartOnDoc: 1

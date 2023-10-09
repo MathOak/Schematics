@@ -14,10 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: "Material de ader\xEAncia do revestimento"
   elementEngName: "Casing bonding material\r"
-  _writePartOnDoc: 1
   _key: casing_bonding_material
-  elementIcon: {fileID: 0}
+  useDrawSettings: 0
+  drawSettings: {fileID: 0}
+  _headItem: 0
   _columItem: 0
+  _writePartOnDoc: 1
+  _drawRectLine: 0
+  _fixedWritePosition: 0
+  _fixedPosition: 0
+  addHasOffset: 0
   pivot: {x: 0.5, y: 0}
   useBgColor: 1
   defaultColor: {r: 0.73333335, g: 0.73333335, b: 0.73333335, a: 1}
@@ -29,4 +35,5 @@ MonoBehaviour:
   drawMode: 0
   aditionalArtScale: {x: 1, y: 1}
   minimalVirtualHeight: 0
+  ignoreResize: 1
   sortInLayer: 10
