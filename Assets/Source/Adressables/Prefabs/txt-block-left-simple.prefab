@@ -62,8 +62,10 @@ MonoBehaviour:
     element: {fileID: 0}
     _virtualName: 
     _description: 
-    _origin: 0
-    _depth: 0
+    __origin: 0
+    __depth: 0
+    originOffset: 0
+    depthOffset: 0
     _mainGroup: default
     _subGroup: 
     dontFill: 1
@@ -160,7 +162,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0.04, z: 0.32, w: 0.04}
+  m_margin: {x: 0, y: 0.04, z: 0, w: 0.04}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -213,6 +215,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.2800293, y: 0}
+  m_AnchoredPosition: {x: 0.03, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 0.5}
