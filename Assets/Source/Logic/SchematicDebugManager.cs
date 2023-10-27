@@ -35,6 +35,7 @@ public class SchematicDebugManager : MonoBehaviour
     [TextArea]
     private string jsonSchematicText;
 
+    [Tooltip("Mostra a chave de API respectiva do elemento")]
     [SerializeField] private bool writeApiKeyNames;
 
     private static SchematicDebugManager _instance;
