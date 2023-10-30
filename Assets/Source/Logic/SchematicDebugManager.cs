@@ -32,7 +32,7 @@ public class SchematicDebugManager : MonoBehaviour
 
     [ShowIf("IsDebugJsonString")]
     [SerializeField]
-    [TextArea]
+    [TextArea(1,20)]
     private string jsonSchematicText;
 
     [Tooltip("Mostra a chave de API respectiva do elemento")]
