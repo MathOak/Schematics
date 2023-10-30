@@ -30,7 +30,7 @@ public class UITextBlockRight : MonoBehaviour
         grouptmPro.text = $"{mainGroup._name}";
         grouptmPro.color = newColor;
 
-        string text = $"\n{mainGroup.GetListNames()}";
+        string text = $"\n\n{mainGroup.GetListNames()}";
         tmPro.text = text;
 
         VisualElement.SetGroupColor(mainGroup._name, newColor);
