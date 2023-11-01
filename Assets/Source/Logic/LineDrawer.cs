@@ -22,9 +22,7 @@ public class LineDrawer : MonoBehaviour
         LineRenderer line = Instantiate(lineRenderer, lineParent);
         float xPos = textBlock.schematicItem.element._columItem ? 0 : (isLeft ? -0.95f : 0.95f) ;
         line.SetPosition(0, new Vector3(textBlock.LinePivot.transform.position.x, textBlock.LinePivot.transform.position.y, 0));
-        float yPos = textBlock.schematicItem.element._drawRectLine ? 
-            textBlock.LinePivot.transform.position.y : 
-            -textBlock.schematicItem.GetMidPoint().RealToVirtualScale();
+        float yPos = textBlock.schematicItem.element._drawRectLine ? textBlock.LinePivot.transform.position.y : -textBlock.schematicItem.GetMidPoint().RealToVirtualScale();
         line.SetPosition(1, new Vector3(xPos, yPos, 0));
         lines.Add(line);
     }
