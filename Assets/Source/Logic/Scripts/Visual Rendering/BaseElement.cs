@@ -29,14 +29,14 @@ public class BaseElement : ScriptableObject
     [ShowIf("_fixedWritePosition")][HideIf("useDrawSettings")]public bool addHasOffset = false;
 
     [Tooltip("Add offset from indicator line start")]
-    [ShowIf("_fixedWritePosition")]
+    //[ShowIf("_fixedWritePosition")]
     [HideIf("useDrawSettings")]
     public Vector2 originOffset = Vector2.zero;
 
     [Tooltip("Add offset from indicator line end")]
-    [ShowIf("_fixedWritePosition")]
+    //[ShowIf("_fixedWritePosition")]
     [HideIf("useDrawSettings")]
-    public Vector2 targetOffset = new Vector2(0.95f, 0);
+    public Vector2 targetOffset = Vector2.zero;
 
     [Header("Drawing")]
     [HideIf("useDrawSettings")][SerializeField] public Vector2 pivot = new Vector2(0.5f, 0f);
