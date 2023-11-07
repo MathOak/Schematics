@@ -18,6 +18,9 @@ MonoBehaviour:
   _drawRectLine: 1
   _fixedWritePosition: 1
   _fixedPosition: -2
+  addHasOffset: 0
+  originOffset: {x: 0, y: 0}
+  targetOffset: {x: 2, y: 0}
   pivot: {x: 0.5, y: 0.5}
   useBgColor: 1
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
@@ -29,4 +32,6 @@ MonoBehaviour:
   drawMode: 0
   additionalArtScale: {x: 1, y: 1}
   minimalVirtualHeight: 0.05
+  ignoreResize: 0
+  ignoreCSBColor: 0
   sortInLayer: 0
