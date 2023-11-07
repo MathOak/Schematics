@@ -127,7 +127,7 @@ public partial class UIGenerator : MonoBehaviour
             // IN CASE OF LEFT ALIGNED ITEM X POSTION SHOULD BE A NEGATIVE NUMBER
             xTarget = isLeft ? xTarget * -1 : xTarget;
 
-            yTarget = block.schematicItem.element._drawRectLine ? 
+            yTarget += block.schematicItem.element._drawRectLine ? 
                 block.LinePivot.transform.position.y : 
                 -block.schematicItem.GetMidPoint().RealToVirtualScale();
 
