@@ -9,7 +9,7 @@ public class UITextBlockRight : MonoBehaviour
     [SerializeField] TextMeshProUGUI tmPro;
     [SerializeField] TextMeshProUGUI grouptmPro;
     [SerializeField] Image backgroundImage;
-    List<string> colorList = new List<string>() { "#006fbc", "#ff081f", "#00ff3b", "#fff400" };
+    List<string> colorList = new List<string>() { "#006fbc", "#ff081f", "#00ff3b", "#FF8100" };
 
     public void WriteGroupBlock(ItemMainGroup mainGroup, int index)
     {
