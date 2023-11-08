@@ -1508,143 +1508,72 @@ MonoBehaviour:
   jsonSchematicText: "{\r\n  \"elementDataError\": true,\r\n  \"data\": {\r\n   
     \"isDiagram\": true,\r\n    \"hideAllText\": false,\r\n    \"drillDeph\": 2500,\r\n   
     \"parts\": [\r\n      {\r\n        \"hideText\": false,\r\n        \"name\":
-    \"AN BM \xC1RVORE DE NATAL | N\xC3O ESPECIFICADO | N\xC3O ESPECIFICADO\",\r\n       
-    \"description\": \"\",\r\n        \"element\": \"surface_tree\",\r\n        \"mainGroup\":
-    \"CSB 2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n        \"topo\":
-    4.1,\r\n        \"base\": 4.3\r\n      },\r\n      {\r\n        \"hideText\":
-    false,\r\n        \"name\": \"ADAPTADOR PARA AN ADAPTADOR CABE\xC7A DE PRODU\xC7\xC3O
-    | N\xC3O ESPECIFICADO | N\xC3O ESPECIFICADO\",\r\n        \"description\": \"\",\r\n       
+    \"FLUIDO PRODUZIDO\",\r\n        \"description\": \"\",\r\n        \"element\":
+    \"fluid_column\",\r\n        \"mainGroup\": \"CSB 1 Prim\xE1rio\",\r\n       
+    \"subGroup\": \"\",\r\n        \"topo\": 49.98,\r\n        \"base\": 1256.11\r\n     
+    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"COLUNA UNICA\",\r\n       
+    \"description\": \"\",\r\n        \"element\": \"fluid_column\",\r\n        \"mainGroup\":
+    \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 49.98,\r\n        \"base\":
+    1650.9\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\":
+    \"AN BM ACESS\xD3RIO STUFFING BOX SAFE-T 2 1/2 X 1 1/2 X 3 1/2`` P/ CAIXA DE
+    ENGAXETAMENTO P/ ANS \xC1RVORE DE NATAL SIMP ROSQ 3000 PSI 3\xB4\xB4LP X 3\xB4\xB4LP
+    CX ENGAX 1.1/4\xB4\xB4 AN-34 BM\",\r\n        \"description\": \"\",\r\n       
     \"element\": \"surface_tree\",\r\n        \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 4.3,\r\n        \"base\": 4.5\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"SELANTE\",\r\n       
-    \"description\": \"ROCHA SELANTE\",\r\n        \"element\": \"casing\",\r\n       
-    \"mainGroup\": \"CSB 3 Entre Intervalos\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 1095,\r\n        \"base\": 1117\r\n      },\r\n      {\r\n        \"hideText\":
-    false,\r\n        \"name\": \"CABE\xC7A DE PROD FLANGEADA CABE\xC7A DE PRODU\xC7\xC3O
-    | N\xC3O ESPECIFICADO | N\xC3O ESPECIFICADO\",\r\n        \"description\": \"\",\r\n       
+    \"subGroup\": \"\",\r\n        \"topo\": 3,\r\n        \"base\": 4.6\r\n     
+    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"ADAPTADOR
+    PARA AN ADAPTADOR CABE\xC7A DE PRODU\xC7\xC3O A-1 7.1/16\xB4\xB4-3000 X 3\xB4\xB4
+    LP\",\r\n        \"description\": \"\",\r\n        \"element\": \"surface_tree\",\r\n       
+    \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n       
+    \"topo\": 4.6,\r\n        \"base\": 4.9\r\n      },\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"CABE\xC7A DE PROD ROSQUEADA CABE\xC7A DE PRODU\xC7\xC3O
+    T-16 3000 PSI 11\xB4\xB4 X 7.1/16\xB4\xB4\",\r\n        \"description\": \"\",\r\n       
     \"element\": \"wellhead\",\r\n        \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 4.5,\r\n        \"base\": 5\r\n     
+    \"subGroup\": \"\",\r\n        \"topo\": 4.9,\r\n        \"base\": 5.5\r\n     
     },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"REVESTIMENTO\",\r\n       
     \"description\": \"\",\r\n        \"element\": \"casing\",\r\n        \"mainGroup\":
     \"CSB 2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n        \"topo\":
-    5,\r\n        \"base\": 1263\r\n      },\r\n      {\r\n        \"hideText\":
-    false,\r\n        \"name\": \"CIMENTA\xC7\xC3O PRIM\xC1RIA CIMENTA\xC7\xC3O PRIM\xC1RIA\",\r\n       
-    \"description\": \"\",\r\n        \"element\": \"casing_cement\",\r\n       
-    \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 1203,\r\n        \"base\": 1263\r\n      },\r\n      {\r\n        \"hideText\":
-    false,\r\n        \"name\": \"SELANTE\",\r\n        \"description\": \"ROCHA
-    SELANTE\",\r\n        \"element\": \"casing\",\r\n        \"mainGroup\": \"CSB
-    2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 1233,\r\n       
-    \"base\": 1263\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
-    \"name\": \"REVESTIMENTO\",\r\n        \"description\": \"\",\r\n        \"element\":
-    \"casing\",\r\n        \"mainGroup\": \"CSB 3 Entre Intervalos\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 1095,\r\n        \"base\": 1196\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"CIMENTA\xC7\xC3O
-    PRIM\xC1RIA CIMENTA\xC7\xC3O PRIM\xC1RIA\",\r\n        \"description\": \"\",\r\n       
-    \"element\": \"casing_cement\",\r\n        \"mainGroup\": \"CSB 3 Entre Intervalos\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 1095,\r\n        \"base\": 1196\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"SELANTE
-    ROCHA SELANTE\",\r\n        \"description\": \"\",\r\n        \"element\": \"casing\",\r\n       
-    \"mainGroup\": \"CSB 3 Entre Intervalos\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 1175,\r\n        \"base\": 1196\r\n      },\r\n      {\r\n        \"hideText\":
+    764.04,\r\n        \"base\": 804.63\r\n      },\r\n      {\r\n        \"hideText\":
     false,\r\n        \"name\": \"REVESTIMENTO\",\r\n        \"description\": \"\",\r\n       
-    \"element\": \"casing\",\r\n        \"mainGroup\": \"CSB 4 Entre\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 635,\r\n        \"base\": 1117\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"CIMENTA\xC7\xC3O
-    PRIM\xC1RIA\",\r\n        \"description\": \"CIMENTA\xC7\xC3O PRIM\xC1RIA\",\r\n       
-    \"element\": \"casing_cement\",\r\n        \"mainGroup\": \"CSB 4 Entre\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 635,\r\n        \"base\": 1117\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"SELANTE
-    ROCHA SELANTE\",\r\n        \"description\": \"\",\r\n        \"element\": \"casing\",\r\n       
-    \"mainGroup\": \"CSB 4 Entre\",\r\n        \"subGroup\": \"\",\r\n        \"topo\":
-    635,\r\n        \"base\": 662\r\n      },\r\n      {\r\n        \"hideText\":
-    false,\r\n        \"name\": \"SELANTE ROCHA SELANTE\",\r\n        \"description\":
-    \"\",\r\n        \"element\": \"casing\",\r\n        \"mainGroup\": \"CSB 4 Entre\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 1095,\r\n        \"base\": 1117\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"ROCHA SELANTE
-    CALCARENITO\",\r\n        \"description\": \"Forma\xE7\xE3o imperme\xE1vel atravessada
-    durante a perfura\xE7\xE3o do po\xE7o\",\r\n        \"element\": \"casing\",\r\n       
-    \"mainGroup\": \"CSB 1 Prim\xE1rio\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 1095,\r\n        \"base\": 1117\r\n      },\r\n      {\r\n        \"hideText\":
-    false,\r\n        \"name\": \"ANULAR CIMENTADO\",\r\n        \"description\":
-    \"Pasta de cimento endurecida localizada em anulares entre tubulares met\xE1licos
-    conc\xEAntricos (revestimento, coluna de produ\xE7\xE3o, de inje\xE7\xE3o, de
-    trabalho, entre outras) ou entre um tubular met\xE1lico e a parede da forma\xE7\xE3o.
-    \",\r\n        \"element\": \"casing_cement\",\r\n        \"mainGroup\": \"CSB
-    1 Prim\xE1rio\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 1095,\r\n       
-    \"base\": 1117\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
-    \"name\": \"REVESTIMENTO 5 1/2\u201D 15,5# k55\",\r\n        \"description\":
-    \"Tubula\xE7\xE3o met\xE1lica instalada no po\xE7o.\",\r\n        \"element\":
-    \"casing\",\r\n        \"mainGroup\": \"CSB 1 Prim\xE1rio\",\r\n        \"subGroup\":
-    \"\",\r\n        \"topo\": 1095,\r\n        \"base\": 1160\r\n      },\r\n     
-    {\r\n        \"hideText\": false,\r\n        \"name\": \"PACKER T\xC9RMICO 5
-    1/2\u201D ARROWTHERM AT-2\",\r\n        \"description\": \"Equipamento met\xE1lico
-    tubular com sistema de veda\xE7\xE3o externo, podendo apresentar sistema de ancoragem,
-    conectado \xE0 coluna de produ\xE7\xE3o, opera\xE7\xE3o, teste ou inje\xE7\xE3o.\",\r\n       
-    \"element\": \"production_packer\",\r\n        \"mainGroup\": \"CSB 1 Prim\xE1rio\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 1140.4,\r\n        \"base\": 1142.2\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"\xC1RVORE
-    DE NATAL DE INJE\xC7\xC3O DE VAPOR\",\r\n        \"description\": \"A \xC1rvore
-    de Natal corresponde a qualquer equipamento de superf\xEDcie provido de v\xE1lvula(s)
-    com o objetivo de assegurar o isolamento final entre o po\xE7o e ambiente externo,
-    guiar a produ\xE7\xE3o para a linha de produ\xE7\xE3o ou guiar os fluidos da
-    linha de inje\xE7\xE3o para o po\xE7o.\",\r\n        \"element\": \"surface_tree\",\r\n       
-    \"mainGroup\": \"CSB 1 Prim\xE1rio\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 2,\r\n        \"base\": 4.1\r\n      },\r\n      {\r\n        \"hideText\":
-    false,\r\n        \"name\": \"SUSPENSOR PC1 A-EN 6'' X 2 7/8'' EU\",\r\n       
-    \"description\": \"Equipamento met\xE1lico instalado na cabe\xE7a de produ\xE7\xE3o
-    do po\xE7o, possuindo sistema de veda\xE7\xE3o externa e conectado \xE0 coluna
-    de produ\xE7\xE3o.\",\r\n        \"element\": \"tubing_hanger\",\r\n        \"mainGroup\":
-    \"CSB 1 Prim\xE1rio\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 4.1,\r\n       
-    \"base\": 4.3\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
-    \"name\": \"CABE\xC7A DE PRODU\xC7\xC3O TIV 7\u201D BUT X 7 1/6\u201D -3000\",\r\n       
-    \"description\": \"Corpo met\xE1lico composto por suspensores das tubula\xE7\xF5es,
-    elementos de veda\xE7\xE3o, v\xE1lvulas e pontos de acessos aos anulares do po\xE7o.\",\r\n       
-    \"element\": \"wellhead\",\r\n        \"mainGroup\": \"CSB 1 Prim\xE1rio\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 4.4,\r\n        \"base\": 4.9\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"Redu\xE7\xE3o\",\r\n       
-    \"description\": \"\",\r\n        \"element\": \"generic_element\",\r\n       
-    \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 4.24,\r\n       
-    \"base\": 4.59\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
-    \"name\": \"Tubo simples\",\r\n        \"description\": \"\",\r\n        \"element\":
-    \"coiled_tubing\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 4.59,\r\n        \"base\": 1121.53\r\n      },\r\n      {\r\n       
-    \"hideText\": false,\r\n        \"name\": \"Redu\xE7\xE3o\",\r\n        \"description\":
-    \"\",\r\n        \"element\": \"generic_element\",\r\n        \"mainGroup\":
-    \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 1126.12,\r\n       
-    \"base\": 1126.5\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
-    \"name\": \"Junta de expans\xE3o\",\r\n        \"description\": \"\",\r\n       
-    \"element\": \"generic_element\",\r\n        \"mainGroup\": \"\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 1126.5,\r\n        \"base\": 1138.35\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"Redu\xE7\xE3o\",\r\n       
-    \"description\": \"\",\r\n        \"element\": \"generic_element\",\r\n       
-    \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 1138.35,\r\n       
-    \"base\": 1138.5\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
-    \"name\": \"Redu\xE7\xE3o\",\r\n        \"description\": \"\",\r\n        \"element\":
-    \"generic_element\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\":
-    \"\",\r\n        \"topo\": 1138.5,\r\n        \"base\": 1138.88\r\n      },\r\n     
-    {\r\n        \"hideText\": false,\r\n        \"name\": \"Tubo curto\",\r\n       
-    \"description\": \"\",\r\n        \"element\": \"coiled_tubing\",\r\n       
-    \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 1138.88,\r\n       
-    \"base\": 1140.2\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
-    \"name\": \"Redu\xE7\xE3o\",\r\n        \"description\": \"\",\r\n        \"element\":
-    \"generic_element\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\":
-    \"\",\r\n        \"topo\": 1140.2,\r\n        \"base\": 1140.4\r\n      },\r\n     
-    {\r\n        \"hideText\": false,\r\n        \"name\": \"Packer\",\r\n       
-    \"description\": \"\",\r\n        \"element\": \"production_packer\",\r\n       
-    \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 1140.4,\r\n       
-    \"base\": 1142.2\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
-    \"name\": \"Tubo simples\",\r\n        \"description\": \"\",\r\n        \"element\":
-    \"coiled_tubing\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 1142.2,\r\n        \"base\": 1178.6\r\n      },\r\n      {\r\n       
-    \"hideText\": false,\r\n        \"name\": \"Catcher sub\",\r\n        \"description\":
-    \"\",\r\n        \"element\": \"generic_element\",\r\n        \"mainGroup\":
-    \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 1178.6,\r\n       
-    \"base\": 1178.7\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
-    \"name\": \"Gaiola\",\r\n        \"description\": \"\",\r\n        \"element\":
-    \"generic_element\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\":
-    \"\",\r\n        \"topo\": 1178.7,\r\n        \"base\": 1179.2\r\n      }\r\n   
-    ],\r\n    \"comments\": [],\r\n    \"terrains\": []\r\n  }\r\n}\r\n"
+    \"element\": \"casing\",\r\n        \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n       
+    \"subGroup\": \"\",\r\n        \"topo\": 5.5,\r\n        \"base\": 730.89\r\n     
+    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"SELANTE\",\r\n       
+    \"description\": \"ROCHA SELANTE\",\r\n        \"element\": \"casing\",\r\n       
+    \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n       
+    \"topo\": 784.34,\r\n        \"base\": 804.63\r\n      },\r\n      {\r\n       
+    \"hideText\": false,\r\n        \"name\": \"CIMENTA\xC7\xC3O PRIM\xC1RIA CIMENTA\xC7\xC3O
+    PRIM\xC1RIA\",\r\n        \"description\": \"\",\r\n        \"element\": \"casing_cement\",\r\n       
+    \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n       
+    \"topo\": 764.04,\r\n        \"base\": 804.63\r\n      },\r\n      {\r\n       
+    \"hideText\": false,\r\n        \"name\": \"COLAR DE EST\xC1GIO\",\r\n       
+    \"description\": \"\",\r\n        \"element\": \"casing\",\r\n        \"mainGroup\":
+    \"CSB 2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n        \"topo\":
+    730.89,\r\n        \"base\": 731.23\r\n      },\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"REVESTIMENTO\",\r\n        \"description\": \"\",\r\n       
+    \"element\": \"sapata\",\r\n        \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n       
+    \"subGroup\": \"\",\r\n        \"topo\": 731.23,\r\n        \"base\": 804.63\r\n     
+    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"REVESTIMENTO\",\r\n       
+    \"description\": \"\",\r\n        \"element\": \"casing\",\r\n        \"mainGroup\":
+    \"CSB 3 Entre Intervalos\",\r\n        \"subGroup\": \"\",\r\n        \"topo\":
+    1181.9,\r\n        \"base\": 1220.58\r\n      },\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"CIMENTA\xC7\xC3O PRIM\xC1RIA\",\r\n        \"description\":
+    \"CIMENTA\xC7\xC3O PRIM\xC1RIA\",\r\n        \"element\": \"casing_cement\",\r\n       
+    \"mainGroup\": \"CSB 3 Entre Intervalos\",\r\n        \"subGroup\": \"\",\r\n       
+    \"topo\": 1181.9,\r\n        \"base\": 1220.58\r\n      },\r\n      {\r\n       
+    \"hideText\": false,\r\n        \"name\": \"SELANTE ROCHA SELANTE\",\r\n       
+    \"description\": \"\",\r\n        \"element\": \"casing\",\r\n        \"mainGroup\":
+    \"CSB 3 Entre Intervalos\",\r\n        \"subGroup\": \"\",\r\n        \"topo\":
+    1200.9,\r\n        \"base\": 1220.58\r\n      },\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"Tubo simples\",\r\n        \"description\": \"\",\r\n       
+    \"element\": \"coiled_tubing\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\":
+    \"\",\r\n        \"topo\": 5.6,\r\n        \"base\": 5.6\r\n      },\r\n     
+    {\r\n        \"hideText\": false,\r\n        \"name\": \"Redu\xE7\xE3o\",\r\n       
+    \"description\": \"\",\r\n        \"element\": \"draw_luva\",\r\n        \"mainGroup\":
+    \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 1488,\r\n        \"base\":
+    1488\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\":
+    \"Bomba BM\",\r\n        \"description\": \"\",\r\n        \"element\": \"draw_bomb\",\r\n       
+    \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 1488.3,\r\n       
+    \"base\": 1488.3\r\n      }\r\n    ],\r\n    \"comments\": [],\r\n    \"terrains\":
+    []\r\n  }\r\n}"
   writeApiKeyNames: 0
 --- !u!114 &1872632605
 MonoBehaviour:
