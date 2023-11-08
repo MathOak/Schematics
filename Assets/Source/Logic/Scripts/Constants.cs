@@ -6,5 +6,5 @@
     public const int MAX_WIDTH = 2550;
     public const int MAX_HEIGHT = 3300;
 
-    public const int DEFAULT_CHARS_LIMIT = 58;
+    public const int DEFAULT_CHARS_LIMIT = 65;
 }
