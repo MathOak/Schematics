@@ -15,19 +15,14 @@ MonoBehaviour:
   elementName: "\xC1rvore de Natal (ANC)"
   elementEngName: "Surface tree\r"
   _key: surface_tree
-  useDrawSettings: 0
-  drawSettings: {fileID: 0}
   _headItem: 1
   _columItem: 0
   _writePartOnDoc: 1
-  _drawRectLine: 0
+  _drawRectLine: 1
   _fixedWritePosition: 1
   _fixedPosition: -2
-  addHasOffset: 0
-  originOffset: {x: 0, y: 0}
-  targetOffset: {x: 0, y: 2}
   pivot: {x: 0.5, y: 0.5}
-  useBgColor: 0
+  useBgColor: 1
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   aditionalBgScale: {x: 1, y: 1}
   useInsideArt: 1
@@ -37,6 +32,4 @@ MonoBehaviour:
   drawMode: 0
   aditionalArtScale: {x: 1, y: 1}
   minimalVirtualHeight: 0.05
-  ignoreResize: 0
-  ignoreCSBColor: 0
   sortInLayer: 0
