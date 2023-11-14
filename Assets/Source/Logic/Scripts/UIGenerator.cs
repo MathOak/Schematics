@@ -123,7 +123,7 @@ public partial class UIGenerator : MonoBehaviour
             float xTarget = targetOffset.x;
             float yTarget = targetOffset.y;
 
-            xTarget += block.schematicItem.element._columItem ? 0 : targetOffset.x;
+            xTarget = block.schematicItem.element._columItem ? 0 : targetOffset.x;
             // IN CASE OF LEFT ALIGNED ITEM X POSTION SHOULD BE A NEGATIVE NUMBER
             xTarget = isLeft ? xTarget * -1 : xTarget;
 

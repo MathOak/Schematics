@@ -20,7 +20,7 @@ MonoBehaviour:
   _fixedPosition: -0.9
   addHasOffset: 0
   originOffset: {x: 0, y: 0}
-  targetOffset: {x: 0.22, y: 0}
+  targetOffset: {x: 0.45, y: 0}
   pivot: {x: 0.5, y: 1}
   useBgColor: 0
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
