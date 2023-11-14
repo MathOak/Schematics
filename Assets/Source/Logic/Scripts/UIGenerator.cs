@@ -23,6 +23,8 @@ public partial class UIGenerator : MonoBehaviour
     [SerializeField] RectTransform canvasRight;
     [SerializeField] RectTransform canvasRightSimple;
 
+    [SerializeField] float targetOffset = 0.95f;
+
     List<UITextBlockLeft> leftBlocks = new List<UITextBlockLeft>();
     List<UITextBlockRight> rightBlocks = new List<UITextBlockRight>();
 
@@ -77,7 +79,7 @@ public partial class UIGenerator : MonoBehaviour
         
         canvasRight.gameObject.SetActive(schematic._isDiagram);
 
-        foreach (SchematicItem sItem in schematicItems)
+        foreach (var sItem in schematicItems)
         {
             UITextBlockLeft textBlock = null;
 
@@ -115,23 +117,16 @@ public partial class UIGenerator : MonoBehaviour
         {
             bool isLeft = block.pivot.position.x < 0;
 
-            Vector2 originOffset = block.schematicItem.element.originOffset;
-            float xOrigin = block.LinePivot.transform.position.x + originOffset.x;
-            float yOrigin = block.LinePivot.transform.position.y + originOffset.y;
+            float xOrigin = block.LinePivot.transform.position.x;
+            float yOrigin = block.LinePivot.transform.position.y;
 
-            Vector2 targetOffset = block.schematicItem.element.targetOffset;
-            float xTarget = targetOffset.x;
-            float yTarget = targetOffset.y;
-
-            xTarget = block.schematicItem.element._columItem ? 0 : targetOffset.x;
+            float xPos = block.schematicItem.element._columItem ? 0 : targetOffset;
             // IN CASE OF LEFT ALIGNED ITEM X POSTION SHOULD BE A NEGATIVE NUMBER
-            xTarget = isLeft ? xTarget * -1 : xTarget;
+            xPos = isLeft ? xPos * -1 : xPos;
 
-            yTarget = block.schematicItem.element._drawRectLine ? 
-                block.LinePivot.transform.position.y : 
-                -block.schematicItem.GetMidPoint().RealToVirtualScale();
-
-            LineDrawer.instance.CreateLine(xOrigin, yOrigin, xTarget, yTarget);
+            float yPos = block.schematicItem.element._drawRectLine ? block.LinePivot.transform.position.y : -block.schematicItem.GetMidPoint().RealToVirtualScale();
+            
+            LineDrawer.instance.CreateLine(xOrigin, yOrigin, xPos, yPos);
         }
     }
 
