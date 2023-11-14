@@ -353,7 +353,6 @@ MonoBehaviour:
   canvasLeft: {fileID: 1835281867}
   canvasRight: {fileID: 435408345}
   canvasRightSimple: {fileID: 1564178058}
-  targetOffset: 0.95
 --- !u!4 &698024725
 Transform:
   m_ObjectHideFlags: 0
