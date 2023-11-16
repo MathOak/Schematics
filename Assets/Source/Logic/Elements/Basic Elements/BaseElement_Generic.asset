@@ -24,16 +24,19 @@ MonoBehaviour:
   _fixedWritePosition: 0
   _fixedPosition: 0
   addHasOffset: 0
+  originOffset: {x: 0, y: 0}
+  targetOffset: {x: 0, y: 0}
   pivot: {x: 0.5, y: 0.5}
   useBgColor: 0
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   aditionalBgScale: {x: 0.2915, y: 1}
   useInsideArt: 1
   art: {fileID: 21300000, guid: d46bb6e7b913a2e449e84d4c632f6cb6, type: 3}
-  artColor: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 1}
+  artColor: {r: 0, g: 0, b: 0, a: 1}
   maskInteraction: 0
   drawMode: 1
   aditionalArtScale: {x: 0.2915, y: 0.85}
   minimalVirtualHeight: 0.3
   ignoreResize: 0
+  ignoreCSBColor: 0
   sortInLayer: 205
