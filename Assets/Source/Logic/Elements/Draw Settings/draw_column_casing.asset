@@ -19,6 +19,8 @@ MonoBehaviour:
   _fixedWritePosition: 0
   _fixedPosition: 0
   addHasOffset: 0
+  originOffset: {x: 0, y: 0}
+  targetOffset: {x: 0.95, y: 0}
   pivot: {x: 0.5, y: 0}
   useBgColor: 0
   defaultColor: {r: 0.85882354, g: 0.92156863, b: 0.9647059, a: 1}
@@ -31,4 +33,5 @@ MonoBehaviour:
   additionalArtScale: {x: 0.275, y: 1}
   minimalVirtualHeight: 0.05
   ignoreResize: 1
+  ignoreCSBColor: 0
   sortInLayer: 200
