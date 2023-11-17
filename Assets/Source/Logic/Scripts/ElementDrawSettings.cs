@@ -18,6 +18,14 @@ public class ElementDrawSettings : ScriptableObject
     public bool _fixedWritePosition = false;
     [ShowIf("_fixedWritePosition")] public float _fixedPosition = 0;
     [ShowIf("_fixedWritePosition")] public bool addHasOffset;
+    
+    [Tooltip("Add offset from indicator line start")]
+    //[ShowIf("_fixedWritePosition")]
+    public Vector2 originOffset = Vector2.zero;
+
+    [Tooltip("Add offset from indicator line end")]
+    //[ShowIf("_fixedWritePosition")] 
+    public Vector2 targetOffset = Vector2.zero;
 
     [Header("Drawing")]
     public Vector2 pivot = new Vector2(0.5f, 0f);
@@ -49,6 +57,8 @@ public class ElementDrawSettings : ScriptableObject
         _drawRectLine = element._drawRectLine;
         _fixedWritePosition = element._fixedWritePosition;
         _fixedPosition = element._fixedPosition;
+        originOffset = element.originOffset;
+        targetOffset = element.targetOffset;
         pivot = element.pivot;
         useBgColor = element.useBgColor;
         defaultColor = element.defaultColor;

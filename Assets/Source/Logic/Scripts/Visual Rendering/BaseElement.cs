@@ -25,7 +25,18 @@ public class BaseElement : ScriptableObject
     [HideIf("useDrawSettings")] public bool _drawRectLine = false;
     [HideIf("useDrawSettings")] public bool _fixedWritePosition = false;
     [ShowIf("_fixedWritePosition")][HideIf("useDrawSettings")] public float _fixedPosition = 0;
-    [ShowIf("_fixedWritePosition")][HideIf("useDrawSettings")] public bool addHasOffset = false;
+
+    [ShowIf("_fixedWritePosition")][HideIf("useDrawSettings")]public bool addHasOffset = false;
+
+    [Tooltip("Add offset from indicator line start")]
+    //[ShowIf("_fixedWritePosition")]
+    [HideIf("useDrawSettings")]
+    public Vector2 originOffset = Vector2.zero;
+
+    [Tooltip("Add offset from indicator line end")]
+    //[ShowIf("_fixedWritePosition")]
+    [HideIf("useDrawSettings")]
+    public Vector2 targetOffset = Vector2.zero;
 
     [Header("Drawing")]
     [HideIf("useDrawSettings")][SerializeField] public Vector2 pivot = new Vector2(0.5f, 0f);
@@ -125,6 +136,8 @@ public class BaseElement : ScriptableObject
             _fixedWritePosition = drawSettings._fixedWritePosition;
             _fixedPosition = drawSettings._fixedPosition;
             addHasOffset = drawSettings.addHasOffset;
+            originOffset = drawSettings.originOffset;
+            targetOffset = drawSettings.targetOffset;
             ignoreResize = drawSettings.ignoreResize;
             ignoreCSBColor = drawSettings.ignoreCSBColor;            
         }

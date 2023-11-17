@@ -10,33 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5340c93eadc02e54f9c2061c347916a6, type: 3}
-  m_Name: BaseElement_Generic
+  m_Name: elemten_nt_02_safe_t
   m_EditorClassIdentifier: 
-  elementName: "Gen\xE9rico"
-  elementEngName: Generic
-  _key: generic_element
+  elementName: 
+  elementEngName: 
+  _key: 
   useDrawSettings: 0
   drawSettings: {fileID: 0}
   _headItem: 0
-  _columItem: 1
-  _writePartOnDoc: 1
+  _columItem: 0
+  _writePartOnDoc: 0
   _drawRectLine: 0
   _fixedWritePosition: 0
   _fixedPosition: 0
   addHasOffset: 0
   originOffset: {x: 0, y: 0}
   targetOffset: {x: 0, y: 0}
-  pivot: {x: 0.5, y: 0.5}
+  pivot: {x: 0, y: 0}
   useBgColor: 0
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  aditionalBgScale: {x: 0.2915, y: 1}
-  useInsideArt: 1
-  art: {fileID: 21300000, guid: d46bb6e7b913a2e449e84d4c632f6cb6, type: 3}
-  artColor: {r: 0, g: 0, b: 0, a: 1}
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  aditionalBgScale: {x: 0, y: 0}
+  useInsideArt: 0
+  art: {fileID: 0}
+  artColor: {r: 0, g: 0, b: 0, a: 0}
   maskInteraction: 0
-  drawMode: 1
-  aditionalArtScale: {x: 0.2915, y: 0.85}
-  minimalVirtualHeight: 0.3
+  drawMode: 0
+  aditionalArtScale: {x: 0, y: 0}
+  minimalVirtualHeight: 0
   ignoreResize: 0
   ignoreCSBColor: 0
-  sortInLayer: 205
+  sortInLayer: 0
