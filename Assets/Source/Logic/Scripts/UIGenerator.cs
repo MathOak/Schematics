@@ -77,6 +77,17 @@ public partial class UIGenerator : MonoBehaviour
         
         canvasRight.gameObject.SetActive(schematic._isDiagram);
 
+        List<SchematicItem> surfaceSchematicItem = schematicItems.FindAll((item) => DrawOrder.IsFromSurface(item.element.Key));
+
+        surfaceSchematicItem.Sort((a, b) =>
+        {
+            return DrawOrder.GetGreater(a.element.Key, b.element.Key);
+        });
+
+        schematicItems.RemoveAll((item) => DrawOrder.IsFromSurface(item.element.Key));
+
+        schematicItems.InsertRange(0, surfaceSchematicItem);
+
         foreach (SchematicItem sItem in schematicItems)
         {
             UITextBlockLeft textBlock = null;

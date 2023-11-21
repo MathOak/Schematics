@@ -17,7 +17,7 @@ MonoBehaviour:
   _writePartOnDoc: 1
   _drawRectLine: 1
   _fixedWritePosition: 1
-  _fixedPosition: -0.55
+  _fixedPosition: -20
   addHasOffset: 0
   originOffset: {x: 0, y: 0}
   targetOffset: {x: 0.45, y: 0}
