@@ -37,6 +37,6 @@ MonoBehaviour:
   drawMode: 0
   aditionalArtScale: {x: 1, y: 1}
   minimalVirtualHeight: 0.05
-  ignoreResize: 0
+  ignoreResize: 1
   ignoreCSBColor: 0
   sortInLayer: 0
