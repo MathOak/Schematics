@@ -90,6 +90,11 @@ public class SchematicItem : SchematicDrawable
 
     public override string ToString()
     {
+        if (SurfaceElementsUtil.IsFromSurface(element.Key))
+        {
+            return GetElementName();
+        }
+
         return GetElementName() + GetElementPositions();
     }
 
