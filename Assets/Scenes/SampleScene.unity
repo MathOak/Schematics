@@ -1674,7 +1674,7 @@ MonoBehaviour:
     \"name\": \"Packer\",\r\n        \"description\": \"\",\r\n        \"element\":
     \"terrain_formation\",\r\n        \"mainGroup\": \"Intervalo sem Hidrocarboneto
     e com Potencial de\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 2040,\r\n       
-    \"base\": 2121\r\n      }\r\n    ]\r\n  }\r\n}\r\n"
+    \"base\": 2121\r\n      }\r\n    ]\r\n  }\r\n}\r\n\r\n"
   writeApiKeyNames: 0
 --- !u!114 &1872632605
 MonoBehaviour:
