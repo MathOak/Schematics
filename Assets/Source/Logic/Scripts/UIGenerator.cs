@@ -132,7 +132,7 @@ public partial class UIGenerator : MonoBehaviour
 
             Vector2 targetOffset = block.schematicItem.element.targetOffset;
             float xTarget = targetOffset.x;
-            float yTarget = targetOffset.y;
+            float yTarget = block.schematicItem.element._drawRectLine ? 0 : targetOffset.y;
 
             xTarget += block.schematicItem.element._columItem ? 0 : targetOffset.x;
             // IN CASE OF LEFT ALIGNED ITEM X POSTION SHOULD BE A NEGATIVE NUMBER
