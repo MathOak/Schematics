@@ -5,9 +5,18 @@ using UnityEngine;
 
 public class SurfaceElementsUtil : MonoBehaviour
 {
-    static List<string> surfaceKkeys = new List<string> { "surface_tree", "safe_t", "stuffing_box", "bop_haste", "adapter", "tubing_hanger", "wellhead" };
+    static List<string> surfaceKkeys = new List<string>
+    { 
+        "surface_tree", 
+        "safe_t", 
+        "stuffing_box", 
+        "bop_haste", 
+        "adapter", 
+        "tubing_hanger", 
+        "wellhead" 
+    };
 
-    public static bool IsFromSurface (string key)
+    public static bool IsFromSurface(string key)
     {
         return surfaceKkeys.Contains(key);
     }
