@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b50e3a858000c41abdd3982703a374, type: 3}
   m_Name: draw_valvula_DHSV
   m_EditorClassIdentifier: 
-  _headItem: 0
+  _headItem: 1
   _columItem: 1
   _writePartOnDoc: 1
   _drawRectLine: 0
   _fixedWritePosition: 0
   _fixedPosition: 0
+  addHasOffset: 0
+  originOffset: {x: 0, y: 0}
+  targetOffset: {x: 0, y: 0}
   pivot: {x: 0.5, y: 0}
   useBgColor: 0
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
@@ -27,6 +30,8 @@ MonoBehaviour:
   artColor: {r: 0, g: 0, b: 0, a: 1}
   maskInteraction: 0
   drawMode: 1
-  additionalArtScale: {x: 0.275, y: 1}
-  minimalVirtualHeight: 0.05
+  additionalArtScale: {x: 1.5, y: 1}
+  minimalVirtualHeight: 5
+  ignoreResize: 1
+  ignoreCSBColor: 0
   sortInLayer: 500

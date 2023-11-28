@@ -113,7 +113,27 @@ public class VisualElement : MonoBehaviour
             else
             {
                 render.size = new Vector2(DrawArea.size.x, Mathf.Clamp(DrawArea.size.y, element.minimalVirtualHeight, Mathf.Infinity));
-                render.size *= element.aditionalArtScale;
+                
+                //TODO: THIS PART SMELLS REALLY BAD. PLEASE FIX IT THE RIGHT WAY.
+                if (element.Key == "perforation")
+                {
+                    render.size = new Vector2(2, 0.2f);
+                }
+                if (element.Key == "downhole_safety_valve")
+                {
+                    render.size *= element.aditionalArtScale;
+
+                    float percent = 300f / 100f;
+                    float totalYsize = render.size.y + percent * render.size.y;
+                    render.size = new Vector2(render.size.x, totalYsize);
+                }
+                else
+                {
+                    // THIS IS NECESSARY IN THIS CLASS
+                    render.size *= element.aditionalArtScale;
+                }
+                /////
+
                 render.transform.localScale = Vector3.one;
             }
 
