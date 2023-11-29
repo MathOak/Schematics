@@ -20,9 +20,9 @@ MonoBehaviour:
   _headItem: 1
   _columItem: 0
   _writePartOnDoc: 1
-  _drawRectLine: 0
+  _drawRectLine: 1
   _fixedWritePosition: 1
-  _fixedPosition: -9
+  _fixedPosition: -1.35
   addHasOffset: 0
   originOffset: {x: 0, y: 0}
   targetOffset: {x: 0, y: 1.4}

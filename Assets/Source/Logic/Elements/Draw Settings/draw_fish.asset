@@ -30,7 +30,7 @@ MonoBehaviour:
   artColor: {r: 0, g: 0, b: 0, a: 1}
   maskInteraction: 0
   drawMode: 1
-  additionalArtScale: {x: 0.2, y: 1}
+  additionalArtScale: {x: 0.4, y: 2}
   minimalVirtualHeight: 0.3
   ignoreResize: 0
   ignoreCSBColor: 0
