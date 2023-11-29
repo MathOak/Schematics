@@ -1284,8 +1284,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1887641766}
+  m_Children: []
   m_Father: {fileID: 1636121303}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1341,42 +1340,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &1864387805
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1864387806}
-  m_Layer: 5
-  m_Name: lineOrigin
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1864387806
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1864387805}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1887641766}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0.03, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 1, y: 0.5}
 --- !u!1 &1872632594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,168 +1506,137 @@ MonoBehaviour:
     terrains: []
     comments: []
   jsonSchematicText: "{\r\n  \"elementDataError\": true,\r\n  \"data\": {\r\n   
-    \"isDiagram\": true,\r\n    \"hideAllText\": false,\r\n    \"drillDeph\": 2200,\r\n   
+    \"isDiagram\": true,\r\n    \"hideAllText\": false,\r\n    \"drillDeph\": 950,\r\n   
     \"parts\": [\r\n      {\r\n        \"hideText\": false,\r\n        \"name\":
-    \"COLUNA \xDANICA\",\r\n        \"description\": \"\",\r\n        \"element\":
-    \"column_casing\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 0,\r\n        \"base\": 1220.39\r\n      },\r\n      {\r\n        \"hideText\":
-    false,\r\n        \"name\": \"REVESTIMENTO \",\r\n        \"description\": \"Tubula\xE7\xE3o
-    met\xE1lica instalada no po\xE7o.\",\r\n        \"element\": \"casing\",\r\n       
-    \"mainGroup\": \"CSB 1 Primario\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 1176.83,\r\n        \"base\": 1236.81\r\n      },\r\n      {\r\n       
-    \"hideText\": false,\r\n        \"name\": \"DHSV\",\r\n        \"description\":
-    \"Dispositivo de seguran\xE7a instalado na coluna de produ\xE7\xE3o/inje\xE7\xE3o
-    cuja fun\xE7\xE3o \xE9 impedir o fluxo descontrolado de hidrocarbonetos para
-    o ambiente externo pela coluna de produ\xE7\xE3o, em caso de dano catastr\xF3fico
-    a equipamentos da cabe\xE7a do po\xE7o. Essa v\xE1lvula pode ser atuada remotamente
-    ou ser aberta por fluxo (v\xE1lvulas de seguran\xE7a de inje\xE7\xE3o).\",\r\n       
-    \"element\": \"downhole_safety_valve\",\r\n        \"mainGroup\": \"CSB 1 Primario\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 9.52,\r\n        \"base\": 10.72\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"TUBING\",\r\n       
-    \"description\": \"Tubula\xE7\xE3o met\xE1lica utilizada em po\xE7os produtores
-    ou injetores.\",\r\n        \"element\": \"drill_string\",\r\n        \"mainGroup\":
-    \"CSB 1 Primario\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 10.72,\r\n       
-    \"base\": 12\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
-    \"name\": \"TUBING\",\r\n        \"description\": \"Tubula\xE7\xE3o met\xE1lica
-    utilizada em po\xE7os produtores ou injetores.\",\r\n        \"element\": \"drill_string\",\r\n       
-    \"mainGroup\": \"CSB 1 Primario\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 12,\r\n        \"base\": 14.48\r\n      },\r\n      {\r\n        \"hideText\":
-    false,\r\n        \"name\": \"TUBING\",\r\n        \"description\": \"Tubula\xE7\xE3o
-    met\xE1lica utilizada em po\xE7os produtores ou injetores.\",\r\n        \"element\":
-    \"drill_string\",\r\n        \"mainGroup\": \"CSB 1 Primario\",\r\n        \"subGroup\":
-    \"\",\r\n        \"topo\": 14.48,\r\n        \"base\": 146.93\r\n      },\r\n     
-    {\r\n        \"hideText\": false,\r\n        \"name\": \"CIMENTA\xC7\xC3O PRIM\xC1RIA\",\r\n       
-    \"description\": \"Pasta de cimento endurecida localizada em anulares entre tubulares
-    met\xE1licos conc\xEAntricos (revestimento, coluna de produ\xE7\xE3o, de inje\xE7\xE3o,
-    de trabalho, entre outras) ou entre um tubular met\xE1lico e a parede da forma\xE7\xE3o.
-    \",\r\n        \"element\": \"casing_cement\",\r\n        \"mainGroup\": \"CSB
-    1 Primario\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 146.93,\r\n       
-    \"base\": 1214.41\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
-    \"name\": \"SELANTE\",\r\n        \"description\": \"Forma\xE7\xE3o imperme\xE1vel
-    atravessada durante a perfura\xE7\xE3o do po\xE7o\",\r\n        \"element\":
-    \"casing\",\r\n        \"mainGroup\": \"CSB 1 Primario\",\r\n        \"subGroup\":
-    \"\",\r\n        \"topo\": 1206.82,\r\n        \"base\": 1236.81\r\n      },\r\n     
-    {\r\n        \"hideText\": false,\r\n        \"name\": \"Packer\",\r\n       
-    \"description\": \"Equipamento met\xE1lico tubular com sistema de veda\xE7\xE3o
-    externo, podendo apresentar sistema de ancoragem, conectado \xE0 coluna de produ\xE7\xE3o,
-    opera\xE7\xE3o, teste ou inje\xE7\xE3o.\",\r\n        \"element\": \"production_packer\",\r\n       
-    \"mainGroup\": \"CSB 1 Primario\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 1214.41,\r\n        \"base\": 1220.21\r\n      },\r\n      {\r\n       
-    \"hideText\": false,\r\n        \"name\": \"AN GAS/SURGENTE\",\r\n        \"description\":
-    \"A \xC1rvore de Natal corresponde a qualquer equipamento de superf\xEDcie provido
-    de v\xE1lvula(s) com o objetivo de assegurar o isolamento final entre o po\xE7o
-    e ambiente externo, guiar a produ\xE7\xE3o para a linha de produ\xE7\xE3o ou
-    guiar os fluidos da linha de inje\xE7\xE3o para o po\xE7o.\",\r\n        \"element\":
-    \"surface_tree\",\r\n        \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 2.5,\r\n        \"base\": 4\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"ADAPTADOR
-    PARA CABE\xC7A DE PO\xC7O\",\r\n        \"description\": \"Corpo met\xE1lico
+    \"Coluna\",\r\n        \"description\": \"\",\r\n        \"element\": \"column_casing\",\r\n       
+    \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 3.8,\r\n       
+    \"base\": 617.6\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
+    \"name\": \"FLUIDO PRODUZIDO\",\r\n        \"description\": \"\",\r\n       
+    \"element\": \"fluid_column\",\r\n        \"mainGroup\": \"CSB 1 Prim\xE1rio\",\r\n       
+    \"subGroup\": \"\",\r\n        \"topo\": 50,\r\n        \"base\": 935.85\r\n     
+    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"AN INJE\xC7\xC3O
+    \",\r\n        \"description\": \"A \xC1rvore de Natal corresponde a qualquer
+    equipamento de superf\xEDcie provido de v\xE1lvula(s) com o objetivo de assegurar
+    o isolamento final entre o po\xE7o e ambiente externo, guiar a produ\xE7\xE3o
+    para a linha de produ\xE7\xE3o ou guiar os fluidos da linha de inje\xE7\xE3o
+    para o po\xE7o.\",\r\n        \"element\": \"surface_tree\",\r\n        \"mainGroup\":
+    \"CSB 2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n        \"topo\":
+    1.7,\r\n        \"base\": 3.5\r\n      },\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"ADAPTADOR PA5P\",\r\n        \"description\": \"\",\r\n       
+    \"element\": \"adapter\",\r\n        \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n       
+    \"subGroup\": \"\",\r\n        \"topo\": 3.5,\r\n        \"base\": 4\r\n     
+    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"CABE\xC7A
+    DE PRODU\xC7\xC3O ROSQUEADA\",\r\n        \"description\": \"Corpo met\xE1lico
     composto por suspensores das tubula\xE7\xF5es, elementos de veda\xE7\xE3o, v\xE1lvulas
     e pontos de acessos aos anulares do po\xE7o.\",\r\n        \"element\": \"wellhead\",\r\n       
     \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n       
     \"topo\": 4,\r\n        \"base\": 4.5\r\n      },\r\n      {\r\n        \"hideText\":
-    false,\r\n        \"name\": \"CABE\xC7A DE PROD FLANGEADA\",\r\n        \"description\":
-    \"Corpo met\xE1lico composto por suspensores das tubula\xE7\xF5es, elementos
-    de veda\xE7\xE3o, v\xE1lvulas e pontos de acessos aos anulares do po\xE7o.\",\r\n       
-    \"element\": \"wellhead\",\r\n        \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 4.5,\r\n        \"base\": 5\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"REVESTIMENTO
-    \",\r\n        \"description\": \"Tubula\xE7\xE3o met\xE1lica instalada no po\xE7o.\",\r\n       
-    \"element\": \"casing\",\r\n        \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 5,\r\n        \"base\": 609.95\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"CIMENTA\xC7\xC3O
-    PRIM\xC1RIA\",\r\n        \"description\": \"Pasta de cimento endurecida localizada
-    em anulares entre tubulares met\xE1licos conc\xEAntricos (revestimento, coluna
-    de produ\xE7\xE3o, de inje\xE7\xE3o, de trabalho, entre outras) ou entre um tubular
-    met\xE1lico e a parede da forma\xE7\xE3o. \",\r\n        \"element\": \"casing_cement\",\r\n       
+    false,\r\n        \"name\": \"REVESTIMENTO\",\r\n        \"description\": \"Tubula\xE7\xE3o
+    met\xE1lica instalada no po\xE7o.\",\r\n        \"element\": \"casing\",\r\n       
     \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 549.96,\r\n        \"base\": 609.95\r\n      },\r\n      {\r\n       
-    \"hideText\": false,\r\n        \"name\": \"SELANTE\",\r\n        \"description\":
-    \"Forma\xE7\xE3o imperme\xE1vel atravessada durante a perfura\xE7\xE3o do po\xE7o\",\r\n       
-    \"element\": \"casing\",\r\n        \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 579.95,\r\n        \"base\": 609.95\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"REVESTIMENTO
-    \",\r\n        \"description\": \"Tubula\xE7\xE3o met\xE1lica instalada no po\xE7o.\",\r\n       
-    \"element\": \"casing\",\r\n        \"mainGroup\": \"CSB 3 Entre Intervalos\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 609.95,\r\n        \"base\": 1196.83\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"CIMENTA\xC7\xC3O
-    PRIM\xC1RIA\",\r\n        \"description\": \"Pasta de cimento endurecida localizada
-    em anulares entre tubulares met\xE1licos conc\xEAntricos (revestimento, coluna
-    de produ\xE7\xE3o, de inje\xE7\xE3o, de trabalho, entre outras) ou entre um tubular
-    met\xE1lico e a parede da forma\xE7\xE3o. \",\r\n        \"element\": \"casing_cement\",\r\n       
-    \"mainGroup\": \"CSB 3 Entre Intervalos\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 609.95,\r\n        \"base\": 1196.83\r\n      },\r\n      {\r\n       
-    \"hideText\": false,\r\n        \"name\": \"SELANTE\",\r\n        \"description\":
-    \"Forma\xE7\xE3o imperme\xE1vel atravessada durante a perfura\xE7\xE3o do po\xE7o\",\r\n       
-    \"element\": \"casing\",\r\n        \"mainGroup\": \"CSB 3 Entre Intervalos\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 609.95,\r\n        \"base\": 639.95\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"SELANTE\",\r\n       
-    \"description\": \"Forma\xE7\xE3o imperme\xE1vel atravessada durante a perfura\xE7\xE3o
-    do po\xE7o\",\r\n        \"element\": \"casing\",\r\n        \"mainGroup\": \"CSB
-    3 Entre Intervalos\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 1166.84,\r\n       
-    \"base\": 1196.83\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
-    \"name\": \"Colar flutuante\",\r\n        \"description\": \"\",\r\n        \"element\":
-    \"casing\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\": \"bcc28fb0-0e75-4600-a9ed-5fb30239e7d0\",\r\n       
-    \"topo\": 1.318,\r\n        \"base\": 1.318\r\n      },\r\n      {\r\n       
-    \"hideText\": false,\r\n        \"name\": \"Revestimento\",\r\n        \"description\":
-    \"\",\r\n        \"element\": \"casing\",\r\n        \"mainGroup\": \"\",\r\n       
-    \"subGroup\": \"bcc28fb0-0e75-4600-a9ed-5fb30239e7d0\",\r\n        \"topo\":
-    1.318,\r\n        \"base\": 1.342\r\n      },\r\n      {\r\n        \"hideText\":
-    false,\r\n        \"name\": \"Sapata flutuante\",\r\n        \"description\":
-    \"\",\r\n        \"element\": \"sapata\",\r\n        \"mainGroup\": \"\",\r\n       
-    \"subGroup\": \"bcc28fb0-0e75-4600-a9ed-5fb30239e7d0\",\r\n        \"topo\":
-    1.342,\r\n        \"base\": 1.342\r\n      },\r\n      {\r\n        \"hideText\":
-    false,\r\n        \"name\": \"Revestimento\",\r\n        \"description\": \"\",\r\n       
+    \"topo\": 5,\r\n        \"base\": 620\r\n      },\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"Packer R3DG\",\r\n        \"description\": \"Equipamento
+    met\xE1lico tubular com sistema de veda\xE7\xE3o externo, podendo apresentar
+    sistema de ancoragem, conectado \xE0 coluna de produ\xE7\xE3o, opera\xE7\xE3o,
+    teste ou inje\xE7\xE3o.\",\r\n        \"element\": \"production_packer\",\r\n       
+    \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n       
+    \"topo\": 620,\r\n        \"base\": 620.5\r\n      },\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"Cimenta\xE7\xE3o no espa\xE7o anular\",\r\n       
+    \"description\": \"Pasta de cimento endurecida localizada em anulares entre tubulares
+    met\xE1licos conc\xEAntricos (revestimento, coluna de produ\xE7\xE3o, de inje\xE7\xE3o,
+    de trabalho, entre outras) ou entre um tubular met\xE1lico e a parede da forma\xE7\xE3o.
+    \",\r\n        \"element\": \"casing_cement\",\r\n        \"mainGroup\": \"CSB
+    2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 579,\r\n       
+    \"base\": 620\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
+    \"name\": \"SELANTE\",\r\n        \"description\": \"Forma\xE7\xE3o imperme\xE1vel
+    atravessada durante a perfura\xE7\xE3o do po\xE7o\",\r\n        \"element\":
+    \"casing\",\r\n        \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n        \"subGroup\":
+    \"\",\r\n        \"topo\": 579,\r\n        \"base\": 620\r\n      },\r\n     
+    {\r\n        \"hideText\": false,\r\n        \"name\": \"REVESTIMENTO\",\r\n       
+    \"description\": \"\",\r\n        \"element\": \"casing\",\r\n        \"mainGroup\":
+    \"\",\r\n        \"subGroup\": \"bcc28fb0-0e75-4600-a9ed-5fb30239e7d0\",\r\n       
+    \"topo\": 5,\r\n        \"base\": 920\r\n      },\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"REVESTIMENTO\",\r\n        \"description\": \"\",\r\n       
     \"element\": \"casing\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\":
     \"36c5c046-9743-439e-800d-7fe02b5297bd\",\r\n        \"topo\": 5,\r\n       
-    \"base\": 333\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
+    \"base\": 225\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
     \"name\": \"Colar flutuante\",\r\n        \"description\": \"\",\r\n        \"element\":
     \"casing\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\": \"36c5c046-9743-439e-800d-7fe02b5297bd\",\r\n       
-    \"topo\": 333,\r\n        \"base\": 333\r\n      },\r\n      {\r\n        \"hideText\":
+    \"topo\": 225,\r\n        \"base\": 225\r\n      },\r\n      {\r\n        \"hideText\":
     false,\r\n        \"name\": \"Revestimento\",\r\n        \"description\": \"\",\r\n       
     \"element\": \"casing\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\":
-    \"36c5c046-9743-439e-800d-7fe02b5297bd\",\r\n        \"topo\": 333,\r\n       
-    \"base\": 358\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
+    \"36c5c046-9743-439e-800d-7fe02b5297bd\",\r\n        \"topo\": 225,\r\n       
+    \"base\": 251\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
     \"name\": \"Sapata flutuante\",\r\n        \"description\": \"\",\r\n       
     \"element\": \"sapata\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\":
-    \"36c5c046-9743-439e-800d-7fe02b5297bd\",\r\n        \"topo\": 358,\r\n       
-    \"base\": 358\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
-    \"name\": \"Canhoneio\",\r\n        \"description\": \"\",\r\n        \"element\":
-    \"perforation\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 0,\r\n        \"base\": 9.52\r\n      },\r\n      {\r\n        \"hideText\":
-    false,\r\n        \"name\": \"Canhoneio\",\r\n        \"description\": \"\",\r\n       
-    \"element\": \"perforation\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\":
-    \"\",\r\n        \"topo\": 9.52,\r\n        \"base\": 10.72\r\n      },\r\n     
-    {\r\n        \"hideText\": false,\r\n        \"name\": \"Canhoneio\",\r\n       
-    \"description\": \"\",\r\n        \"element\": \"perforation\",\r\n        \"mainGroup\":
-    \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 10.72,\r\n        \"base\":
-    12\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\":
+    \"36c5c046-9743-439e-800d-7fe02b5297bd\",\r\n        \"topo\": 251,\r\n       
+    \"base\": 252\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
+    \"name\": \"Colar flutuante\",\r\n        \"description\": \"\",\r\n        \"element\":
+    \"casing\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\": \"bcc28fb0-0e75-4600-a9ed-5fb30239e7d0\",\r\n       
+    \"topo\": 920,\r\n        \"base\": 920\r\n      },\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"Revestimento\",\r\n        \"description\": \"\",\r\n       
+    \"element\": \"casing\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\":
+    \"bcc28fb0-0e75-4600-a9ed-5fb30239e7d0\",\r\n        \"topo\": 920,\r\n       
+    \"base\": 945\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
+    \"name\": \"Sapata flutuante\",\r\n        \"description\": \"\",\r\n       
+    \"element\": \"sapata\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\":
+    \"bcc28fb0-0e75-4600-a9ed-5fb30239e7d0\",\r\n        \"topo\": 945,\r\n       
+    \"base\": 945\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
+    \"name\": \"Peixe\",\r\n        \"description\": \"\",\r\n        \"element\":
+    \"fish\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n       
+    \"topo\": 907,\r\n        \"base\": 907\r\n      },\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"Tamp\xF5es Mec\xE2nicos\",\r\n        \"description\":
+    \"\",\r\n        \"element\": \"mechanical_tubular_plugs\",\r\n        \"mainGroup\":
+    \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 800.5,\r\n        \"base\":
+    801\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\":
     \"Canhoneio\",\r\n        \"description\": \"\",\r\n        \"element\": \"perforation\",\r\n       
-    \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 12,\r\n       
-    \"base\": 14.48\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
+    \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 783,\r\n       
+    \"base\": 787\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
     \"name\": \"Canhoneio\",\r\n        \"description\": \"\",\r\n        \"element\":
     \"perforation\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 14.48,\r\n        \"base\": 146.93\r\n      },\r\n      {\r\n       
-    \"hideText\": false,\r\n        \"name\": \"Canhoneio\",\r\n        \"description\":
-    \"\",\r\n        \"element\": \"perforation\",\r\n        \"mainGroup\": \"\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 146.93,\r\n        \"base\": 1214.41\r\n     
+    \"topo\": 787,\r\n        \"base\": 795\r\n      },\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"Canhoneio\",\r\n        \"description\": \"\",\r\n       
+    \"element\": \"perforation_black\",\r\n        \"mainGroup\": \"\",\r\n       
+    \"subGroup\": \"\",\r\n        \"topo\": 802,\r\n        \"base\": 809.5\r\n     
     },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"Canhoneio\",\r\n       
-    \"description\": \"\",\r\n        \"element\": \"perforation\",\r\n        \"mainGroup\":
-    \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 1214.41,\r\n       
-    \"base\": 1220.21\r\n      }\r\n    ],\r\n    \"comments\": [],\r\n    \"terrains\":
-    [\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"1 - Aqu\xEDfero\",\r\n       
-    \"description\": \"\",\r\n        \"element\": \"terrain_formation\",\r\n       
-    \"mainGroup\": \"1 - Aqu\xEDfero\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 578,\r\n        \"base\": 577.95\r\n      },\r\n      {\r\n       
-    \"hideText\": false,\r\n        \"name\": \"3 - Intervalo sem Hidrocarboneto
-    e com Potencial de Fluxo\",\r\n        \"description\": \"\",\r\n        \"element\":
-    \"terrain_formation\",\r\n        \"mainGroup\": \"3 - Intervalo sem Hidrocarboneto
-    e com Potencial de Fluxo\",\r\n        \"subGroup\": \"\",\r\n        \"topo\":
-    1167,\r\n        \"base\": 1166.84\r\n      },\r\n      {\r\n        \"hideText\":
-    false,\r\n        \"name\": \"2 - Hidrocarbonetos\",\r\n        \"description\":
+    \"description\": \"\",\r\n        \"element\": \"perforation_black\",\r\n       
+    \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 825,\r\n       
+    \"base\": 834\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
+    \"name\": \"Canhoneio\",\r\n        \"description\": \"\",\r\n        \"element\":
+    \"perforation_black\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\":
+    \"\",\r\n        \"topo\": 658,\r\n        \"base\": 725\r\n      },\r\n     
+    {\r\n        \"hideText\": false,\r\n        \"name\": \"Packer\",\r\n       
+    \"description\": \"\",\r\n        \"element\": \"production_packer\",\r\n       
+    \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 617.6,\r\n       
+    \"base\": 620\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
+    \"name\": \"Tubo isolado\",\r\n        \"description\": \"\",\r\n        \"element\":
+    \"coiled_tubing\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n       
+    \"topo\": 3.8,\r\n        \"base\": 617.6\r\n      },\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"\xC1rvore de Natal\",\r\n        \"description\":
+    \"\",\r\n        \"element\": \"surface_tree\",\r\n        \"mainGroup\": \"\",\r\n       
+    \"subGroup\": \"\",\r\n        \"topo\": 0,\r\n        \"base\": 0\r\n      },\r\n     
+    {\r\n        \"hideText\": false,\r\n        \"name\": \"Adaptador\",\r\n       
+    \"description\": \"\",\r\n        \"element\": \"adapter\",\r\n        \"mainGroup\":
+    \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 0,\r\n        \"base\":
+    0\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\":
+    \"Suspensor\",\r\n        \"description\": \"\",\r\n        \"element\": \"tubing_hanger\",\r\n       
+    \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 0,\r\n       
+    \"base\": 0\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
+    \"name\": \"Cabe\xE7a de produ\xE7\xE3o\\n\",\r\n        \"description\": \"\",\r\n       
+    \"element\": \"wellhead\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\":
+    \"\",\r\n        \"topo\": 0,\r\n        \"base\": 0\r\n      },\r\n      {\r\n       
+    \"hideText\": false,\r\n        \"name\": \"Adaptador\",\r\n        \"description\":
+    \"\",\r\n        \"element\": \"adapter\",\r\n        \"mainGroup\": \"\",\r\n       
+    \"subGroup\": \"\",\r\n        \"topo\": 0,\r\n        \"base\": 0\r\n      }\r\n   
+    ],\r\n    \"comments\": [],\r\n    \"terrains\": [\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"Hidrocarbonetos\",\r\n        \"description\":
     \"\",\r\n        \"element\": \"terrain_formation\",\r\n        \"mainGroup\":
-    \"2 - Hidrocarbonetos\",\r\n        \"subGroup\": \"\",\r\n        \"topo\":
-    1302,\r\n        \"base\": 1301.72\r\n      }\r\n    ]\r\n  }\r\n}"
+    \"Hidrocarbonetos\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 674.12,\r\n       
+    \"base\": 890.36\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
+    \"name\": \"Rocha selante\",\r\n        \"description\": \"\",\r\n        \"element\":
+    \"terrain_formation\",\r\n        \"mainGroup\": \"Rocha selante\",\r\n       
+    \"subGroup\": \"\",\r\n        \"topo\": 579,\r\n        \"base\": 680\r\n     
+    }\r\n    ]\r\n  }\r\n}\r\n\r\n"
   writeApiKeyNames: 0
 --- !u!114 &1872632605
 MonoBehaviour:
@@ -1724,185 +1656,3 @@ MonoBehaviour:
   columFill: {fileID: 11400000, guid: f833e05f8d030f84c81d93046498e34b, type: 2}
   emptyElement: {fileID: 11400000, guid: d6a283edcca636a4dbc5071fbbd1f317, type: 2}
   emptyPointsElement: {fileID: 11400000, guid: 006db2855b96b8941ae592287d769ac6, type: 2}
---- !u!1 &1887641765
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1887641766}
-  - component: {fileID: 1887641770}
-  - component: {fileID: 1887641769}
-  - component: {fileID: 1887641768}
-  - component: {fileID: 1887641767}
-  m_Layer: 5
-  m_Name: LTXT - REVESTIMENTO  609.95-1196.83m
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1887641766
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887641765}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1864387806}
-  m_Father: {fileID: 1835281867}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -5.8994}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 1, y: 0.5}
---- !u!114 &1887641767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887641765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalFit: 2
-  m_VerticalFit: 2
---- !u!114 &1887641768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887641765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: REVESTIMENTO  <b> 609.95-1196.83m</b>
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 0.15
-  m_fontSizeBase: 0.15
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 4
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0.04, z: 0, w: 0.04}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1887641769
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887641765}
-  m_CullTransparentMesh: 1
---- !u!114 &1887641770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887641765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f06ee82632446b41ba6d9b311bc8568, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tmPro: {fileID: 1887641768}
-  pivot: {fileID: 1887641766}
-  LinePivot: {fileID: 1864387806}
-  schematicItem:
-    useElementKey: 1
-    elementKey: casing
-    element: {fileID: 11400000, guid: 42d437768ee4d5b41823b04d12297eda, type: 2}
-    _virtualName: 'REVESTIMENTO '
-    _description: "Tubula\xE7\xE3o met\xE1lica instalada no po\xE7o."
-    __origin: 609.95
-    __depth: 1196.83
-    originOffset: 276.49
-    depthOffset: 276.49
-    _mainGroup: CSB 3 Entre Intervalos
-    _subGroup: 
-    dontFill: 1
-    _widthOffset: 0
-    hideElement: 0
