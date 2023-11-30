@@ -34,7 +34,7 @@ MonoBehaviour:
   art: {fileID: 21300000, guid: d46bb6e7b913a2e449e84d4c632f6cb6, type: 3}
   artColor: {r: 0, g: 0, b: 0, a: 1}
   maskInteraction: 0
-  drawMode: 1
+  drawMode: 2
   aditionalArtScale: {x: 0.2915, y: 0.85}
   minimalVirtualHeight: 0.3
   ignoreResize: 0
