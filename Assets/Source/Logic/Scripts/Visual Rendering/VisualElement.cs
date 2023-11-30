@@ -84,22 +84,12 @@ public class VisualElement : MonoBehaviour
 
     public async UniTask GenerateDrawing(int additionalSort = 0)
     {
-        SpriteRenderer render = null;
+        //SpriteRenderer render = null;
         BaseElement element = _sItem.element;
-
-        if (element.useBgColor)
-        {
-            render = await CreateRender("FillColor", element.sortInLayer + additionalSort);
-
-            render.color = element.defaultColor;
-            render.transform.localScale = DrawArea.size * element.aditionalBgScale;
-
-            SetPivotPosition(render.transform, element.pivot, DrawArea.size, element.aditionalBgScale);;
-        }
 
         if (element.useInsideArt && element.art != null)
         {
-            render = await CreateRender("Art", element.sortInLayer + additionalSort + 1);
+            SpriteRenderer render = await CreateRender("Art", element.sortInLayer + additionalSort + 1);
 
             render.sprite = element.art;
             render.color = element.artColor;
@@ -138,6 +128,16 @@ public class VisualElement : MonoBehaviour
             renderArt = render;
 
             SetPivotPosition(render.transform, element.pivot, DrawArea.size, element.aditionalArtScale);
+        }
+
+        if (element.useBgColor)
+        {
+            SpriteRenderer render = await CreateRender("FillColor", element.sortInLayer + additionalSort);
+
+            render.color = element.defaultColor;
+            render.transform.localScale = DrawArea.size * element.aditionalBgScale;
+
+            SetPivotPosition(render.transform, element.pivot, DrawArea.size, element.aditionalBgScale);
         }
     }
 
