@@ -97,7 +97,9 @@ public class VisualElement : MonoBehaviour
             render.drawMode = element.drawMode;
 
             if (element.drawMode == SpriteDrawMode.Simple)
+            {
                 render.transform.localScale = DrawArea.size * element.aditionalArtScale;
+            }
             else
             {
                 render.size = new Vector2(DrawArea.size.x, Mathf.Clamp(DrawArea.size.y, element.minimalVirtualHeight, Mathf.Infinity));
@@ -135,7 +137,22 @@ public class VisualElement : MonoBehaviour
             SpriteRenderer render = await CreateRender("FillColor", element.sortInLayer + additionalSort);
 
             render.color = element.defaultColor;
-            render.transform.localScale = DrawArea.size * element.aditionalBgScale;
+            render.maskInteraction = element.maskInteraction;
+            render.drawMode = element.drawMode;
+
+            if (element.drawMode == SpriteDrawMode.Simple)
+            {
+                render.transform.localScale = DrawArea.size * element.aditionalArtScale;
+            }
+            else
+            {
+                render.size = new Vector2(DrawArea.size.x, Mathf.Clamp(DrawArea.size.y, element.minimalVirtualHeight, Mathf.Infinity));
+                render.size *= element.aditionalArtScale;
+
+                render.transform.localScale = Vector3.one;
+            }
+
+            renderBG = render;
 
             SetPivotPosition(render.transform, element.pivot, DrawArea.size, element.aditionalBgScale);
         }
