@@ -85,7 +85,6 @@ public class VisualElement : MonoBehaviour
     public async UniTask GenerateDrawing(int additionalSort = 0)
     {
         SpriteRenderer render = null;
-        SpriteRenderer backGroundRenderer = null;
         BaseElement element = _sItem.element;
 
         if (element.useBgColor)
