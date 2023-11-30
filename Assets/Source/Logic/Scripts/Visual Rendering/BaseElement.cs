@@ -105,6 +105,11 @@ public class BaseElement : ScriptableObject
         defaultColor = otherElement.defaultColor;
         aditionalBgScale = otherElement.aditionalBgScale;
         useInsideArt = otherElement.useInsideArt;
+        if (_key == "fish")
+        {
+            Debug.Log("TESTE");
+        }
+        useWhiteBackground = otherElement.useWhiteBackground;
         art = otherElement.art;
         artColor = otherElement.artColor;
         maskInteraction = otherElement.maskInteraction;
@@ -125,6 +130,10 @@ public class BaseElement : ScriptableObject
             useInsideArt = drawSettings.useInsideArt;
             art = drawSettings.art;
             artColor = drawSettings.artColor;
+            if (_key == "fish")
+            {
+                Debug.Log("TESTE");
+            }
             useWhiteBackground = drawSettings.useWhiteBackground;
             maskInteraction = drawSettings.maskInteraction;
             drawMode = drawSettings.drawMode;

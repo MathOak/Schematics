@@ -88,11 +88,6 @@ public class VisualElement : MonoBehaviour
         SpriteRenderer backGroundRenderer = null;
         BaseElement element = _sItem.element;
 
-        if (element.Key == "fish")
-        {
-            Debug.Log("??w");
-        }
-
         if (element.useBgColor)
         {
             render = await CreateRender("FillColor", element.sortInLayer + additionalSort);
