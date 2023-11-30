@@ -135,7 +135,14 @@ public class VisualElement : MonoBehaviour
         if (element.useBgColor)
         {
             SpriteRenderer render = await CreateRender("FillColor", element.sortInLayer + additionalSort);
+            UseBGByKey(element, render, additionalSort);
+        }
+    }
 
+    private void UseBGByKey(BaseElement element, SpriteRenderer render, int additionalSort)
+    {
+        if (element.Key == "fish")
+        {
             render.color = element.defaultColor;
             render.maskInteraction = element.maskInteraction;
             render.drawMode = element.drawMode;
@@ -151,11 +158,18 @@ public class VisualElement : MonoBehaviour
 
                 render.transform.localScale = Vector3.one;
             }
-
-            renderBG = render;
+        }
+        else
+        {
+            render.color = element.defaultColor;
+            render.transform.localScale = DrawArea.size * element.aditionalBgScale;
 
             SetPivotPosition(render.transform, element.pivot, DrawArea.size, element.aditionalBgScale);
         }
+
+        renderBG = render;
+
+        SetPivotPosition(render.transform, element.pivot, DrawArea.size, element.aditionalBgScale);
     }
 
     private void SetPivotPosition(Transform transform, Vector2 pivot, Vector2 drawSize, Vector2 scale)
