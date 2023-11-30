@@ -47,6 +47,7 @@ public class BaseElement : ScriptableObject
     [Space]
     [HideIf("useDrawSettings")][SerializeField] public bool useInsideArt = false;
     [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public Sprite art;
+    [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public bool useWhiteBackground;
     [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public Color artColor = Color.black;
     [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public SpriteMaskInteraction maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
     [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public SpriteDrawMode drawMode = SpriteDrawMode.Simple;

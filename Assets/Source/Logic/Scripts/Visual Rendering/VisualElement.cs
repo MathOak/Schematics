@@ -84,11 +84,16 @@ public class VisualElement : MonoBehaviour
     public async UniTask GenerateDrawing(int additionalSort = 0)
     {
         SpriteRenderer render = null;
+        SpriteRenderer backGroundRenderer = null;
         BaseElement element = _sItem.element;
 
         if (element.useBgColor)
         {
             render = await CreateRender("FillColor", element.sortInLayer + additionalSort);
+            backGroundRenderer = 
+                element.useWhiteBackground ?
+                render.GetComponentInChildren<SpriteRenderer>() :
+                null;
 
             render.color = element.defaultColor;
             render.transform.localScale = DrawArea.size * element.aditionalBgScale;
@@ -101,7 +106,11 @@ public class VisualElement : MonoBehaviour
         if (element.useInsideArt && element.art != null)
         {
             render = await CreateRender("Art", element.sortInLayer + additionalSort + 1);
-
+            backGroundRenderer = render.GetComponentInChildren<SpriteRenderer>();
+            backGroundRenderer =
+                element.useWhiteBackground ?
+                render.GetComponentInChildren<SpriteRenderer>() :
+                null;
 
             render.sprite = element.art;
             render.color = element.artColor;
