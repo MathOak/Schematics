@@ -125,6 +125,7 @@ public class BaseElement : ScriptableObject
             useInsideArt = drawSettings.useInsideArt;
             art = drawSettings.art;
             artColor = drawSettings.artColor;
+            useWhiteBackground = drawSettings.useWhiteBackground;
             maskInteraction = drawSettings.maskInteraction;
             drawMode = drawSettings.drawMode;
             aditionalArtScale = drawSettings.additionalArtScale;

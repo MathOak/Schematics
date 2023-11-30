@@ -1,6 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.U2D;
@@ -87,6 +88,11 @@ public class VisualElement : MonoBehaviour
         SpriteRenderer backGroundRenderer = null;
         BaseElement element = _sItem.element;
 
+        if (element.Key == "fish")
+        {
+            Debug.Log("??w");
+        }
+
         if (element.useBgColor)
         {
             render = await CreateRender("FillColor", element.sortInLayer + additionalSort);
@@ -94,17 +100,7 @@ public class VisualElement : MonoBehaviour
             render.color = element.defaultColor;
             render.transform.localScale = DrawArea.size * element.aditionalBgScale;
 
-            renderBG = render;
-
-            backGroundRenderer =
-                element.useWhiteBackground ?
-                render.GetComponentInChildren<SpriteRenderer>() :
-                null;
-            if (backGroundRenderer != null)
-            {
-                backGroundRenderer.enabled = true;
-                backGroundRenderer.size = render.size;
-            }
+            CheckAndSetBackground(render, element);
 
             SetPivotPosition(render.transform, element.pivot, DrawArea.size, element.aditionalBgScale);;
         }
@@ -149,18 +145,27 @@ public class VisualElement : MonoBehaviour
 
             renderArt = render;
 
-            backGroundRenderer =
-                element.useWhiteBackground ?
-                render.GetComponentInChildren<SpriteRenderer>() :
-                null;
-            if (backGroundRenderer != null)
-            {
-                backGroundRenderer.enabled = true;
-                backGroundRenderer.size = render.size;
-            }
+            CheckAndSetBackground(render, element);
 
             SetPivotPosition(render.transform, element.pivot, DrawArea.size, element.aditionalArtScale);
         }
+    }
+
+    void CheckAndSetBackground(SpriteRenderer parentRender, BaseElement element)
+    {
+        if (!element.useWhiteBackground)
+            return;
+
+        if (element.Key == "fish")
+        {
+            Debug.Log("??w");
+        }
+        
+        SpriteRenderer backGroundRenderer = parentRender.GetComponentInChildren<SpriteRenderer>();
+
+        backGroundRenderer.enabled = true;
+        backGroundRenderer.drawMode = parentRender.drawMode;
+        backGroundRenderer.size = parentRender.size;
     }
 
     private void SetPivotPosition(Transform transform, Vector2 pivot, Vector2 drawSize, Vector2 scale)
