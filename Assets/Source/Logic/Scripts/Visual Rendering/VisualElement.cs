@@ -1,6 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.U2D;
@@ -83,25 +84,12 @@ public class VisualElement : MonoBehaviour
 
     public async UniTask GenerateDrawing(int additionalSort = 0)
     {
-        SpriteRenderer render = null;
+        //SpriteRenderer render = null;
         BaseElement element = _sItem.element;
-
-        if (element.useBgColor)
-        {
-            render = await CreateRender("FillColor", element.sortInLayer + additionalSort);
-
-            render.color = element.defaultColor;
-            render.transform.localScale = DrawArea.size * element.aditionalBgScale;
-
-            renderBG = render;
-
-            SetPivotPosition(render.transform, element.pivot, DrawArea.size, element.aditionalBgScale);;
-        }
 
         if (element.useInsideArt && element.art != null)
         {
-            render = await CreateRender("Art", element.sortInLayer + additionalSort + 1);
-
+            SpriteRenderer render = await CreateRender("Art", element.sortInLayer + additionalSort + 1);
 
             render.sprite = element.art;
             render.color = element.artColor;
@@ -109,7 +97,9 @@ public class VisualElement : MonoBehaviour
             render.drawMode = element.drawMode;
 
             if (element.drawMode == SpriteDrawMode.Simple)
+            {
                 render.transform.localScale = DrawArea.size * element.aditionalArtScale;
+            }
             else
             {
                 render.size = new Vector2(DrawArea.size.x, Mathf.Clamp(DrawArea.size.y, element.minimalVirtualHeight, Mathf.Infinity));
@@ -141,6 +131,45 @@ public class VisualElement : MonoBehaviour
 
             SetPivotPosition(render.transform, element.pivot, DrawArea.size, element.aditionalArtScale);
         }
+
+        if (element.useBgColor)
+        {
+            SpriteRenderer render = await CreateRender("FillColor", element.sortInLayer + additionalSort);
+            UseBGByKey(element, render, additionalSort);
+        }
+    }
+
+    private void UseBGByKey(BaseElement element, SpriteRenderer render, int additionalSort)
+    {
+        if (element.Key == "fish")
+        {
+            render.color = element.defaultColor;
+            render.maskInteraction = element.maskInteraction;
+            render.drawMode = element.drawMode;
+
+            if (element.drawMode == SpriteDrawMode.Simple)
+            {
+                render.transform.localScale = DrawArea.size * element.aditionalArtScale;
+            }
+            else
+            {
+                render.size = new Vector2(DrawArea.size.x, Mathf.Clamp(DrawArea.size.y, element.minimalVirtualHeight, Mathf.Infinity));
+                render.size *= element.aditionalArtScale;
+
+                render.transform.localScale = Vector3.one;
+            }
+        }
+        else
+        {
+            render.color = element.defaultColor;
+            render.transform.localScale = DrawArea.size * element.aditionalBgScale;
+
+            SetPivotPosition(render.transform, element.pivot, DrawArea.size, element.aditionalBgScale);
+        }
+
+        renderBG = render;
+
+        SetPivotPosition(render.transform, element.pivot, DrawArea.size, element.aditionalBgScale);
     }
 
     private void SetPivotPosition(Transform transform, Vector2 pivot, Vector2 drawSize, Vector2 scale)
