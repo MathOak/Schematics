@@ -48,7 +48,6 @@ public class BaseElement : ScriptableObject
     [HideIf("useDrawSettings")][SerializeField] public bool useInsideArt = false;
     [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public Sprite art;
     [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public Color artColor = Color.black;
-    [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public bool useWhiteBackground;
     [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public SpriteMaskInteraction maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
     [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public SpriteDrawMode drawMode = SpriteDrawMode.Simple;
     [Space]
@@ -105,11 +104,6 @@ public class BaseElement : ScriptableObject
         defaultColor = otherElement.defaultColor;
         aditionalBgScale = otherElement.aditionalBgScale;
         useInsideArt = otherElement.useInsideArt;
-        if (_key == "fish")
-        {
-            Debug.Log("TESTE");
-        }
-        useWhiteBackground = otherElement.useWhiteBackground;
         art = otherElement.art;
         artColor = otherElement.artColor;
         maskInteraction = otherElement.maskInteraction;
@@ -130,11 +124,6 @@ public class BaseElement : ScriptableObject
             useInsideArt = drawSettings.useInsideArt;
             art = drawSettings.art;
             artColor = drawSettings.artColor;
-            if (_key == "fish")
-            {
-                Debug.Log("TESTE");
-            }
-            useWhiteBackground = drawSettings.useWhiteBackground;
             maskInteraction = drawSettings.maskInteraction;
             drawMode = drawSettings.drawMode;
             aditionalArtScale = drawSettings.additionalArtScale;

@@ -94,8 +94,6 @@ public class VisualElement : MonoBehaviour
             render.color = element.defaultColor;
             render.transform.localScale = DrawArea.size * element.aditionalBgScale;
 
-            CheckAndSetBackground(render, element);
-
             SetPivotPosition(render.transform, element.pivot, DrawArea.size, element.aditionalBgScale);;
         }
 
@@ -139,27 +137,8 @@ public class VisualElement : MonoBehaviour
 
             renderArt = render;
 
-            CheckAndSetBackground(render, element);
-
             SetPivotPosition(render.transform, element.pivot, DrawArea.size, element.aditionalArtScale);
         }
-    }
-
-    void CheckAndSetBackground(SpriteRenderer parentRender, BaseElement element)
-    {
-        if (!element.useWhiteBackground)
-            return;
-
-        if (element.Key == "fish")
-        {
-            Debug.Log("??w");
-        }
-        
-        SpriteRenderer backGroundRenderer = parentRender.GetComponentInChildren<SpriteRenderer>();
-
-        backGroundRenderer.enabled = true;
-        backGroundRenderer.drawMode = parentRender.drawMode;
-        backGroundRenderer.size = parentRender.size;
     }
 
     private void SetPivotPosition(Transform transform, Vector2 pivot, Vector2 drawSize, Vector2 scale)
