@@ -102,6 +102,7 @@ public class VisualElement : MonoBehaviour
                 null;
             if (backGroundRenderer != null)
             {
+                backGroundRenderer.enabled = true;
                 backGroundRenderer.size = render.size;
             }
 
@@ -154,6 +155,7 @@ public class VisualElement : MonoBehaviour
                 null;
             if (backGroundRenderer != null)
             {
+                backGroundRenderer.enabled = true;
                 backGroundRenderer.size = render.size;
             }
 

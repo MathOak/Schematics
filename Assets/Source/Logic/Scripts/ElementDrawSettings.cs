@@ -37,6 +37,7 @@ public class ElementDrawSettings : ScriptableObject
     public bool useInsideArt = false;
     [ShowIf("useInsideArt")] public Sprite art;
     [ShowIf("useInsideArt")] public Color artColor = Color.black;
+    [ShowIf("useInsideArt")] public bool useWhiteBackground;
     [ShowIf("useInsideArt")] public SpriteMaskInteraction maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
     [ShowIf("useInsideArt")] public SpriteDrawMode drawMode = SpriteDrawMode.Simple;
     [Space]
