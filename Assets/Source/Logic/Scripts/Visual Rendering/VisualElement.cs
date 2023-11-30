@@ -90,15 +90,20 @@ public class VisualElement : MonoBehaviour
         if (element.useBgColor)
         {
             render = await CreateRender("FillColor", element.sortInLayer + additionalSort);
-            backGroundRenderer = 
-                element.useWhiteBackground ?
-                render.GetComponentInChildren<SpriteRenderer>() :
-                null;
 
             render.color = element.defaultColor;
             render.transform.localScale = DrawArea.size * element.aditionalBgScale;
 
             renderBG = render;
+
+            backGroundRenderer =
+                element.useWhiteBackground ?
+                render.GetComponentInChildren<SpriteRenderer>() :
+                null;
+            if (render!= null)
+            {
+                backGroundRenderer.size = render.size;
+            }
 
             SetPivotPosition(render.transform, element.pivot, DrawArea.size, element.aditionalBgScale);;
         }
@@ -106,11 +111,6 @@ public class VisualElement : MonoBehaviour
         if (element.useInsideArt && element.art != null)
         {
             render = await CreateRender("Art", element.sortInLayer + additionalSort + 1);
-            backGroundRenderer = render.GetComponentInChildren<SpriteRenderer>();
-            backGroundRenderer =
-                element.useWhiteBackground ?
-                render.GetComponentInChildren<SpriteRenderer>() :
-                null;
 
             render.sprite = element.art;
             render.color = element.artColor;
@@ -147,6 +147,15 @@ public class VisualElement : MonoBehaviour
             }
 
             renderArt = render;
+
+            backGroundRenderer =
+                element.useWhiteBackground ?
+                render.GetComponentInChildren<SpriteRenderer>() :
+                null;
+            if (render != null)
+            {
+                backGroundRenderer.size = render.size;
+            }
 
             SetPivotPosition(render.transform, element.pivot, DrawArea.size, element.aditionalArtScale);
         }
