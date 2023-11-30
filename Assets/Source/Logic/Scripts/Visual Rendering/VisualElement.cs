@@ -100,7 +100,7 @@ public class VisualElement : MonoBehaviour
                 element.useWhiteBackground ?
                 render.GetComponentInChildren<SpriteRenderer>() :
                 null;
-            if (render!= null)
+            if (backGroundRenderer != null)
             {
                 backGroundRenderer.size = render.size;
             }
@@ -152,7 +152,7 @@ public class VisualElement : MonoBehaviour
                 element.useWhiteBackground ?
                 render.GetComponentInChildren<SpriteRenderer>() :
                 null;
-            if (render != null)
+            if (backGroundRenderer != null)
             {
                 backGroundRenderer.size = render.size;
             }
