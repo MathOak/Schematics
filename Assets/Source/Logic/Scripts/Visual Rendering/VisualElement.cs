@@ -117,6 +117,14 @@ public class VisualElement : MonoBehaviour
                     float totalYsize = render.size.y + percent * render.size.y;
                     render.size = new Vector2(render.size.x, totalYsize);
                 }
+                if (element.Key == "mechanical_tubular_plugs" || element.Key == "material_plug")
+                {
+                    render.size *= element.aditionalArtScale;
+
+                    float percent = 300f / 100f;
+                    float totalYsize = render.size.y + percent * render.size.y;
+                    render.size = new Vector2(render.size.x, totalYsize);
+                }
                 else
                 {
                     // THIS IS NECESSARY IN THIS CLASS

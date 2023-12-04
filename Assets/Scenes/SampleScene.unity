@@ -1506,70 +1506,74 @@ MonoBehaviour:
     terrains: []
     comments: []
   jsonSchematicText: "{\r\n  \"elementDataError\": true,\r\n  \"data\": {\r\n   
-    \"isDiagram\": true,\r\n    \"hideAllText\": false,\r\n    \"drillDeph\": 2121,\r\n   
+    \"isDiagram\": true,\r\n    \"hideAllText\": false,\r\n    \"drillDeph\": 1740,\r\n   
     \"parts\": [\r\n      {\r\n        \"hideText\": false,\r\n        \"name\":
-    \"FLUIDO PRODUZIDO\",\r\n        \"description\": \"Fluido produzido pelo po\xE7o
-    cujo peso espec\xEDfico \xE9 suficiente para impedir a surg\xEAncia para a superf\xEDcie.\",\r\n       
+    \"COLUNA TESTE\",\r\n        \"description\": \"\",\r\n        \"element\": \"drill_string\",\r\n       
+    \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 0,\r\n       
+    \"base\": 1500\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
+    \"name\": \"FLUIDO PRODUZIDO\",\r\n        \"description\": \"\",\r\n       
     \"element\": \"fluid_column\",\r\n        \"mainGroup\": \"CSB 1 Prim\xE1rio\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 50,\r\n        \"base\": 2111\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"CABE\xC7A
-    DE PROD FLANGEADA T16 CBV 11-X-7 1/16'' - 3000\",\r\n        \"description\":
-    \"\",\r\n        \"element\": \"wellhead\",\r\n        \"mainGroup\": \"CSB 2
-    Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 4.5,\r\n       
-    \"base\": 5\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
-    \"name\": \"AN BM Teste Sea\",\r\n        \"description\": \"\",\r\n        \"element\":
-    \"surface_tree\",\r\n        \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 2.2,\r\n        \"base\": 4\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"ADAPTADOR
-    PARA AN\",\r\n        \"description\": \"\",\r\n        \"element\": \"surface_tree\",\r\n       
+    \"subGroup\": \"\",\r\n        \"topo\": 300,\r\n        \"base\": 1256.11\r\n     
+    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"AN BM ACESS\xD3RIO
+    STUFFING BOX SAFE-T 2 1/2 X 1 1/2 X 3 1/2`` P/ CAIXA DE ENGAXETAMENTO P/ ANS
+    \xC1RVORE DE NATAL SIMP ROSQ 3000 PSI 3\xB4\xB4LP X 3\xB4\xB4LP CX ENGAX 1.1/4\xB4\xB4
+    AN-34 BM\",\r\n        \"description\": \"\",\r\n        \"element\": \"surface_tree\",\r\n       
     \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 4,\r\n        \"base\": 4.5\r\n      },\r\n      {\r\n        \"hideText\":
-    false,\r\n        \"name\": \"Sapata guia\",\r\n        \"description\": \"\",\r\n       
-    \"element\": \"sapata\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\":
-    \"36c5c046-9743-439e-800d-7fe02b5297bd\",\r\n        \"topo\": 5,\r\n       
-    \"base\": 6\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
-    \"name\": \"Pescaria\",\r\n        \"description\": \"\",\r\n        \"element\":
-    \"fish\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 100,\r\n        \"base\": 100\r\n      },\r\n      {\r\n        \"hideText\":
-    false,\r\n        \"name\": \"Canhoneio\",\r\n        \"description\": \"\",\r\n       
-    \"element\": \"perforation\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\":
-    \"\",\r\n        \"topo\": 700,\r\n        \"base\": 750\r\n      },\r\n     
-    {\r\n        \"hideText\": false,\r\n        \"name\": \"Canhoneio\",\r\n       
-    \"description\": \"\",\r\n        \"element\": \"perforation_black\",\r\n       
-    \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 800,\r\n       
-    \"base\": 850\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
-    \"name\": \"Canhoneio\",\r\n        \"description\": \"\",\r\n        \"element\":
-    \"perforation\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 600,\r\n        \"base\": 625\r\n      },\r\n      {\r\n        \"hideText\":
-    false,\r\n        \"name\": \"Canhoneio\",\r\n        \"description\": \"\",\r\n       
-    \"element\": \"perforation_black\",\r\n        \"mainGroup\": \"\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 625,\r\n        \"base\": 650\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"Canhoneio\",\r\n       
-    \"description\": \"\",\r\n        \"element\": \"perforation_gray\",\r\n       
-    \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 1000,\r\n       
-    \"base\": 1050\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
-    \"name\": \"Luva tamponada\",\r\n        \"description\": \"\",\r\n        \"element\":
-    \"generic_element\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\":
-    \"\",\r\n        \"topo\": 123,\r\n        \"base\": 150\r\n      },\r\n     
-    {\r\n        \"hideText\": false,\r\n        \"name\": \"\xC1rvore de Natal\",\r\n       
-    \"description\": \"\",\r\n        \"element\": \"surface_tree\",\r\n        \"mainGroup\":
-    \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 0,\r\n        \"base\":
-    0\r\n      }\r\n    ],\r\n    \"comments\": [],\r\n    \"terrains\": [\r\n     
-    {\r\n        \"hideText\": false,\r\n        \"name\": \"Aqu\xEDfero\",\r\n       
-    \"description\": \"\",\r\n        \"element\": \"terrain_formation\",\r\n       
-    \"mainGroup\": \"Aqu\xEDfero\",\r\n        \"subGroup\": \"\",\r\n        \"topo\":
-    7,\r\n        \"base\": 827\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
-    \"name\": \"Hidrocarbonetos\",\r\n        \"description\": \"\",\r\n        \"element\":
-    \"terrain_formation\",\r\n        \"mainGroup\": \"Hidrocarbonetos\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 1500,\r\n        \"base\": 1615\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"Hidrocarbonetos\",\r\n       
-    \"description\": \"\",\r\n        \"element\": \"terrain_formation\",\r\n       
-    \"mainGroup\": \"Hidrocarbonetos\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 1700,\r\n        \"base\": 1972\r\n      },\r\n      {\r\n        \"hideText\":
-    false,\r\n        \"name\": \"Packer\",\r\n        \"description\": \"\",\r\n       
-    \"element\": \"terrain_formation\",\r\n        \"mainGroup\": \"Intervalo sem
-    Hidrocarboneto e com Potencial de\",\r\n        \"subGroup\": \"\",\r\n       
-    \"topo\": 2040,\r\n        \"base\": 2121\r\n      }\r\n    ]\r\n  }\r\n}\r\n"
+    \"topo\": 3,\r\n        \"base\": 4.6\r\n      },\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"ADAPTADOR PARA AN ADAPTADOR CABE\xC7A DE PRODU\xC7\xC3O
+    A-1 7.1/16\xB4\xB4-3000 X 3\xB4\xB4 LP\",\r\n        \"description\": \"\",\r\n       
+    \"element\": \"surface_tree\",\r\n        \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n       
+    \"subGroup\": \"\",\r\n        \"topo\": 4.6,\r\n        \"base\": 4.9\r\n     
+    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"CABE\xC7A
+    DE PROD ROSQUEADA CABE\xC7A DE PRODU\xC7\xC3O T-16 3000 PSI 11\xB4\xB4 X 7.1/16\xB4\xB4\",\r\n       
+    \"description\": \"\",\r\n        \"element\": \"wellhead\",\r\n        \"mainGroup\":
+    \"CSB 2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n        \"topo\":
+    4.9,\r\n        \"base\": 5.5\r\n      },\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"REVESTIMENTO\",\r\n        \"description\": \"\",\r\n       
+    \"element\": \"casing\",\r\n        \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n       
+    \"subGroup\": \"\",\r\n        \"topo\": 764.04,\r\n        \"base\": 804.63\r\n     
+    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"REVESTIMENTO\",\r\n       
+    \"description\": \"\",\r\n        \"element\": \"casing\",\r\n        \"mainGroup\":
+    \"CSB 2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n        \"topo\":
+    5.5,\r\n        \"base\": 730.89\r\n      },\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"SELANTE\",\r\n        \"description\": \"ROCHA
+    SELANTE\",\r\n        \"element\": \"casing\",\r\n        \"mainGroup\": \"CSB
+    2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 784.34,\r\n       
+    \"base\": 804.63\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
+    \"name\": \"CIMENTA\xC7\xC3O PRIM\xC1RIA CIMENTA\xC7\xC3O PRIM\xC1RIA\",\r\n       
+    \"description\": \"\",\r\n        \"element\": \"casing_cement\",\r\n       
+    \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n       
+    \"topo\": 764.04,\r\n        \"base\": 804.63\r\n      },\r\n      {\r\n       
+    \"hideText\": false,\r\n        \"name\": \"COLAR DE EST\xC1GIO\",\r\n       
+    \"description\": \"\",\r\n        \"element\": \"casing\",\r\n        \"mainGroup\":
+    \"CSB 2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n        \"topo\":
+    730.89,\r\n        \"base\": 731.23\r\n      },\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"REVESTIMENTO\",\r\n        \"description\": \"\",\r\n       
+    \"element\": \"casing\",\r\n        \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n       
+    \"subGroup\": \"\",\r\n        \"topo\": 731.23,\r\n        \"base\": 804.63\r\n     
+    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"REVESTIMENTO\",\r\n       
+    \"description\": \"\",\r\n        \"element\": \"casing\",\r\n        \"mainGroup\":
+    \"CSB 3 Entre Intervalos\",\r\n        \"subGroup\": \"\",\r\n        \"topo\":
+    1181.9,\r\n        \"base\": 1220.58\r\n      },\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"CIMENTA\xC7\xC3O PRIM\xC1RIA\",\r\n        \"description\":
+    \"CIMENTA\xC7\xC3O PRIM\xC1RIA\",\r\n        \"element\": \"casing_cement\",\r\n       
+    \"mainGroup\": \"CSB 3 Entre Intervalos\",\r\n        \"subGroup\": \"\",\r\n       
+    \"topo\": 1181.9,\r\n        \"base\": 1220.58\r\n      },\r\n      {\r\n       
+    \"hideText\": false,\r\n        \"name\": \"SELANTE ROCHA SELANTE\",\r\n       
+    \"description\": \"\",\r\n        \"element\": \"casing\",\r\n        \"mainGroup\":
+    \"CSB 3 Entre Intervalos\",\r\n        \"subGroup\": \"\",\r\n        \"topo\":
+    1200.9,\r\n        \"base\": 1220.58\r\n      },\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"Tubo simples\",\r\n        \"description\": \"\",\r\n       
+    \"element\": \"coiled_tubing\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\":
+    \"\",\r\n        \"topo\": 5.6,\r\n        \"base\": 1488\r\n      },\r\n     
+    {\r\n        \"hideText\": false,\r\n        \"name\": \"Redu\xE7\xE3o\",\r\n       
+    \"description\": \"\",\r\n        \"element\": \"mechanical_tubular_plugs\",\r\n       
+    \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 1488,\r\n       
+    \"base\": 1488.3\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
+    \"name\": \"Bomba BM\",\r\n        \"description\": \"\",\r\n        \"element\":
+    \"draw_bomb\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n       
+    \"topo\": 1488.3,\r\n        \"base\": 1495.7\r\n      }\r\n    ],\r\n    \"comments\":
+    [],\r\n    \"terrains\": []\r\n  }\r\n}"
   writeApiKeyNames: 0
 --- !u!114 &1872632605
 MonoBehaviour:
