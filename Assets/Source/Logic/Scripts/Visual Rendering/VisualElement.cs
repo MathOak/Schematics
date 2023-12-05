@@ -146,8 +146,10 @@ public class VisualElement : MonoBehaviour
             SpriteRenderer render = await CreateRender("Border", element.sortInLayer);
             render.sprite = element.additionalArt;
             render.drawMode = SpriteDrawMode.Tiled;
-            render.size = render.transform.localScale = DrawArea.size * element.aditionalArtScale;
             render.enabled = true;
+            render.size = new Vector2(DrawArea.size.x, Mathf.Clamp(DrawArea.size.y, element.minimalVirtualHeight, Mathf.Infinity));
+            render.size *= element.aditionalArtScale;
+            render.transform.localScale = Vector3.one;
         }
 
         if (element.useBgColor)
