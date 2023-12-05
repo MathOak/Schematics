@@ -27,10 +27,11 @@ MonoBehaviour:
   additionalBgScale: {x: 1, y: 1}
   useInsideArt: 1
   art: {fileID: 21300000, guid: 50324a97bccf9c64ea6532bb096cc396, type: 3}
+  additionArt: {fileID: 0}
   artColor: {r: 0, g: 0, b: 0, a: 1}
   maskInteraction: 0
   drawMode: 1
-  additionalArtScale: {x: 0.4, y: 2}
+  additionalArtScale: {x: 0.26666668, y: 1.3333334}
   minimalVirtualHeight: 0.3
   ignoreResize: 0
   ignoreCSBColor: 0
