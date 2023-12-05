@@ -140,6 +140,16 @@ public class VisualElement : MonoBehaviour
             SetPivotPosition(render.transform, element.pivot, DrawArea.size, element.aditionalArtScale);
         }
 
+        // GENERIC ELEMENT BORDER
+        if (element.Key == "generic_element")
+        {
+            SpriteRenderer render = await CreateRender("Border", element.sortInLayer);
+            render.sprite = element.additionalArt;
+            render.drawMode = SpriteDrawMode.Tiled;
+            render.size = render.transform.localScale = DrawArea.size * element.aditionalArtScale;
+            render.enabled = true;
+        }
+
         if (element.useBgColor)
         {
             SpriteRenderer render = await CreateRender("FillColor", element.sortInLayer + additionalSort);

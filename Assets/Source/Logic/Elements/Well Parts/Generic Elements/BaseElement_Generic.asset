@@ -32,6 +32,7 @@ MonoBehaviour:
   aditionalBgScale: {x: 0.2915, y: 1}
   useInsideArt: 1
   art: {fileID: 21300000, guid: d46bb6e7b913a2e449e84d4c632f6cb6, type: 3}
+  additionalArt: {fileID: 21300000, guid: c4d8ffc7eeb0bf24b8e6655ba6599dc2, type: 3}
   artColor: {r: 0, g: 0, b: 0, a: 1}
   maskInteraction: 0
   drawMode: 2

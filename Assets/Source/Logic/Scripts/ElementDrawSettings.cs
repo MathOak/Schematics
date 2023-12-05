@@ -36,6 +36,7 @@ public class ElementDrawSettings : ScriptableObject
     [Space]
     public bool useInsideArt = false;
     [ShowIf("useInsideArt")] public Sprite art;
+    [ShowIf("useInsideArt")] public Sprite additionArt;
     [ShowIf("useInsideArt")] public Color artColor = Color.black;
     [ShowIf("useInsideArt")] public SpriteMaskInteraction maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
     [ShowIf("useInsideArt")] public SpriteDrawMode drawMode = SpriteDrawMode.Simple;
@@ -65,6 +66,7 @@ public class ElementDrawSettings : ScriptableObject
         additionalBgScale = element.aditionalBgScale;
         useInsideArt = element.useInsideArt;
         art = element.art;
+        additionArt = element.additionalArt;
         artColor = element.artColor;
         maskInteraction = element.maskInteraction;
         drawMode = element.drawMode;

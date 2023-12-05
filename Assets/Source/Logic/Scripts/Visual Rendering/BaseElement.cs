@@ -47,6 +47,7 @@ public class BaseElement : ScriptableObject
     [Space]
     [HideIf("useDrawSettings")][SerializeField] public bool useInsideArt = false;
     [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public Sprite art;
+    [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public Sprite additionalArt;
     [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public Color artColor = Color.black;
     [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public SpriteMaskInteraction maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
     [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public SpriteDrawMode drawMode = SpriteDrawMode.Simple;
@@ -55,6 +56,7 @@ public class BaseElement : ScriptableObject
     [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public float minimalVirtualHeight = 0;
     [SerializeField] public bool ignoreResize = false;
     [SerializeField] public bool ignoreCSBColor = false;
+
     [Space]
     [HideIf("useDrawSettings")][SerializeField] public int sortInLayer;
 
@@ -105,6 +107,7 @@ public class BaseElement : ScriptableObject
         aditionalBgScale = otherElement.aditionalBgScale;
         useInsideArt = otherElement.useInsideArt;
         art = otherElement.art;
+        additionalArt = otherElement.additionalArt;
         artColor = otherElement.artColor;
         maskInteraction = otherElement.maskInteraction;
         drawMode = otherElement.drawMode;
@@ -123,6 +126,7 @@ public class BaseElement : ScriptableObject
             aditionalBgScale = drawSettings.additionalBgScale;
             useInsideArt = drawSettings.useInsideArt;
             art = drawSettings.art;
+            additionalArt = drawSettings.additionArt;
             artColor = drawSettings.artColor;
             maskInteraction = drawSettings.maskInteraction;
             drawMode = drawSettings.drawMode;
