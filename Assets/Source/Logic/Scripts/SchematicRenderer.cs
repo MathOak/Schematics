@@ -57,7 +57,7 @@ public class SchematicRenderer : MonoBehaviour
             imageHeight = Constants.MAX_WIDTH / cameraAspect;
         }
 
-        RenderTexture renderTexture = new RenderTexture((int)imageWidth, (int)imageHeight, 24);
+        RenderTexture renderTexture = new RenderTexture((int)imageWidth, (int)imageHeight, 32);
         _schematicCamera.targetTexture = renderTexture;
 
         _printCamera.orthographicSize = _schematicCamera.orthographicSize;
