@@ -9,40 +9,80 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "part_name", menuName = "Part/Create Part")]
 public class ElementMigration : ScriptableObject
 {
+
     [Header("Element Ids")]
     public string elementName = "Generic Part";
 
+    [Space(Spacing.SPACING_SMALL)]
+
     public string elementEngName = "Generic Part ENG";
-    
-    public string key;
+
+    [Space(Spacing.SPACING_SMALL)]
+
+    public string key = "generic_element";
+
+    [Space(Spacing.SPACING_SMALL)]
 
     [EnumToggleButtons]
     public ElementType elementType;
 
+    [Space(Spacing.SPACING_MEDIUM)]
+
     public List<ElementImage> images;
+}
+
+public class Spacing
+{
+    public const int SPACING_SMALL = 10;
+    public const int SPACING_MEDIUM = 25;
+    public const int SPACING_BIG = 35;
 }
 
 [System.Serializable]
 public class ElementImage
 {
+    [Space(Spacing.SPACING_SMALL)]
+
     [PreviewField]
-    public Sprite sprite;
+    public Sprite image;
+
+    [Space(Spacing.SPACING_MEDIUM)]
 
     public SpriteDrawMode drawMode = SpriteDrawMode.Simple;
-    public SpriteMaskInteraction maskInteraction = SpriteMaskInteraction.None;
-    public SortingLayerTest layer;
-    public int orderInLayer = 0;
-    Vector2 offset = Vector2.zero;
 
+    [Space(Spacing.SPACING_SMALL)]
+
+    public SpriteMaskInteraction maskInteraction = SpriteMaskInteraction.None;
+
+    [Space(Spacing.SPACING_SMALL)]
+
+    public SortingLayerPicker layer;
+
+    [Space(Spacing.SPACING_SMALL)]
+
+    public int orderInLayer = 0;
+
+    [Space(Spacing.SPACING_SMALL)]
+
+    [BoxGroup("ImageSizingSetup")]
     [EnumToggleButtons]
     public ImageSizeType imageSizeType;
 
+    [Space(Spacing.SPACING_SMALL)]
+
+    [BoxGroup("ImageSizingSetup")]
     [ShowIf("imageSizeType", ImageSizeType.FixedSize)]
     public Vector2 size;
 
+    [Space(Spacing.SPACING_SMALL)]
+
+    [BoxGroup("ImageSizingSetup")]
     [ShowIf("imageSizeType", ImageSizeType.Clamped)]
     public Vector2 minimumSize;
 
+    [Space(Spacing.SPACING_SMALL)]
+
+    [BoxGroup("ImageSizingSetup")]
     [ShowIf("imageSizeType", ImageSizeType.Clamped)]
     public Vector2 maximumSize;
 }
