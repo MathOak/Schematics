@@ -30,13 +30,21 @@ public class ElementImage
 
     public SpriteDrawMode drawMode = SpriteDrawMode.Simple;
     public SpriteMaskInteraction maskInteraction = SpriteMaskInteraction.None;
-    public SortingLayer layer;
+    public SortingLayerTest layer;
     public int orderInLayer = 0;
     Vector2 offset = Vector2.zero;
-    
-    public bool fixedSize;
-    [ShowIf("fixedSize")]
+
+    [EnumToggleButtons]
+    public ImageSizeType imageSizeType;
+
+    [ShowIf("imageSizeType", ImageSizeType.FixedSize)]
     public Vector2 size;
+
+    [ShowIf("imageSizeType", ImageSizeType.Clamped)]
+    public Vector2 minimumSize;
+
+    [ShowIf("imageSizeType", ImageSizeType.Clamped)]
+    public Vector2 maximumSize;
 }
 
 [System.Serializable]
@@ -44,6 +52,16 @@ public enum ImageType
 {
     SolidColor,
     Sprite
+}
+
+[System.Serializable]
+
+public enum ImageSizeType
+{
+    AutoResize,
+    NoResize,
+    FixedSize,
+    Clamped
 }
 
 [System.Serializable]
