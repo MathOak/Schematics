@@ -21,3 +21,5 @@ MonoBehaviour:
     drawMode: 0
     maskInteraction: 0
     orderInLayer: 0
+    fixedSize: 0
+    size: {x: 0, y: 0}
