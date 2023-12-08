@@ -42,7 +42,7 @@ public class SchematicRenderer : MonoBehaviour
         float lastDeph = SchematicGenerator.lastGeneration.GetLastDepth(2);
         lastDeph = lastDeph < 2500 ? 2500 : lastDeph;
 
-        float drawSize = (lastDeph.RealToVirtualScale() / 2) + (ChristmasTreeGenerator.HeadSize / 2) + 0.32f;
+        float drawSize = (lastDeph.RealToVirtualScale() / 2) + (ChristmasTreeGenerator.HeadSize / 2) + 1.4f;
 
         _schematicCamera.orthographicSize = drawSize;
         _schematicCamera.transform.position = new Vector3(0, -drawSize + (ChristmasTreeGenerator.HeadSize), -10);

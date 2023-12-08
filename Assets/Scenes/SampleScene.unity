@@ -890,7 +890,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.2475
+  orthographic size: 15
   m_Depth: -1.09
   m_CullingMask:
     serializedVersion: 2
@@ -1506,7 +1506,7 @@ MonoBehaviour:
     terrains: []
     comments: []
   jsonSchematicText: "{\r\n  \"elementDataError\": false,\r\n  \"data\": {\r\n   
-    \"isDiagram\": false,\r\n    \"hideAllText\": false,\r\n    \"drillDeph\": 2040,\r\n   
+    \"isDiagram\": true,\r\n    \"hideAllText\": false,\r\n    \"drillDeph\": 2040,\r\n   
     \"parts\": [\r\n      {\r\n        \"hideText\": false,\r\n        \"name\":
     \"Coluna\",\r\n        \"description\": \"\",\r\n        \"element\": \"column_casing\",\r\n       
     \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 4.6,\r\n       
@@ -1514,54 +1514,57 @@ MonoBehaviour:
     \"name\": \"Coluna\",\r\n        \"description\": \"\",\r\n        \"element\":
     \"column_casing\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n       
     \"topo\": 4.6,\r\n        \"base\": 1906.55\r\n      },\r\n      {\r\n       
-    \"hideText\": true,\r\n        \"name\": \"FLUIDO PRODUZIDO\",\r\n        \"description\":
+    \"hideText\": false,\r\n        \"name\": \"FLUIDO PRODUZIDO\",\r\n        \"description\":
     \"Fluido produzido pelo po\xE7o cujo peso espec\xEDfico \xE9 suficiente para
     impedir a surg\xEAncia para a superf\xEDcie.\",\r\n        \"element\": \"fluid_column\",\r\n       
-    \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 50,\r\n       
-    \"base\": 1972\r\n      },\r\n      {\r\n        \"hideText\": true,\r\n       
-    \"name\": \"\xC1RVORE DE NATAL BM\",\r\n        \"description\": \"A \xC1rvore
-    de Natal corresponde a qualquer equipamento de superf\xEDcie provido de v\xE1lvula(s)
-    com o objetivo de assegurar o isolamento final entre o po\xE7o e ambiente externo,
-    guiar a produ\xE7\xE3o para a linha de produ\xE7\xE3o ou guiar os fluidos da
-    linha de inje\xE7\xE3o para o po\xE7o.\",\r\n        \"element\": \"surface_tree\",\r\n       
-    \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 4.1,\r\n       
-    \"base\": 4.3\r\n      },\r\n      {\r\n        \"hideText\": true,\r\n       
-    \"name\": \"ADAPTADOR A1 7 1/16\\\" X 3000 X 3\\\" LP\",\r\n        \"description\":
-    \"\",\r\n        \"element\": \"adapter\",\r\n        \"mainGroup\": \"\",\r\n       
+    \"mainGroup\": \"CSB 1 Prim\xE1rio\",\r\n        \"subGroup\": \"\",\r\n       
+    \"topo\": 50,\r\n        \"base\": 1972\r\n      },\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"\xC1RVORE DE NATAL BM\",\r\n        \"description\":
+    \"A \xC1rvore de Natal corresponde a qualquer equipamento de superf\xEDcie provido
+    de v\xE1lvula(s) com o objetivo de assegurar o isolamento final entre o po\xE7o
+    e ambiente externo, guiar a produ\xE7\xE3o para a linha de produ\xE7\xE3o ou
+    guiar os fluidos da linha de inje\xE7\xE3o para o po\xE7o.\",\r\n        \"element\":
+    \"surface_tree\",\r\n        \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n       
+    \"subGroup\": \"\",\r\n        \"topo\": 4.1,\r\n        \"base\": 4.3\r\n     
+    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"ADAPTADOR
+    A1 7 1/16\\\" X 3000 X 3\\\" LP\",\r\n        \"description\": \"\",\r\n       
+    \"element\": \"adapter\",\r\n        \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n       
     \"subGroup\": \"\",\r\n        \"topo\": 4.3,\r\n        \"base\": 4.4\r\n     
-    },\r\n      {\r\n        \"hideText\": true,\r\n        \"name\": \"CABE\xC7A
+    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"CABE\xC7A
     DE PRODU\xC7\xC3O T-16  3000PSI 11 X7 1/16\\\"\",\r\n        \"description\":
     \"Corpo met\xE1lico composto por suspensores das tubula\xE7\xF5es, elementos
     de veda\xE7\xE3o, v\xE1lvulas e pontos de acessos aos anulares do po\xE7o.\",\r\n       
-    \"element\": \"wellhead\",\r\n        \"mainGroup\": \"\",\r\n        \"subGroup\":
-    \"\",\r\n        \"topo\": 4.4,\r\n        \"base\": 4.6\r\n      },\r\n     
-    {\r\n        \"hideText\": true,\r\n        \"name\": \"REVESTIMENTO 5 1/2\u201D
-    15,5# k55\",\r\n        \"description\": \"Trecho de revestimento entre a sapata
-    e o colar flutuante preenchido com cimento\",\r\n        \"element\": \"shoe_track\",\r\n       
-    \"mainGroup\": \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 4.6,\r\n       
-    \"base\": 1655\r\n      },\r\n      {\r\n        \"hideText\": true,\r\n       
-    \"name\": \"CIMENTA\xC7\xC3O PRIM\xC1RIA 5 1/2\\\" X 7\\\"\",\r\n        \"description\":
-    \"Pasta de cimento endurecida localizada em anulares entre tubulares met\xE1licos
-    conc\xEAntricos (revestimento, coluna de produ\xE7\xE3o, de inje\xE7\xE3o, de
-    trabalho, entre outras) ou entre um tubular met\xE1lico e a parede da forma\xE7\xE3o.
-    \",\r\n        \"element\": \"casing_cement\",\r\n        \"mainGroup\": \"\",\r\n       
+    \"element\": \"wellhead\",\r\n        \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n       
+    \"subGroup\": \"\",\r\n        \"topo\": 4.4,\r\n        \"base\": 4.6\r\n     
+    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"REVESTIMENTO
+    5 1/2\u201D 15,5# k55\",\r\n        \"description\": \"Trecho de revestimento
+    entre a sapata e o colar flutuante preenchido com cimento\",\r\n        \"element\":
+    \"shoe_track\",\r\n        \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n       
+    \"subGroup\": \"\",\r\n        \"topo\": 4.6,\r\n        \"base\": 1655\r\n     
+    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"CIMENTA\xC7\xC3O
+    PRIM\xC1RIA 5 1/2\\\" X 7\\\"\",\r\n        \"description\": \"Pasta de cimento
+    endurecida localizada em anulares entre tubulares met\xE1licos conc\xEAntricos
+    (revestimento, coluna de produ\xE7\xE3o, de inje\xE7\xE3o, de trabalho, entre
+    outras) ou entre um tubular met\xE1lico e a parede da forma\xE7\xE3o. \",\r\n       
+    \"element\": \"casing_cement\",\r\n        \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n       
     \"subGroup\": \"\",\r\n        \"topo\": 1595,\r\n        \"base\": 1655\r\n     
-    },\r\n      {\r\n        \"hideText\": true,\r\n        \"name\": \"REVESTIMENTO
+    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"REVESTIMENTO
     7\u201D 23# k55\",\r\n        \"description\": \"Tubula\xE7\xE3o met\xE1lica
     instalada no po\xE7o.\",\r\n        \"element\": \"casing\",\r\n        \"mainGroup\":
-    \"\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 1595,\r\n        \"base\":
-    1655\r\n      },\r\n      {\r\n        \"hideText\": true,\r\n        \"name\":
-    \"CIMENTA\xC7\xC3O PRIM\xC1RIA  7\u201D X5 1/2\u201D\",\r\n        \"description\":
-    \"Pasta de cimento endurecida localizada em anulares entre tubulares met\xE1licos
-    conc\xEAntricos (revestimento, coluna de produ\xE7\xE3o, de inje\xE7\xE3o, de
-    trabalho, entre outras) ou entre um tubular met\xE1lico e a parede da forma\xE7\xE3o.
-    \",\r\n        \"element\": \"casing_cement\",\r\n        \"mainGroup\": \"\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 1595,\r\n        \"base\": 1655\r\n     
-    },\r\n      {\r\n        \"hideText\": true,\r\n        \"name\": \"SELANTE\",\r\n       
-    \"description\": \"Forma\xE7\xE3o imperme\xE1vel atravessada durante a perfura\xE7\xE3o
-    do po\xE7o\",\r\n        \"element\": \"casing\",\r\n        \"mainGroup\": \"\",\r\n       
-    \"subGroup\": \"\",\r\n        \"topo\": 1625,\r\n        \"base\": 1655\r\n     
-    },\r\n      {\r\n        \"hideText\": false,\r\n        \"name\": \"Revestimento\",\r\n       
+    \"CSB 2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n        \"topo\":
+    1595,\r\n        \"base\": 1655\r\n      },\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"CIMENTA\xC7\xC3O PRIM\xC1RIA  7\u201D X5 1/2\u201D\",\r\n       
+    \"description\": \"Pasta de cimento endurecida localizada em anulares entre tubulares
+    met\xE1licos conc\xEAntricos (revestimento, coluna de produ\xE7\xE3o, de inje\xE7\xE3o,
+    de trabalho, entre outras) ou entre um tubular met\xE1lico e a parede da forma\xE7\xE3o.
+    \",\r\n        \"element\": \"casing_cement\",\r\n        \"mainGroup\": \"CSB
+    2 Secund\xE1rio\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 1595,\r\n       
+    \"base\": 1655\r\n      },\r\n      {\r\n        \"hideText\": false,\r\n       
+    \"name\": \"SELANTE\",\r\n        \"description\": \"Forma\xE7\xE3o imperme\xE1vel
+    atravessada durante a perfura\xE7\xE3o do po\xE7o\",\r\n        \"element\":
+    \"casing\",\r\n        \"mainGroup\": \"CSB 2 Secund\xE1rio\",\r\n        \"subGroup\":
+    \"\",\r\n        \"topo\": 1625,\r\n        \"base\": 1655\r\n      },\r\n     
+    {\r\n        \"hideText\": false,\r\n        \"name\": \"Revestimento\",\r\n       
     \"description\": \"\",\r\n        \"element\": \"casing\",\r\n        \"mainGroup\":
     \"\",\r\n        \"subGroup\": \"bcc28fb0-0e75-4600-a9ed-5fb30239e7d0\",\r\n       
     \"topo\": 5,\r\n        \"base\": 1946\r\n      },\r\n      {\r\n        \"hideText\":
@@ -1748,8 +1751,11 @@ MonoBehaviour:
     \"hideText\": false,\r\n        \"name\": \"Suspensor\",\r\n        \"description\":
     \"\",\r\n        \"element\": \"tubing_hanger\",\r\n        \"mainGroup\": \"\",\r\n       
     \"subGroup\": \"\",\r\n        \"topo\": 0,\r\n        \"base\": 0\r\n      }\r\n   
-    ],\r\n    \"comments\": [\r\n      {\r\n        \"base\": 0,\r\n        \"comment\":
-    \"\"\r\n      }\r\n    ],\r\n    \"terrains\": []\r\n  }\r\n}"
+    ],\r\n    \"comments\": [],\r\n    \"terrains\": [\r\n      {\r\n        \"hideText\":
+    false,\r\n        \"name\": \"Hidrocarbonetos\",\r\n        \"description\":
+    \"\",\r\n        \"element\": \"terrain_formation\",\r\n        \"mainGroup\":
+    \"Hidrocarbonetos\",\r\n        \"subGroup\": \"\",\r\n        \"topo\": 1655,\r\n       
+    \"base\": 2040\r\n      }\r\n    ]\r\n  }\r\n}\r\n"
   writeApiKeyNames: 0
 --- !u!114 &1872632605
 MonoBehaviour:
