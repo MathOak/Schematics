@@ -144,6 +144,7 @@ public class VisualElement : MonoBehaviour
         if (element.Key == "generic_element")
         {
             SpriteRenderer render = await CreateRender("Border", element.sortInLayer);
+            render.color = Color.black;
             render.sprite = element.additionalArt;
             render.drawMode = SpriteDrawMode.Tiled;
             render.enabled = true;
