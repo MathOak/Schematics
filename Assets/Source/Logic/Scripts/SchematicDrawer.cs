@@ -62,11 +62,6 @@ public class SchematicDrawer : MonoBehaviour
                             else
                             if (currentItem.element.minimalVirtualHeight > 0 || nextItem.element.minimalVirtualHeight > 0)
                             {
-                                if (nextItem._virtualName == "Packer")
-                                {
-                                    Debug.Log("STOP");
-                                }
-
                                 float diference = Mathf.Max(0, currentItem.GetBotPoint() - nextItem.GetTopPoint());
                                 nextItem.originOffset += diference;
                                 nextItem.depthOffset += diference;

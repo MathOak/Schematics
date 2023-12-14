@@ -206,7 +206,7 @@ public class Schematic
                 }
                 else 
                 {
-                    Logger.Error($"The key {jsonPart.element} is not present on the project!");
+                    Logger.Warning($"The key {jsonPart.element} doesn't exist in the project!");
                 }
             }
 
