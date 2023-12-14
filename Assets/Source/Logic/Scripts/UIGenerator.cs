@@ -34,7 +34,9 @@ public partial class UIGenerator : MonoBehaviour
         }
 
         var rTransform = _uiCanvas.GetComponent<RectTransform>();
-        rTransform.sizeDelta = new Vector2(Constants.DRAW_LIMITS_HORIZONTAL.RealToVirtualScale() * 600, schematic.GetLastDepth().RealToVirtualScale());
+        rTransform.sizeDelta = new Vector2(
+            ExtensionMethods.RealToVirtualScale(Constants.DRAW_LIMITS_HORIZONTAL) * 600, 
+            ExtensionMethods.RealToVirtualScale(schematic.GetLastDepth()));
 
         await DrawSchematicText(schematic);
     }
@@ -140,7 +142,7 @@ public partial class UIGenerator : MonoBehaviour
 
             yTarget += block.schematicItem.element._drawRectLine ? 
                 block.LinePivot.transform.position.y : 
-                -block.schematicItem.GetMidPoint().RealToVirtualScale();
+                -ExtensionMethods.RealToVirtualScale(block.schematicItem.GetMidPoint());
 
             LineDrawer.instance.CreateLine(xOrigin, yOrigin, xTarget, yTarget);
         }

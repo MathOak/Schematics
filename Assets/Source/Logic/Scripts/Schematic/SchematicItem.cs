@@ -51,10 +51,10 @@ public class SchematicItem : SchematicDrawable
 
         Rect drawArea = new Rect();
 
-        float width = !dontFill ? Constants.DRAW_LIMITS_HORIZONTAL : Constants.DRAW_WELL_SIZE + _widthOffset.RealToVirtualScale();
+        float width = !dontFill ? Constants.DRAW_LIMITS_HORIZONTAL : Constants.DRAW_WELL_SIZE + ExtensionMethods.RealToVirtualScale(_widthOffset);
 
-        drawArea.size = new Vector2(width, (deph - origin).RealToVirtualScale());
-        drawArea.position = new Vector2(0, -1 * (origin.RealToVirtualScale()));
+        drawArea.size = new Vector2(width, ExtensionMethods.RealToVirtualScale(deph - origin));
+        drawArea.position = new Vector2(0, -1 * ExtensionMethods.RealToVirtualScale(origin));
 
         await element.StartDraw(this, drawArea, additionalSort);
     }
@@ -68,9 +68,9 @@ public class SchematicItem : SchematicDrawable
     {
         float result = _depth;
 
-        if (element.minimalVirtualHeight > 0 && (_depth - _origin).RealToVirtualScale() < element.minimalVirtualHeight) 
+        if (element.minimalVirtualHeight > 0 && ExtensionMethods.RealToVirtualScale(_depth - _origin) < element.minimalVirtualHeight) 
         {
-            result = GetMidPoint() + (element.minimalVirtualHeight / 2).VirtualToRealScale();
+            result = GetMidPoint() + ExtensionMethods.VirtualToRealScale(element.minimalVirtualHeight / 2);
         }
 
         return result;
@@ -80,9 +80,9 @@ public class SchematicItem : SchematicDrawable
     {
         float result = _origin;
 
-        if (element.minimalVirtualHeight > 0 && (_depth - _origin).RealToVirtualScale() < element.minimalVirtualHeight)
+        if (element.minimalVirtualHeight > 0 && ExtensionMethods.RealToVirtualScale(_depth - _origin) < element.minimalVirtualHeight)
         {
-            result = GetMidPoint() - (element.minimalVirtualHeight / 2).VirtualToRealScale();
+            result = GetMidPoint() - ExtensionMethods.VirtualToRealScale(element.minimalVirtualHeight / 2);
         }
 
         return result;

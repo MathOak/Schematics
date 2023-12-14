@@ -21,7 +21,7 @@ public class UITextBlockLeft : MonoBehaviour
         this.schematicItem = sItem;
         tmPro.text = $"{sItem.GetElementName(SchematicItem.truncateMethod.warp)} <b>{sItem.GetElementPositions()}</b>";
 
-        float yPos = sItem.element._fixedWritePosition ? sItem.element._fixedPosition : sItem.GetMidPoint().RealToVirtualScale();
+        float yPos = sItem.element._fixedWritePosition ? sItem.element._fixedPosition : ExtensionMethods.RealToVirtualScale(sItem.GetMidPoint());
         
         pivot.anchoredPosition = new Vector3(0, -yPos, 0);
     }
