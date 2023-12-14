@@ -40,14 +40,14 @@ public class SchematicDrawer : MonoBehaviour
 
             if ((i + 1) < items.Count) 
             {
-                if (!currentItem.element.repositionElementsAround && !currentItem.element._headItem)
+                if (!currentItem.element.ignoreResize && !currentItem.element._headItem)
                 {
                     for (int j = i + 1; j < items.Count; j++)
                     {
                         var nextItem = items[j];
                         if (!nextItem.element._headItem)
                         {
-                            if (nextItem.element.repositionElementsAround) 
+                            if (nextItem.element.ignoreResize) 
                             {
                                 if (nextItem.__origin > currentItem.__depth) 
                                 {

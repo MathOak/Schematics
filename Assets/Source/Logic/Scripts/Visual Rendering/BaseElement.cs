@@ -54,7 +54,7 @@ public class BaseElement : ScriptableObject
     [Space]
     [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public Vector2 aditionalArtScale = Vector2.one;
     [ShowIf("useInsideArt")][HideIf("useDrawSettings")][SerializeField] public float minimalVirtualHeight = 0;
-    [SerializeField] public bool repositionElementsAround = false;
+    [SerializeField] public bool ignoreResize = false;
     [SerializeField] public bool ignoreCSBColor = false;
 
     [Space]
@@ -142,7 +142,7 @@ public class BaseElement : ScriptableObject
             addHasOffset = drawSettings.addHasOffset;
             originOffset = drawSettings.originOffset;
             targetOffset = drawSettings.targetOffset;
-            repositionElementsAround = drawSettings.repositionElementsAround;
+            ignoreResize = drawSettings.ignoreResize;
             ignoreCSBColor = drawSettings.ignoreCSBColor;            
         }
         else 
