@@ -15,20 +15,29 @@ MonoBehaviour:
   elementName: "Coluna de perfura\xE7\xE3o"
   elementEngName: "Drill string\r"
   _key: drill_string
+  useDrawSettings: 0
+  drawSettings: {fileID: 0}
+  _headItem: 0
   _columItem: 1
   _writePartOnDoc: 1
   _drawRectLine: 0
   _fixedWritePosition: 0
   _fixedPosition: 0
+  addHasOffset: 0
+  originOffset: {x: 0, y: 0}
+  targetOffset: {x: 0, y: 0}
   pivot: {x: 0.5, y: 0}
   useBgColor: 0
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   aditionalBgScale: {x: 1, y: 1}
   useInsideArt: 0
   art: {fileID: 21300000, guid: 6ecfcabf259c85441aea2f354636e93a, type: 3}
+  additionalArt: {fileID: 0}
   artColor: {r: 0, g: 0, b: 0, a: 1}
   maskInteraction: 1
   drawMode: 0
   aditionalArtScale: {x: 1, y: 1}
   minimalVirtualHeight: 0
+  ignoreResize: 1
+  ignoreCSBColor: 0
   sortInLayer: 0
