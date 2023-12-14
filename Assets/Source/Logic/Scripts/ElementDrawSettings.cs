@@ -43,7 +43,7 @@ public class ElementDrawSettings : ScriptableObject
     [Space]
     [ShowIf("useInsideArt")] public Vector2 additionalArtScale = Vector2.one;
     [ShowIf("useInsideArt")] public float minimalVirtualHeight = 0;
-    public bool ignoreResize = false;
+    public bool repositionElementsAround = false;
     [SerializeField] public bool ignoreCSBColor = false;
     [Space]
     public int sortInLayer;
@@ -74,7 +74,7 @@ public class ElementDrawSettings : ScriptableObject
         minimalVirtualHeight = element.minimalVirtualHeight;
         sortInLayer = element.sortInLayer;
         addHasOffset = element.addHasOffset;
-        ignoreResize = element.ignoreResize;
+        repositionElementsAround = element.repositionElementsAround;
         ignoreCSBColor = element.ignoreCSBColor;
     }
 #endif
