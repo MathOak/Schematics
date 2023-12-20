@@ -29,6 +29,7 @@ public class VisualElement : MonoBehaviour
 
     public SpriteRenderer renderBG = null;
     public SpriteRenderer renderArt = null;
+    public SpriteRenderer renderBorder = null;
 
     public bool colorChanged = false;
     private void Awake()
@@ -144,13 +145,15 @@ public class VisualElement : MonoBehaviour
         if (element.Key == "generic_element")
         {
             SpriteRenderer render = await CreateRender("Border", element.sortInLayer);
-            render.color = Color.black;
+            render.color = element.artColor;
             render.sprite = element.additionalArt;
             render.drawMode = SpriteDrawMode.Tiled;
             render.enabled = true;
             render.size = new Vector2(DrawArea.size.x, Mathf.Clamp(DrawArea.size.y, element.minimalVirtualHeight, Mathf.Infinity));
             render.size *= element.aditionalArtScale;
             render.transform.localScale = Vector3.one;
+
+            renderBorder = render;
         }
 
         if (element.useBgColor)
@@ -305,6 +308,11 @@ public class VisualElement : MonoBehaviour
                     element.renderArt.color = color;
                 else if (element.renderBG != null)
                     element.renderBG.color = color;
+                
+                if (element.renderBorder != null)
+                {
+                    element.renderBorder.color = color;
+                }
 
                 element.transform.SetAsFirstSibling();
             }
