@@ -2,6 +2,7 @@
 using System.Linq;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using static UnityEngine.UI.Image;
 
 public class SchematicDrawer : MonoBehaviour
 {
@@ -36,37 +37,101 @@ public class SchematicDrawer : MonoBehaviour
     {
         List<SchematicItem> casings = schematic.GetAllParts().Where(part => part.element.Key.StartsWith("casing")).ToList();
 
-        for (int i = 0; i < casings.Count; i++)
-        {
-            SchematicItem targetItem = casings[i];
+        List<CasingItem> casingItems = new List<CasingItem>();
 
-            for (int j = 0; j < casings.Count; j++)
+        foreach(var c in casings) 
+        {
+            casingItems.Add(new CasingItem(c));
+        }
+
+        // SORT BY SIZE
+        casingItems.Sort((x, y) =>
+        {
+            float xSize = x.Height;
+            float ySize = y.Height;
+
+            if (x.Height > y.Height)
             {
-                if (i == j)
+                return -1;
+            }
+
+            else if (y.Height > x.Height)
+            {
+                return 1;
+            }
+
+            return 0;
+        });
+
+
+        for (int i = 1; i < casingItems.Count; i++)
+        {
+            CasingItem targetCasing = casingItems[i];
+
+            for (int j = i - 1; j > 0; j--)
+            {
+                CasingItem checkedCasing = casingItems[j];
+
+                //IF IT NOT OVERLAPS THERE ISNT NEED TO JUMP LAYERS
+                if (!checkedCasing.Overlaps(targetCasing))
                 {
                     continue;
                 }
 
-                SchematicItem item = casings[j];
-
-                float targetOrigin = targetItem.__origin;
-
-                float origin = item.__origin;
-                float depth = item.__depth;
-
-                GameObject targetPart = null;
-                if (targetOrigin >= origin && targetOrigin <= depth)
-                {
-                    targetPart = GameObject.Find(targetItem.ToString());
-                }
-
-                if (targetPart != null)
-                {
-                    Vector3 localScale = targetPart.transform.localScale;
-                    targetPart.transform.localScale = new Vector3(localScale.x + localScale.x * 0.05f, localScale.y, localScale.z);
-                }
+                // BUT IF IT OVERLPAS...
+                targetCasing.layer = checkedCasing.layer + 1;
             }
         }
+
+        for (int i = 0; i < casingItems.Count; i++)
+        {
+            CasingItem targetItem = casingItems[i];
+
+            GameObject targetPart = null;
+            targetPart = GameObject.Find(targetItem.SchematicItem.ToString());
+
+            if (targetPart == null)
+            {
+                continue;
+            }
+
+            Transform renderer = targetPart.transform.GetChild(0);
+            Vector3 localScale = renderer.transform.localScale;
+            renderer.transform.localScale = new Vector3(localScale.x + localScale.x * (0.13f * targetItem.layer), localScale.y, localScale.z);
+        }
+
+        //for (int i = 0; i < casings.Count; i++)
+        //{
+        //    SchematicItem targetItem = casings[i];
+
+        //    for (int j = 0; j < casings.Count; j++)
+        //    {
+        //        if (i == j)
+        //        {
+        //            continue;
+        //        }
+
+        //        SchematicItem item = casings[j];
+
+        //        float targetOrigin = targetItem.__origin;
+
+        //        float origin = item.__origin;
+        //        float depth = item.__depth;
+
+        //        GameObject targetPart = null;
+        //        if (targetOrigin >= origin && targetOrigin <= depth)
+        //        {
+        //            targetPart = GameObject.Find(targetItem.ToString());
+        //        }
+
+        //        if (targetPart != null)
+        //        {
+        //            Transform renderer = targetPart.transform.GetChild(0);
+        //            Vector3 localScale = renderer.transform.localScale;
+        //            renderer.transform.localScale = new Vector3(localScale.x + localScale.x * 0.13f, localScale.y, localScale.z);
+        //        }
+        //    }
+        //}
     }
 
     private async UniTask DrawList(Schematic schematic)
@@ -147,5 +212,56 @@ public class SchematicDrawer : MonoBehaviour
             return;
 
         fill.__origin = ((ExtensionMethods.VirtualToRealScale(1.1f) * -1));
+    }
+}
+
+class CasingItem
+{
+    SchematicItem schematicItem = null;
+    public SchematicItem SchematicItem { get { return schematicItem; } }
+
+    public int layer = 0;
+
+    public float Height
+    {
+        get
+        {
+            if (schematicItem == null)
+            {
+                return 0;
+            }
+
+            return schematicItem.__depth - schematicItem.__origin;
+        }
+    }
+
+    public CasingItem (SchematicItem schematicItem)
+    {
+        this.schematicItem = schematicItem;
+    }
+
+    public bool Overlaps(CasingItem casing)
+    {
+        if (schematicItem == null)
+        {
+            return false;
+        }
+
+        if (casing.schematicItem.__origin > schematicItem.__origin && casing.schematicItem.__origin < schematicItem.__depth)
+        {
+            return true;
+        }
+
+        if (casing.schematicItem.__depth > schematicItem.__origin && casing.schematicItem.__depth < schematicItem.__depth)
+        {
+            return true;
+        }
+
+        if (schematicItem.__origin > casing.schematicItem.__origin && schematicItem.depthOffset < casing.schematicItem.__depth)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
