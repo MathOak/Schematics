@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.UI.Image;
 
@@ -28,20 +29,21 @@ public class SchematicDrawer : MonoBehaviour
 
         await DrawVoidSpaces(schematic);
 
-        StackCasings(schematic);
+        StackCasings(schematic, "casing");
+        StackCasings(schematic, "sapata", 0.16f);
 
         Debug.Log("END");
     }
 
-    public void StackCasings(Schematic schematic)
+    public void StackCasings(Schematic schematic, string keyStart, float startOffset = 0)
     {
-        List<SchematicItem> casings = schematic.GetAllParts().Where(part => part.element.Key.StartsWith("casing")).ToList();
+        List<SchematicItem> casings = schematic.GetAllParts().Where(part => part.element.Key.StartsWith(keyStart)).ToList();
 
-        List<CasingItem> casingItems = new List<CasingItem>();
+        List<LayeredItem> casingItems = new List<LayeredItem>();
 
         foreach(var c in casings) 
         {
-            casingItems.Add(new CasingItem(c));
+            casingItems.Add(new LayeredItem(c));
         }
 
         // SORT BY SIZE
@@ -66,11 +68,11 @@ public class SchematicDrawer : MonoBehaviour
 
         for (int i = 1; i < casingItems.Count; i++)
         {
-            CasingItem targetCasing = casingItems[i];
+            LayeredItem targetCasing = casingItems[i];
 
-            for (int j = i - 1; j > 0; j--)
+            for (int j = i - 1; j >= 0; j--)
             {
-                CasingItem checkedCasing = casingItems[j];
+                LayeredItem checkedCasing = casingItems[j];
 
                 //IF IT NOT OVERLAPS THERE ISNT NEED TO JUMP LAYERS
                 if (!checkedCasing.Overlaps(targetCasing))
@@ -85,7 +87,7 @@ public class SchematicDrawer : MonoBehaviour
 
         for (int i = 0; i < casingItems.Count; i++)
         {
-            CasingItem targetItem = casingItems[i];
+            LayeredItem targetItem = casingItems[i];
 
             GameObject targetPart = null;
             targetPart = GameObject.Find(targetItem.SchematicItem.ToString());
@@ -98,40 +100,11 @@ public class SchematicDrawer : MonoBehaviour
             Transform renderer = targetPart.transform.GetChild(0);
             Vector3 localScale = renderer.transform.localScale;
             renderer.transform.localScale = new Vector3(localScale.x + localScale.x * (0.13f * targetItem.layer), localScale.y, localScale.z);
+            if (targetItem.layer > 0 && keyStart != "casing") 
+            {
+                renderer.transform.localScale = new Vector3(localScale.x + startOffset, localScale.y, localScale.z);
+            }
         }
-
-        //for (int i = 0; i < casings.Count; i++)
-        //{
-        //    SchematicItem targetItem = casings[i];
-
-        //    for (int j = 0; j < casings.Count; j++)
-        //    {
-        //        if (i == j)
-        //        {
-        //            continue;
-        //        }
-
-        //        SchematicItem item = casings[j];
-
-        //        float targetOrigin = targetItem.__origin;
-
-        //        float origin = item.__origin;
-        //        float depth = item.__depth;
-
-        //        GameObject targetPart = null;
-        //        if (targetOrigin >= origin && targetOrigin <= depth)
-        //        {
-        //            targetPart = GameObject.Find(targetItem.ToString());
-        //        }
-
-        //        if (targetPart != null)
-        //        {
-        //            Transform renderer = targetPart.transform.GetChild(0);
-        //            Vector3 localScale = renderer.transform.localScale;
-        //            renderer.transform.localScale = new Vector3(localScale.x + localScale.x * 0.13f, localScale.y, localScale.z);
-        //        }
-        //    }
-        //}
     }
 
     private async UniTask DrawList(Schematic schematic)
@@ -215,7 +188,7 @@ public class SchematicDrawer : MonoBehaviour
     }
 }
 
-class CasingItem
+class LayeredItem
 {
     SchematicItem schematicItem = null;
     public SchematicItem SchematicItem { get { return schematicItem; } }
@@ -235,12 +208,12 @@ class CasingItem
         }
     }
 
-    public CasingItem (SchematicItem schematicItem)
+    public LayeredItem (SchematicItem schematicItem)
     {
         this.schematicItem = schematicItem;
     }
 
-    public bool Overlaps(CasingItem casing)
+    public bool Overlaps(LayeredItem casing)
     {
         if (schematicItem == null)
         {
