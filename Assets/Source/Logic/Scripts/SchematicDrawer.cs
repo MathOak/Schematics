@@ -31,23 +31,14 @@ public class SchematicDrawer : MonoBehaviour
 
         StackCasings(schematic, "casing");
         StackCasings(schematic, "sapata", 0.16f);
-
-        Debug.Log("END");
     }
 
     public void StackCasings(Schematic schematic, string keyStart, float startOffset = 0)
     {
         List<SchematicItem> casings = schematic.GetAllParts().Where(part => part.element.Key.StartsWith(keyStart)).ToList();
 
-        List<LayeredItem> casingItems = new List<LayeredItem>();
-
-        foreach(var c in casings) 
-        {
-            casingItems.Add(new LayeredItem(c));
-        }
-
         // SORT BY SIZE
-        casingItems.Sort((x, y) =>
+        casings.Sort((x, y) =>
         {
             float xSize = x.Height;
             float ySize = y.Height;
@@ -66,13 +57,13 @@ public class SchematicDrawer : MonoBehaviour
         });
 
 
-        for (int i = 1; i < casingItems.Count; i++)
+        for (int i = 1; i < casings.Count; i++)
         {
-            LayeredItem targetCasing = casingItems[i];
+            SchematicItem targetCasing = casings[i];
 
             for (int j = i - 1; j >= 0; j--)
             {
-                LayeredItem checkedCasing = casingItems[j];
+                SchematicItem checkedCasing = casings[j];
 
                 //IF IT NOT OVERLAPS THERE ISNT NEED TO JUMP LAYERS
                 if (!checkedCasing.Overlaps(targetCasing))
@@ -85,12 +76,12 @@ public class SchematicDrawer : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < casingItems.Count; i++)
+        for (int i = 0; i < casings.Count; i++)
         {
-            LayeredItem targetItem = casingItems[i];
+            SchematicItem targetItem = casings[i];
 
             GameObject targetPart = null;
-            targetPart = GameObject.Find(targetItem.SchematicItem.ToString());
+            targetPart = GameObject.Find(targetItem.ToString());
 
             if (targetPart == null)
             {
@@ -185,56 +176,5 @@ public class SchematicDrawer : MonoBehaviour
             return;
 
         fill.__origin = ((ExtensionMethods.VirtualToRealScale(1.1f) * -1));
-    }
-}
-
-class LayeredItem
-{
-    SchematicItem schematicItem = null;
-    public SchematicItem SchematicItem { get { return schematicItem; } }
-
-    public int layer = 0;
-
-    public float Height
-    {
-        get
-        {
-            if (schematicItem == null)
-            {
-                return 0;
-            }
-
-            return schematicItem.__depth - schematicItem.__origin;
-        }
-    }
-
-    public LayeredItem (SchematicItem schematicItem)
-    {
-        this.schematicItem = schematicItem;
-    }
-
-    public bool Overlaps(LayeredItem casing)
-    {
-        if (schematicItem == null)
-        {
-            return false;
-        }
-
-        if (casing.schematicItem.__origin > schematicItem.__origin && casing.schematicItem.__origin < schematicItem.__depth)
-        {
-            return true;
-        }
-
-        if (casing.schematicItem.__depth > schematicItem.__origin && casing.schematicItem.__depth < schematicItem.__depth)
-        {
-            return true;
-        }
-
-        if (schematicItem.__origin > casing.schematicItem.__origin && schematicItem.depthOffset < casing.schematicItem.__depth)
-        {
-            return true;
-        }
-
-        return false;
     }
 }

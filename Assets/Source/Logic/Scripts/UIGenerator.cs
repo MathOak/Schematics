@@ -144,6 +144,14 @@ public partial class UIGenerator : MonoBehaviour
                 block.LinePivot.transform.position.y : 
                 -ExtensionMethods.RealToVirtualScale(block.schematicItem.GetMidPoint());
 
+            if (block.schematicItem.element.Key.StartsWith("casing") && block.schematicItem.layer > 0)
+            {
+                int layer = block.schematicItem.layer;
+                float offsetValue = 0.11f * layer;
+                float layerOffsetValue = isLeft ? -offsetValue : offsetValue;
+                xTarget += layerOffsetValue;
+            }
+
             LineDrawer.instance.CreateLine(xOrigin, yOrigin, xTarget, yTarget);
         }
     }

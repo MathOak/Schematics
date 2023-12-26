@@ -43,6 +43,40 @@ public class SchematicItem : SchematicDrawable
 
     public bool WriteText => !_hideText && element._writePartOnDoc;
 
+    #region Layering
+    public int layer = 0;
+
+    public float Height
+    {
+        get
+        {
+
+            return __depth - __origin;
+        }
+    }
+
+    public bool Overlaps(SchematicItem item)
+    {
+        if (item.__origin > __origin && item.__origin < __depth)
+        {
+            return true;
+        }
+
+        if (item.__depth > __origin && item.__depth < __depth)
+        {
+            return true;
+        }
+
+        if (__origin > item.__origin && __depth < item.__depth)
+        {
+            return true;
+        }
+
+        return false;
+    }
+    #endregion
+
+
     public virtual async UniTask Draw(int additionalSort = 0) => await Draw(_origin, _depth, additionalSort);
     public virtual async UniTask Draw(float origin, float deph, int additionalSort = 0)
     {
