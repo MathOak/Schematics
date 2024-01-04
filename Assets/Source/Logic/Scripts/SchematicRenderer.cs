@@ -6,6 +6,7 @@ using Sirenix.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -67,11 +68,11 @@ public class SchematicRenderer : MonoBehaviour
         var tempTex = SimpleScreenshotCapture.CaptureCameraToTexture((int)imageWidth, (int)imageHeight, _printCamera);
 
         Texture2D finalTex = new Texture2D(Constants.MAX_WIDTH, Constants.MAX_HEIGHT);
-        Color[] fillColorArray = finalTex.GetPixels();
+        UnityEngine.Color[] fillColorArray = finalTex.GetPixels();
 
         for (int i = 0; i < fillColorArray.Length; i++)
         {
-            fillColorArray[i] = Color.white;
+            fillColorArray[i] = UnityEngine.Color.white;
         }
 
         finalTex.SetPixels(fillColorArray);
@@ -83,7 +84,41 @@ public class SchematicRenderer : MonoBehaviour
         finalTex.SetPixels(startX, startY, (int)imageWidth, (int)imageHeight, tempTex.GetPixels());
         finalTex.Apply();
 
+        Rectangle rect = TextureBounds(finalTex);
+
         UnityWebInteractions.SendGeneratedTexture(finalTex);
+    }
+
+    private Rectangle TextureBounds (Texture2D image)
+    {
+        int Xmin = 0;
+        int Xmax = 0;
+        int Ymin = 0;
+        int Ymax = 0;
+
+        for (int y = 0; y < image.height; y)
+
+        return new Rectangle(Xmin, Ymax, Xmax - Xmin + 1, Ymax - Ymin + 1);
+    }
+
+    private bool RowIsWhite(Texture2D image, int y)
+    {
+        for (int x = 0; x < image.width; x++)
+        {
+            UnityEngine.Color color = image.GetPixel(x, y);
+            if (color != UnityEngine.Color.white) return false;
+        }
+        return true;
+    }
+
+    private bool ColumnIsWhite(Texture2D image, int x)
+    {
+        for (int y = 0; y < image.height; y++)
+        {
+            UnityEngine.Color color = image.GetPixel(x, y);
+            if (color != UnityEngine.Color.white) return false;
+        }
+        return true;
     }
 
     [Button]
