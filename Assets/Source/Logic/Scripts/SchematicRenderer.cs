@@ -69,8 +69,17 @@ public class SchematicRenderer : MonoBehaviour
         finalTex.SetPixels(startX, startY, (int)imageWidth, (int)imageHeight, tempTex.GetPixels());
         finalTex.Apply();
 
-        Rect rect = TextureBounds(finalTex);
-        finalTex = finalTex.CropTexture(rect);
+        int A5Height = 2480;
+        int A5Width = 1748;
+
+        if (finalTex.height > A5Height)
+        {
+            float ratio = 1 - (A5Height / finalTex.height);
+
+        }
+
+        //Rect rect = TextureBounds(finalTex);
+        //finalTex = finalTex.CropTexture(rect);
 
         UnityWebInteractions.SendGeneratedTexture(finalTex);
     }
@@ -78,28 +87,31 @@ public class SchematicRenderer : MonoBehaviour
     private Rect TextureBounds (Texture2D image)
     {
         int Ymin = 0;
-        for (int y = 0; RowIsWhite(image, y) && y < image.height; y++)
+        for (int y = image.height; RowIsWhite(image, y) && y > 0; y--)
         {
             Ymin = y;
         }
 
-        int Ymax = 0;
-        for (int y = image.height; RowIsWhite(image, y) && y > 0; y--)
+        int Ymax = image.height;
+        for (int y = 0; RowIsWhite(image, y) && y < image.height; y++)
         {
             Ymax = y;
         }
 
         int Xmin = 0;
-        for (int x = 0; ColumnIsWhite(image, x) && x < image.height; x++)
+        for (int x = 0; ColumnIsWhite(image, x) && x < image.width; x++)
         {
             Xmin = x;
         }
 
-        int Xmax = 0;
+        int Xmax = image.width;
         for (int x = image.width; ColumnIsWhite(image, x) && x > 0; x--)
         {
             Xmax = x;
         }
+
+        Ymin = image.height - Ymin;
+        Ymax = image.height - Ymax;
 
         return new Rect(Xmin, Ymin, Xmax - Xmin + 1, Ymax - Ymin + 1);
     }
@@ -109,7 +121,10 @@ public class SchematicRenderer : MonoBehaviour
         for (int x = 0; x < image.width; x++)
         {
             Color color = image.GetPixel(x, y);
-            if (color != Color.white) return false;
+            if (color != Color.white)
+            {
+                return false;
+            }
         }
         return true;
     }
@@ -119,7 +134,10 @@ public class SchematicRenderer : MonoBehaviour
         for (int y = 0; y < image.height; y++)
         {
             Color color = image.GetPixel(x, y);
-            if (color != Color.white) return false;
+            if (color != Color.white)
+            {
+                return false;
+            }
         }
         return true;
     }
