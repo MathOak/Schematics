@@ -1,23 +1,8 @@
 ﻿using AlmostEngine.Screenshot;
-using Cysharp.Threading.Tasks;
-using Newtonsoft.Json.Schema;
 using Sirenix.OdinInspector;
-using Sirenix.Utilities;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
+using Sirenix.Utilities.Editor;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.Networking;
 
 public class SchematicRenderer : MonoBehaviour
 {
@@ -68,11 +53,11 @@ public class SchematicRenderer : MonoBehaviour
         var tempTex = SimpleScreenshotCapture.CaptureCameraToTexture((int)imageWidth, (int)imageHeight, _printCamera);
 
         Texture2D finalTex = new Texture2D(Constants.MAX_WIDTH, Constants.MAX_HEIGHT);
-        UnityEngine.Color[] fillColorArray = finalTex.GetPixels();
+        Color[] fillColorArray = finalTex.GetPixels();
 
         for (int i = 0; i < fillColorArray.Length; i++)
         {
-            fillColorArray[i] = UnityEngine.Color.white;
+            fillColorArray[i] = Color.white;
         }
 
         finalTex.SetPixels(fillColorArray);
@@ -84,29 +69,47 @@ public class SchematicRenderer : MonoBehaviour
         finalTex.SetPixels(startX, startY, (int)imageWidth, (int)imageHeight, tempTex.GetPixels());
         finalTex.Apply();
 
-        Rectangle rect = TextureBounds(finalTex);
+        Rect rect = TextureBounds(finalTex);
+        finalTex = finalTex.CropTexture(rect);
 
         UnityWebInteractions.SendGeneratedTexture(finalTex);
     }
 
-    private Rectangle TextureBounds (Texture2D image)
+    private Rect TextureBounds (Texture2D image)
     {
-        int Xmin = 0;
-        int Xmax = 0;
         int Ymin = 0;
+        for (int y = 0; RowIsWhite(image, y) && y < image.height; y++)
+        {
+            Ymin = y;
+        }
+
         int Ymax = 0;
+        for (int y = image.height; RowIsWhite(image, y) && y > 0; y--)
+        {
+            Ymax = y;
+        }
 
-        for (int y = 0; y < image.height; y)
+        int Xmin = 0;
+        for (int x = 0; ColumnIsWhite(image, x) && x < image.height; x++)
+        {
+            Xmin = x;
+        }
 
-        return new Rectangle(Xmin, Ymax, Xmax - Xmin + 1, Ymax - Ymin + 1);
+        int Xmax = 0;
+        for (int x = image.width; ColumnIsWhite(image, x) && x > 0; x--)
+        {
+            Xmax = x;
+        }
+
+        return new Rect(Xmin, Ymin, Xmax - Xmin + 1, Ymax - Ymin + 1);
     }
 
     private bool RowIsWhite(Texture2D image, int y)
     {
         for (int x = 0; x < image.width; x++)
         {
-            UnityEngine.Color color = image.GetPixel(x, y);
-            if (color != UnityEngine.Color.white) return false;
+            Color color = image.GetPixel(x, y);
+            if (color != Color.white) return false;
         }
         return true;
     }
@@ -115,8 +118,8 @@ public class SchematicRenderer : MonoBehaviour
     {
         for (int y = 0; y < image.height; y++)
         {
-            UnityEngine.Color color = image.GetPixel(x, y);
-            if (color != UnityEngine.Color.white) return false;
+            Color color = image.GetPixel(x, y);
+            if (color != Color.white) return false;
         }
         return true;
     }
