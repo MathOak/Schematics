@@ -89,8 +89,12 @@ public class VisualElement : MonoBehaviour
         await UniTask.WaitUntil(() => opHandler.IsDone);
 
         VisualElement visualElement = opHandler.Result.GetComponent<VisualElement>();
+
+        // TODO: workaround canvas
         visualElement.gameObject.transform.SetParent(visualParent);
         visualElement.gameObject.name = element.ToString();
+
+        // TODO: Rect position
         visualElement.transform.localPosition = new Vector3(drawArea.x, drawArea.y, 0);
         visualElement._drawArea = drawArea;
         visualElement._sItem = element;
