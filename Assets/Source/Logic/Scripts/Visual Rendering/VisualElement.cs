@@ -83,6 +83,21 @@ public class VisualElement : MonoBehaviour
         return visualElement;
     }
 
+    public static async UniTask<VisualElement> CreateNew_Canvas(SchematicItem element, Rect drawArea)
+    {
+        var opHandler = Addressables.InstantiateAsync("VisualElement");
+        await UniTask.WaitUntil(() => opHandler.IsDone);
+
+        VisualElement visualElement = opHandler.Result.GetComponent<VisualElement>();
+        visualElement.gameObject.transform.SetParent(visualParent);
+        visualElement.gameObject.name = element.ToString();
+        visualElement.transform.localPosition = new Vector3(drawArea.x, drawArea.y, 0);
+        visualElement._drawArea = drawArea;
+        visualElement._sItem = element;
+
+        return visualElement;
+    }
+
     public async UniTask GenerateDrawing(int additionalSort = 0)
     {
         //SpriteRenderer render = null;
