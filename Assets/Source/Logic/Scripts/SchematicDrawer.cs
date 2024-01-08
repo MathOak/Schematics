@@ -57,23 +57,20 @@ public class SchematicDrawer : MonoBehaviour
         });
 
 
-        for (int i = 1; i < casings.Count; i++)
+        for (int i = 0; i < casings.Count - 1; i++)
         {
-            SchematicItem targetCasing = casings[i];
+            SchematicItem checkedCasing = casings[i];
+            SchematicItem targetCasing = casings[i + 1];
 
-            for (int j = i - 1; j >= 0; j--)
+
+            //IF IT NOT OVERLAPS THERE ISNT NEED TO JUMP LAYERS
+            if (!checkedCasing.Overlaps(targetCasing))
             {
-                SchematicItem checkedCasing = casings[j];
-
-                //IF IT NOT OVERLAPS THERE ISNT NEED TO JUMP LAYERS
-                if (!checkedCasing.Overlaps(targetCasing))
-                {
-                    continue;
-                }
-
-                // BUT IF IT OVERLPAS...
-                targetCasing.layer = checkedCasing.layer + 1;
+                continue;
             }
+
+            // BUT IF IT OVERLPAS...
+            targetCasing.layer = checkedCasing.layer + 1;
         }
 
         for (int i = 0; i < casings.Count; i++)
@@ -91,10 +88,6 @@ public class SchematicDrawer : MonoBehaviour
             Transform renderer = targetPart.transform.GetChild(0);
             Vector3 localScale = renderer.transform.localScale;
             renderer.transform.localScale = new Vector3(localScale.x + localScale.x * (0.13f * targetItem.layer), localScale.y, localScale.z);
-            if (targetItem.layer > 0 && keyStart != "casing") 
-            {
-                renderer.transform.localScale = new Vector3(localScale.x + startOffset, localScale.y, localScale.z);
-            }
         }
     }
 
